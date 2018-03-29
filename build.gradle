@@ -1,0 +1,30 @@
+buildscript { dependencies { classpath "onight.osgi:zpp-gradle:3.0.0" } }
+
+project.group='org.brewchain.cwv'
+
+version = '1.0.1'
+
+apply plugin:'zippo'
+
+dependencies {
+	//protobuf files('pbs/ssm.proto')
+	
+	compile 'org.fc.zippo:org.fc.zippo.oapi:3.3.0'
+	compile "org.fc.zippo:org.fc.zippo.ordbutils:3.3.0-mysql"
+	//includeInJar 'org.springframework:spring-beans:4.3.7.RELEASE'
+	
+}
+
+ 	
+jar {
+     from sourceSets.main.allSource
+}
+
+task sourcesJar(type: Jar, dependsOn: classes) {
+    classifier = 'sources'
+    from sourceSets.main.allSource
+}
+
+artifacts {
+    archives sourcesJar
+}
