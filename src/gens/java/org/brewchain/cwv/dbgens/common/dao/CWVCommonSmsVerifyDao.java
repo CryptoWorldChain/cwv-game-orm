@@ -148,8 +148,8 @@ public class CWVCommonSmsVerifyDao extends ExtendDaoSupper<CWVCommonSmsVerify, C
 				if(record.getPhone()!=null){
 				criteria.andPhoneEqualTo(record.getPhone());
 				}
-				if(record.getPhoneCode()!=null){
-				criteria.andPhoneCodeEqualTo(record.getPhoneCode());
+				if(record.getCountryCode()!=null){
+				criteria.andCountryCodeEqualTo(record.getCountryCode());
 				}
 				if(record.getVerifyCode()!=null){
 				criteria.andVerifyCodeEqualTo(record.getVerifyCode());
@@ -198,7 +198,7 @@ public class CWVCommonSmsVerifyDao extends ExtendDaoSupper<CWVCommonSmsVerify, C
 				conn.setAutoCommit(false);
 			}		
 			StringBuffer sb=new StringBuffer();
-			sb.append("INSERT INTO CWV_COMMON_SMS_VERIFY(verify_id,phone,phone_code,verify_code,verify_type,is_verify,expires) values");
+			sb.append("INSERT INTO CWV_COMMON_SMS_VERIFY(verify_id,phone,country_code,verify_code,verify_type,is_verify,expires) values");
 			
 				int i=0;
 				st = conn.createStatement();
@@ -229,11 +229,11 @@ public class CWVCommonSmsVerifyDao extends ExtendDaoSupper<CWVCommonSmsVerify, C
 			
 				sb.append(",");
 			
-				if(record.getPhoneCode()==null){
+				if(record.getCountryCode()==null){
 						sb.append("null");
 				}else{
 				// java type==String
-						sb.append("'"+record.getPhoneCode()+"'");
+						sb.append("'"+record.getCountryCode()+"'");
 				}
 			
 				sb.append(",");

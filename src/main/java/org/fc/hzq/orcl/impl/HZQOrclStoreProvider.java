@@ -44,12 +44,12 @@ public class HZQOrclStoreProvider extends RestfulDBStoreProvider implements IAct
 	@Validate
 	public void startup() {
 		super.startup();
-		log.debug("startup TXDataStoreProvider");
+		log.debug("startup GamOrmStoreProvider");
 	}
 
 	@Override
 	public String getProviderid() {
-		return "cwvorcl";
+		return "gameorm";
 	}
 
 	@Override
@@ -59,7 +59,7 @@ public class HZQOrclStoreProvider extends RestfulDBStoreProvider implements IAct
 
 	@Override
 	public String[] getCtrlPaths() {
-		return new String[] { "org.fc.cwv.dbgens" };
+		return new String[] { "org.brewchain.cwv.dbgens" };
 	}
 
 	@Override

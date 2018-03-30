@@ -48,7 +48,7 @@ object PSTranx extends SessionModules[PSTransactions] {
 
   @BeanProperty
   @StoreDAO
-  var sysdao: OJpaDAO[CWVAuthUser] = null;
+  var authdao: OJpaDAO[CWVAuthUser] = null;
 
 }
 
@@ -61,7 +61,7 @@ object PSTranxService extends OLog with PBUtils with LService[PSTransactions] {
     //    log.debug("guava==" + VMDaos.guCache.getIfPresent(pbo.getLogid()));      val ret = PBActRet.newBuilder();
     val ret = PRetTransactions.newBuilder();
     log.debug("get from IP" + pack.getExtStrProp(PackHeader.PEER_IP) + "")
-   val results=  PSTranx.sysdao.doInTransaction(new TransactionExecutor {
+   val results=  PSTranx.authdao.doInTransaction(new TransactionExecutor {
       def doInTransaction: Object = {
         val results = pbo.getSetsList.map { x =>
           log.debug("dopath:==" + x.getPath());

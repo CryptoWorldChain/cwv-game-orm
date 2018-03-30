@@ -63,7 +63,7 @@ message PBCWVCommonSmsVerify
 {
 	int32 verify_id = 1;
 	string phone = 2;
-	string phone_code = 3;
+	string country_code = 3;
 	string verify_code = 4;
 	string verify_type = 5;
 	string is_verify = 6;
