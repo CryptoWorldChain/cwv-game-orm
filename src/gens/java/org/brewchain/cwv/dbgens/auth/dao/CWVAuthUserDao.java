@@ -178,6 +178,12 @@ public class CWVAuthUserDao extends ExtendDaoSupper<CWVAuthUser, CWVAuthUserExam
 				if(record.getCreatedTime()!=null){
 				criteria.andCreatedTimeEqualTo(record.getCreatedTime());
 				}
+				if(record.getCountryId()!=null){
+				criteria.andCountryIdEqualTo(record.getCountryId());
+				}
+				if(record.getCountryCode()!=null){
+				criteria.andCountryCodeEqualTo(record.getCountryCode());
+				}
 
 		}
 		return example;
@@ -213,7 +219,7 @@ public class CWVAuthUserDao extends ExtendDaoSupper<CWVAuthUser, CWVAuthUserExam
 				conn.setAutoCommit(false);
 			}		
 			StringBuffer sb=new StringBuffer();
-			sb.append("INSERT INTO CWV_AUTH_USER(user_id,user_name,nick_name,password,salt,phone,email,image_url,validate_phone,validate_email,status,created_time) values");
+			sb.append("INSERT INTO CWV_AUTH_USER(user_id,user_name,nick_name,password,salt,phone,email,image_url,validate_phone,validate_email,status,created_time,country_id,country_code) values");
 			
 				int i=0;
 				st = conn.createStatement();
@@ -331,6 +337,24 @@ public class CWVAuthUserDao extends ExtendDaoSupper<CWVAuthUser, CWVAuthUserExam
 				// java type==Date
 					    java.text.SimpleDateFormat sdf = new java.text.SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SSS");
 						sb.append("'"+sdf.format(record.getCreatedTime())+"'");
+				}
+			
+				sb.append(",");
+			
+				if(record.getCountryId()==null){
+						sb.append("null");
+				}else{
+				// java type==Integer
+						sb.append("'"+record.getCountryId()+"'");
+				}
+			
+				sb.append(",");
+			
+				if(record.getCountryCode()==null){
+						sb.append("null");
+				}else{
+				// java type==String
+						sb.append("'"+record.getCountryCode()+"'");
 				}
 							sb.append(")");
 			

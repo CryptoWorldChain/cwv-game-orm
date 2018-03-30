@@ -93,5 +93,7 @@ message PBCWVAuthUser
 	string validate_email = 10;
 	string status = 11;
 	int64 created_time = 12;
+	int32 country_id = 13;
+	string country_code = 14;
 }
 
