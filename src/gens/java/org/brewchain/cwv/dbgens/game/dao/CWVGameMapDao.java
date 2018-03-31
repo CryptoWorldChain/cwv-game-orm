@@ -145,11 +145,14 @@ public class CWVGameMapDao extends ExtendDaoSupper<CWVGameMap, CWVGameMapExample
 							if(record.getMapId()!=null){
 				criteria.andMapIdEqualTo(record.getMapId());
 				}
+				if(record.getMapName()!=null){
+				criteria.andMapNameEqualTo(record.getMapName());
+				}
 				if(record.getGameCityId()!=null){
 				criteria.andGameCityIdEqualTo(record.getGameCityId());
 				}
-				if(record.getMapName()!=null){
-				criteria.andMapNameEqualTo(record.getMapName());
+				if(record.getTemplate()!=null){
+				criteria.andTemplateEqualTo(record.getTemplate());
 				}
 				if(record.getImageUrl()!=null){
 				criteria.andImageUrlEqualTo(record.getImageUrl());
@@ -198,7 +201,7 @@ public class CWVGameMapDao extends ExtendDaoSupper<CWVGameMap, CWVGameMapExample
 				conn.setAutoCommit(false);
 			}		
 			StringBuffer sb=new StringBuffer();
-			sb.append("INSERT INTO CWV_GAME_MAP(map_id,game_city_id,map_name,image_url,created_time,status,is_display) values");
+			sb.append("INSERT INTO CWV_GAME_MAP(map_id,map_name,game_city_id,template,image_url,created_time,status,is_display) values");
 			
 				int i=0;
 				st = conn.createStatement();
@@ -220,6 +223,15 @@ public class CWVGameMapDao extends ExtendDaoSupper<CWVGameMap, CWVGameMapExample
 			
 				sb.append(",");
 			
+				if(record.getMapName()==null){
+						sb.append("null");
+				}else{
+				// java type==String
+						sb.append("'"+record.getMapName()+"'");
+				}
+			
+				sb.append(",");
+			
 				if(record.getGameCityId()==null){
 						sb.append("null");
 				}else{
@@ -229,11 +241,11 @@ public class CWVGameMapDao extends ExtendDaoSupper<CWVGameMap, CWVGameMapExample
 			
 				sb.append(",");
 			
-				if(record.getMapName()==null){
+				if(record.getTemplate()==null){
 						sb.append("null");
 				}else{
-				// java type==String
-						sb.append("'"+record.getMapName()+"'");
+				// java type==Integer
+						sb.append("'"+record.getTemplate()+"'");
 				}
 			
 				sb.append(",");

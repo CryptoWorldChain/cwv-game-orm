@@ -6,11 +6,13 @@ package org.brewchain.cwv.dbgens.game.pbo;
 message PBCWVGameCity
 {
 	int32 city_id = 1;
-	int32 game_country_id = 2;
-	string city_name = 3;
-	string status = 4;
-	string is_display = 5;
-	int64 created_time = 6;
+	string city_name = 2;
+	string city_name_cn = 3;
+	int32 map_num = 4;
+	int32 game_country_id = 5;
+	string status = 6;
+	string is_display = 7;
+	int64 created_time = 8;
 }
 
 message PBCWVGameCountry
@@ -21,17 +23,19 @@ message PBCWVGameCountry
 	string status = 4;
 	string is_display = 5;
 	int64 created_time = 6;
+	int32 map_num = 7;
 }
 
 message PBCWVGameMap
 {
 	int32 map_id = 1;
-	int32 game_city_id = 2;
-	string map_name = 3;
-	string image_url = 4;
-	int64 created_time = 5;
-	string status = 6;
-	string is_display = 7;
+	string map_name = 2;
+	int32 game_city_id = 3;
+	int32 template = 4;
+	string image_url = 5;
+	int64 created_time = 6;
+	string status = 7;
+	string is_display = 8;
 }
 
 message PBCWVGameProperty
@@ -61,7 +65,7 @@ message PBCWVCommonCountry
 
 message PBCWVCommonSmsVerify
 {
-	int32 verify_id = 1;
+	string verify_id = 1;
 	string phone = 2;
 	string country_code = 3;
 	string verify_code = 4;
@@ -95,5 +99,23 @@ message PBCWVAuthUser
 	int64 created_time = 12;
 	int32 country_id = 13;
 	string country_code = 14;
+}
+
+message PBCWVUserTrade
+{
+	int32 trade_id = 1;
+	int32 user_id = 2;
+	string trade_password = 3;
+	int64 created_time = 4;
+}
+
+message PBCWVUserWallet
+{
+	int32 wallet_id = 1;
+	int32 user_id = 2;
+	double balance = 3;
+	double topup_balance = 4;
+	int32 draw_count = 5;
+	int64 last_update_time = 6;
 }
 

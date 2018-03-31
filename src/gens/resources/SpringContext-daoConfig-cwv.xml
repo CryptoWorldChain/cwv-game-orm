@@ -73,5 +73,21 @@
  		<property name="mapper" ref="cWVAuthUserMapper" />
  		<property name="sqlSessionFactory" ref="sqlSessionFactory" />
  	</bean>
+	<bean id="cWVUserTradeMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">
+		<property name="mapperInterface" value="org.brewchain.cwv.dbgens.user.mapper.CWVUserTradeMapper" />
+		<property name="sqlSessionFactory" ref="sqlSessionFactory" />
+	</bean>
+	 <bean id="cwvusertradeDao" class="org.brewchain.cwv.dbgens.user.dao.CWVUserTradeDao" >
+ 		<property name="mapper" ref="cWVUserTradeMapper" />
+ 		<property name="sqlSessionFactory" ref="sqlSessionFactory" />
+ 	</bean>
+	<bean id="cWVUserWalletMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">
+		<property name="mapperInterface" value="org.brewchain.cwv.dbgens.user.mapper.CWVUserWalletMapper" />
+		<property name="sqlSessionFactory" ref="sqlSessionFactory" />
+	</bean>
+	 <bean id="cwvuserwalletDao" class="org.brewchain.cwv.dbgens.user.dao.CWVUserWalletDao" >
+ 		<property name="mapper" ref="cWVUserWalletMapper" />
+ 		<property name="sqlSessionFactory" ref="sqlSessionFactory" />
+ 	</bean>
 	
 </beans>

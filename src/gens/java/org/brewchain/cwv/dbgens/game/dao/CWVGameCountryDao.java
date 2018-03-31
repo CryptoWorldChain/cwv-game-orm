@@ -160,6 +160,9 @@ public class CWVGameCountryDao extends ExtendDaoSupper<CWVGameCountry, CWVGameCo
 				if(record.getCreatedTime()!=null){
 				criteria.andCreatedTimeEqualTo(record.getCreatedTime());
 				}
+				if(record.getMapNum()!=null){
+				criteria.andMapNumEqualTo(record.getMapNum());
+				}
 
 		}
 		return example;
@@ -195,7 +198,7 @@ public class CWVGameCountryDao extends ExtendDaoSupper<CWVGameCountry, CWVGameCo
 				conn.setAutoCommit(false);
 			}		
 			StringBuffer sb=new StringBuffer();
-			sb.append("INSERT INTO CWV_GAME_COUNTRY(country_id,country_name,image_url,status,is_display,created_time) values");
+			sb.append("INSERT INTO CWV_GAME_COUNTRY(country_id,country_name,image_url,status,is_display,created_time,map_num) values");
 			
 				int i=0;
 				st = conn.createStatement();
@@ -259,6 +262,15 @@ public class CWVGameCountryDao extends ExtendDaoSupper<CWVGameCountry, CWVGameCo
 				// java type==Date
 					    java.text.SimpleDateFormat sdf = new java.text.SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SSS");
 						sb.append("'"+sdf.format(record.getCreatedTime())+"'");
+				}
+			
+				sb.append(",");
+			
+				if(record.getMapNum()==null){
+						sb.append("null");
+				}else{
+				// java type==Integer
+						sb.append("'"+record.getMapNum()+"'");
 				}
 							sb.append(")");
 			

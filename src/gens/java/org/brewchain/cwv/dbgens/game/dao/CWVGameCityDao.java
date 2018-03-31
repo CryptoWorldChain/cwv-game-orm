@@ -145,11 +145,17 @@ public class CWVGameCityDao extends ExtendDaoSupper<CWVGameCity, CWVGameCityExam
 							if(record.getCityId()!=null){
 				criteria.andCityIdEqualTo(record.getCityId());
 				}
-				if(record.getGameCountryId()!=null){
-				criteria.andGameCountryIdEqualTo(record.getGameCountryId());
-				}
 				if(record.getCityName()!=null){
 				criteria.andCityNameEqualTo(record.getCityName());
+				}
+				if(record.getCityNameCn()!=null){
+				criteria.andCityNameCnEqualTo(record.getCityNameCn());
+				}
+				if(record.getMapNum()!=null){
+				criteria.andMapNumEqualTo(record.getMapNum());
+				}
+				if(record.getGameCountryId()!=null){
+				criteria.andGameCountryIdEqualTo(record.getGameCountryId());
 				}
 				if(record.getStatus()!=null){
 				criteria.andStatusEqualTo(record.getStatus());
@@ -195,7 +201,7 @@ public class CWVGameCityDao extends ExtendDaoSupper<CWVGameCity, CWVGameCityExam
 				conn.setAutoCommit(false);
 			}		
 			StringBuffer sb=new StringBuffer();
-			sb.append("INSERT INTO CWV_GAME_CITY(city_id,game_country_id,city_name,status,is_display,created_time) values");
+			sb.append("INSERT INTO CWV_GAME_CITY(city_id,city_name,city_name_cn,map_num,game_country_id,status,is_display,created_time) values");
 			
 				int i=0;
 				st = conn.createStatement();
@@ -217,20 +223,38 @@ public class CWVGameCityDao extends ExtendDaoSupper<CWVGameCity, CWVGameCityExam
 			
 				sb.append(",");
 			
-				if(record.getGameCountryId()==null){
-						sb.append("null");
-				}else{
-				// java type==Integer
-						sb.append("'"+record.getGameCountryId()+"'");
-				}
-			
-				sb.append(",");
-			
 				if(record.getCityName()==null){
 						sb.append("null");
 				}else{
 				// java type==String
 						sb.append("'"+record.getCityName()+"'");
+				}
+			
+				sb.append(",");
+			
+				if(record.getCityNameCn()==null){
+						sb.append("null");
+				}else{
+				// java type==String
+						sb.append("'"+record.getCityNameCn()+"'");
+				}
+			
+				sb.append(",");
+			
+				if(record.getMapNum()==null){
+						sb.append("null");
+				}else{
+				// java type==Integer
+						sb.append("'"+record.getMapNum()+"'");
+				}
+			
+				sb.append(",");
+			
+				if(record.getGameCountryId()==null){
+						sb.append("null");
+				}else{
+				// java type==Integer
+						sb.append("'"+record.getGameCountryId()+"'");
 				}
 			
 				sb.append(",");

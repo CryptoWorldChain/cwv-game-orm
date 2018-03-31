@@ -214,7 +214,7 @@ public class CWVCommonSmsVerifyDao extends ExtendDaoSupper<CWVCommonSmsVerify, C
 				if(record.getVerifyId()==null){
 						sb.append("null");
 				}else{
-				// java type==Integer
+				// java type==String
 						sb.append("'"+record.getVerifyId()+"'");
 				}
 			

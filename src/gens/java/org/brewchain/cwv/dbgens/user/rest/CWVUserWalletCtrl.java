@@ -1,4 +1,4 @@
-package org.brewchain.cwv.dbgens.common.rest;
+package org.brewchain.cwv.dbgens.user.rest;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -22,15 +22,15 @@ import onight.tfw.outils.serialize.JsonSerializer;
 import onight.tfw.outils.serialize.UUIDGenerator;
 import org.fc.zippo.ordbutils.rest.ExcelDownload;
 
-import org.brewchain.cwv.dbgens.common.entity.CWVCommonSmsVerify;
-import org.brewchain.cwv.dbgens.common.entity.CWVCommonSmsVerifyKey;
-import org.brewchain.cwv.dbgens.common.entity.CWVCommonSmsVerifyExample;
+import org.brewchain.cwv.dbgens.user.entity.CWVUserWallet;
+import org.brewchain.cwv.dbgens.user.entity.CWVUserWalletKey;
+import org.brewchain.cwv.dbgens.user.entity.CWVUserWalletExample;
 
 @Slf4j
 @SuppressWarnings({ "rawtypes", "unchecked" })
-public class CWVCommonSmsVerifyCtrl extends BaseRestCtrl {
+public class CWVUserWalletCtrl extends BaseRestCtrl {
 
-	public CWVCommonSmsVerifyCtrl(StaticTableDaoSupport dao, CommonSqlMapper mapper) {
+	public CWVUserWalletCtrl(StaticTableDaoSupport dao, CommonSqlMapper mapper) {
 		super(dao, mapper,false);
 	}
 	
@@ -41,16 +41,16 @@ public class CWVCommonSmsVerifyCtrl extends BaseRestCtrl {
 			
 				String allkeys[] = key.split(",");
 				String fields = req.getParameter("fields");
-				CWVCommonSmsVerifyExample example = new CWVCommonSmsVerifyExample();
-				List<String> keylist = new ArrayList<>();
+				CWVUserWalletExample example = new CWVUserWalletExample();
+				List<Integer> keylist = new ArrayList<>();
 				for (String akey : allkeys) {
 					if(StringUtils.isNotBlank(akey))
 					{
-						keylist.add(akey.trim());
+						keylist.add(Integer.parseInt(akey.trim()));
 					}	
 				}
 				if(keylist.size()==0)return "{}";
-				example.createCriteria().andVerifyIdIn(keylist);
+				example.createCriteria().andWalletIdIn(keylist);
 				if (StringUtils.isNoneBlank(fields)) {
 					StringBuffer sb = new StringBuffer();
 					for (SearchField sf : FieldsMapperResolver.genQueryMapper(fields).getFields()) {
@@ -74,13 +74,13 @@ public class CWVCommonSmsVerifyCtrl extends BaseRestCtrl {
 				}
 				return JsonSerializer.formatToString(dao.selectByExample(example));
 			} else {
-				return getBySql(CWVCommonSmsVerify.class, CWVCommonSmsVerifyKey.class, "CWV_COMMON_SMS_VERIFY", req);
+				return getBySql(CWVUserWallet.class, CWVUserWalletKey.class, "CWV_USER_WALLET", req);
 			}
 
 		} catch (ExcelDownload ed) {
 			throw ed;
 		} catch (Exception e) {
-			log.warn("CWVCommonSmsVerifyCtrl get by key error..", e);
+			log.warn("CWVUserWalletCtrl get by key error..", e);
 		}
 		if (page) {
 			return JsonSerializer.formatToString(new ListInfo<>(0, null, 0, -1));
@@ -94,10 +94,9 @@ public class CWVCommonSmsVerifyCtrl extends BaseRestCtrl {
 			int size;
 			Object obj=null;
 			if (bodies[0] == '[' && bodies[bodies.length - 1] == ']') {
-				List<CWVCommonSmsVerify> items = JsonSerializer.getInstance().deserializeArray(bodies, CWVCommonSmsVerify.class);
-				for (CWVCommonSmsVerify item : items) {
-					if (item.getVerifyId() == null) {
-						item.setVerifyId(UUIDGenerator.generate());
+				List<CWVUserWallet> items = JsonSerializer.getInstance().deserializeArray(bodies, CWVUserWallet.class);
+				for (CWVUserWallet item : items) {
+					if (item.getWalletId() == null) {
 					}
 				}
 				
@@ -105,21 +104,20 @@ public class CWVCommonSmsVerifyCtrl extends BaseRestCtrl {
 				size = dao.batchInsert(items);
 				if("2".equals(req.getParameter("retobj"))){
 					List<Object> keysid = new ArrayList<>();
-					for(CWVCommonSmsVerify it:items){
-						keysid.add(it.getVerifyId());
+					for(CWVUserWallet it:items){
+						keysid.add(it.getWalletId());
 					}
 					return JsonSerializer.formatToString(new ReturnInfo("Success", -1, keysid, true));
 				}
 			} else {
-				CWVCommonSmsVerify item = JsonSerializer.getInstance().deserialize(bodies, CWVCommonSmsVerify.class);
-				if (item.getVerifyId() == null) {
+				CWVUserWallet item = JsonSerializer.getInstance().deserialize(bodies, CWVUserWallet.class);
+				if (item.getWalletId() == null) {
 					
-						item.setVerifyId(UUIDGenerator.generate());
 				}
 				obj=item;
 				size = dao.insertSelective(item);
 				if("2".equals(req.getParameter("retobj"))){
-					return JsonSerializer.formatToString(new ReturnInfo("Success", -1, item.getVerifyId(), true));
+					return JsonSerializer.formatToString(new ReturnInfo("Success", -1, item.getWalletId(), true));
 				}
 			}
 			if("1".equals(req.getParameter("retobj"))){
@@ -140,37 +138,37 @@ public class CWVCommonSmsVerifyCtrl extends BaseRestCtrl {
 		try {
 			int size;
 			if (StringUtils.isNotBlank(key)) {
-				CWVCommonSmsVerify item = JsonSerializer.getInstance().deserialize(bodies, CWVCommonSmsVerify.class);
+				CWVUserWallet item = JsonSerializer.getInstance().deserialize(bodies, CWVUserWallet.class);
 				String allkeys[] = key.split(",");
 				if(allkeys.length>1){
-					CWVCommonSmsVerifyExample example=new CWVCommonSmsVerifyExample();
-					List<String> keylist = new ArrayList<>();
+					CWVUserWalletExample example=new CWVUserWalletExample();
+					List<Integer> keylist = new ArrayList<>();
 					for (String akey : allkeys) {
 						if(StringUtils.isNotBlank(akey))	
 							{
-								keylist.add(akey.trim());
+								keylist.add(Integer.parseInt(akey.trim()));
 							}	
 					}
 					if(keylist.size()>0){
-						example.createCriteria().andVerifyIdIn(keylist);
+						example.createCriteria().andWalletIdIn(keylist);
 						size=dao.updateByExampleSelective(item,example);
 					}else{
 						size = 0;
 					}			
 				}else{
-					item.setVerifyId(key);
+					item.setWalletId(Integer.parseInt(key.trim()));
 							
 					size = dao.updateByPrimaryKeySelective(item);
 				}
 			} else {
 				if (bodies[0] == '[' && bodies[bodies.length - 1] == ']') {
-					List<CWVCommonSmsVerify> items = JsonSerializer.getInstance().deserializeArray(bodies, CWVCommonSmsVerify.class);
+					List<CWVUserWallet> items = JsonSerializer.getInstance().deserializeArray(bodies, CWVUserWallet.class);
 					size = dao.batchUpdate(items);
 				} else {
 					String example = req.getParameter("example");
-					CWVCommonSmsVerify item = JsonSerializer.getInstance().deserialize(bodies, CWVCommonSmsVerify.class);
+					CWVUserWallet item = JsonSerializer.getInstance().deserialize(bodies, CWVUserWallet.class);
 					if (StringUtils.isNotBlank(example)) {
-						CWVCommonSmsVerify exampleitem = JsonSerializer.getInstance().deserialize(example.getBytes("UTF-8"), CWVCommonSmsVerify.class);
+						CWVUserWallet exampleitem = JsonSerializer.getInstance().deserialize(example.getBytes("UTF-8"), CWVUserWallet.class);
 						size = dao.updateByExampleSelective(item, dao.getExample(exampleitem));
 					} else {
 						size = dao.updateByPrimaryKeySelective(item);
@@ -192,28 +190,28 @@ public class CWVCommonSmsVerifyCtrl extends BaseRestCtrl {
 			
 				String allkeys[] = key.split(",");
 				if(allkeys.length>1){
-					CWVCommonSmsVerifyExample example=new CWVCommonSmsVerifyExample();
-					List<String> keylist = new ArrayList<>();
+					CWVUserWalletExample example=new CWVUserWalletExample();
+					List<Integer> keylist = new ArrayList<>();
 					for (String akey : allkeys) {
 						if(StringUtils.isNotBlank(akey))	
 						{
-								keylist.add(akey.trim());
+								keylist.add(Integer.parseInt(akey.trim()));
 						}	
 					}
 					
 					if(keylist.size()>0){
-						example.createCriteria().andVerifyIdIn(keylist);
+						example.createCriteria().andWalletIdIn(keylist);
 						size=dao.deleteByExample(example);
 					}else{
 						size = 0;
 					}			
 				}else{
-					size = dao.deleteByPrimaryKey(new CWVCommonSmsVerifyKey(key));
+					size = dao.deleteByPrimaryKey(new CWVUserWalletKey(Integer.parseInt(key.trim())));
 					
 				}
 			} else {
 				if (bodies[0] == '[' && bodies[bodies.length - 1] == ']') {
-					List<CWVCommonSmsVerify> items = JsonSerializer.getInstance().deserializeArray(bodies, CWVCommonSmsVerify.class);
+					List<CWVUserWallet> items = JsonSerializer.getInstance().deserializeArray(bodies, CWVUserWallet.class);
 					size = dao.batchDelete(items);
 				} else {
 					if(!deleteByExampleEnabled){
@@ -221,12 +219,12 @@ public class CWVCommonSmsVerifyCtrl extends BaseRestCtrl {
 					}
 					
 					String example = req.getParameter("example");
-					CWVCommonSmsVerify item=null;
+					CWVUserWallet item=null;
 					if (StringUtils.isNotBlank(example)) {
-						item = JsonSerializer.getInstance().deserialize(bodies, CWVCommonSmsVerify.class);
+						item = JsonSerializer.getInstance().deserialize(bodies, CWVUserWallet.class);
 					} else {
 						if (bodies.length > 10) {
-							item = JsonSerializer.getInstance().deserialize(bodies, CWVCommonSmsVerify.class);
+							item = JsonSerializer.getInstance().deserialize(bodies, CWVUserWallet.class);
 						}
 					}
 					if(item!=null)
