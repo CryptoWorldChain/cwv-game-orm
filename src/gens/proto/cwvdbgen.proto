@@ -42,23 +42,25 @@ message PBCWVGameProperty
 {
 	int32 property_id = 1;
 	int32 game_map_id = 2;
-	string property_name = 3;
-	string property_type = 4;
-	string property_status = 5;
-	double last_price = 6;
-	int64 last_price_time = 7;
-	string image_url = 8;
-	string is_display = 9;
-	int64 created_time = 10;
+	int32 property_template_id = 3;
+	string property_name = 4;
+	string property_type = 5;
+	string property_status = 6;
+	double last_price = 7;
+	int64 last_price_time = 8;
+	string image_url = 9;
+	string is_display = 10;
+	int64 created_time = 11;
+	string property_template = 12;
 }
 
 message PBCWVCommonCountry
 {
 	int32 country_id = 1;
 	string domain_code = 2;
-	string region_code = 3;
-	string short_name = 4;
-	string full_name = 5;
+	string short_name = 3;
+	string full_name = 4;
+	string region_code = 5;
 	string phone_code = 6;
 	string sort = 7;
 }

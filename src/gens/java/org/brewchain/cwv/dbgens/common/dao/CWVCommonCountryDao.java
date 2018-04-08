@@ -148,14 +148,14 @@ public class CWVCommonCountryDao extends ExtendDaoSupper<CWVCommonCountry, CWVCo
 				if(record.getDomainCode()!=null){
 				criteria.andDomainCodeEqualTo(record.getDomainCode());
 				}
-				if(record.getRegionCode()!=null){
-				criteria.andRegionCodeEqualTo(record.getRegionCode());
-				}
 				if(record.getShortName()!=null){
 				criteria.andShortNameEqualTo(record.getShortName());
 				}
 				if(record.getFullName()!=null){
 				criteria.andFullNameEqualTo(record.getFullName());
+				}
+				if(record.getRegionCode()!=null){
+				criteria.andRegionCodeEqualTo(record.getRegionCode());
 				}
 				if(record.getPhoneCode()!=null){
 				criteria.andPhoneCodeEqualTo(record.getPhoneCode());
@@ -198,7 +198,7 @@ public class CWVCommonCountryDao extends ExtendDaoSupper<CWVCommonCountry, CWVCo
 				conn.setAutoCommit(false);
 			}		
 			StringBuffer sb=new StringBuffer();
-			sb.append("INSERT INTO CWV_COMMON_COUNTRY(country_id,domain_code,region_code,short_name,full_name,phone_code,sort) values");
+			sb.append("INSERT INTO CWV_COMMON_COUNTRY(country_id,domain_code,short_name,full_name,region_code,phone_code,sort) values");
 			
 				int i=0;
 				st = conn.createStatement();
@@ -229,15 +229,6 @@ public class CWVCommonCountryDao extends ExtendDaoSupper<CWVCommonCountry, CWVCo
 			
 				sb.append(",");
 			
-				if(record.getRegionCode()==null){
-						sb.append("null");
-				}else{
-				// java type==String
-						sb.append("'"+record.getRegionCode()+"'");
-				}
-			
-				sb.append(",");
-			
 				if(record.getShortName()==null){
 						sb.append("null");
 				}else{
@@ -252,6 +243,15 @@ public class CWVCommonCountryDao extends ExtendDaoSupper<CWVCommonCountry, CWVCo
 				}else{
 				// java type==String
 						sb.append("'"+record.getFullName()+"'");
+				}
+			
+				sb.append(",");
+			
+				if(record.getRegionCode()==null){
+						sb.append("null");
+				}else{
+				// java type==String
+						sb.append("'"+record.getRegionCode()+"'");
 				}
 			
 				sb.append(",");
