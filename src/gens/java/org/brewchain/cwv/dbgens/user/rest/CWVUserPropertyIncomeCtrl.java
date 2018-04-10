@@ -22,15 +22,15 @@ import onight.tfw.outils.serialize.JsonSerializer;
 import onight.tfw.outils.serialize.UUIDGenerator;
 import org.fc.zippo.ordbutils.rest.ExcelDownload;
 
-import org.brewchain.cwv.dbgens.user.entity.CWVUserTrade;
-import org.brewchain.cwv.dbgens.user.entity.CWVUserTradeKey;
-import org.brewchain.cwv.dbgens.user.entity.CWVUserTradeExample;
+import org.brewchain.cwv.dbgens.user.entity.CWVUserPropertyIncome;
+import org.brewchain.cwv.dbgens.user.entity.CWVUserPropertyIncomeKey;
+import org.brewchain.cwv.dbgens.user.entity.CWVUserPropertyIncomeExample;
 
 @Slf4j
 @SuppressWarnings({ "rawtypes", "unchecked" })
-public class CWVUserTradeCtrl extends BaseRestCtrl {
+public class CWVUserPropertyIncomeCtrl extends BaseRestCtrl {
 
-	public CWVUserTradeCtrl(StaticTableDaoSupport dao, CommonSqlMapper mapper) {
+	public CWVUserPropertyIncomeCtrl(StaticTableDaoSupport dao, CommonSqlMapper mapper) {
 		super(dao, mapper,false);
 	}
 	
@@ -41,7 +41,7 @@ public class CWVUserTradeCtrl extends BaseRestCtrl {
 			
 				String allkeys[] = key.split(",");
 				String fields = req.getParameter("fields");
-				CWVUserTradeExample example = new CWVUserTradeExample();
+				CWVUserPropertyIncomeExample example = new CWVUserPropertyIncomeExample();
 				List<Integer> keylist = new ArrayList<>();
 				for (String akey : allkeys) {
 					if(StringUtils.isNotBlank(akey))
@@ -50,7 +50,7 @@ public class CWVUserTradeCtrl extends BaseRestCtrl {
 					}	
 				}
 				if(keylist.size()==0)return "{}";
-				example.createCriteria().andTradeIdIn(keylist);
+				example.createCriteria().andIncomeIdIn(keylist);
 				if (StringUtils.isNoneBlank(fields)) {
 					StringBuffer sb = new StringBuffer();
 					for (SearchField sf : FieldsMapperResolver.genQueryMapper(fields).getFields()) {
@@ -74,13 +74,13 @@ public class CWVUserTradeCtrl extends BaseRestCtrl {
 				}
 				return JsonSerializer.formatToString(dao.selectByExample(example));
 			} else {
-				return getBySql(CWVUserTrade.class, CWVUserTradeKey.class, "CWV_USER_TRADE", req);
+				return getBySql(CWVUserPropertyIncome.class, CWVUserPropertyIncomeKey.class, "CWV_USER_PROPERTY_INCOME", req);
 			}
 
 		} catch (ExcelDownload ed) {
 			throw ed;
 		} catch (Exception e) {
-			log.warn("CWVUserTradeCtrl get by key error..", e);
+			log.warn("CWVUserPropertyIncomeCtrl get by key error..", e);
 		}
 		if (page) {
 			return JsonSerializer.formatToString(new ListInfo<>(0, null, 0, -1));
@@ -94,9 +94,9 @@ public class CWVUserTradeCtrl extends BaseRestCtrl {
 			int size;
 			Object obj=null;
 			if (bodies[0] == '[' && bodies[bodies.length - 1] == ']') {
-				List<CWVUserTrade> items = JsonSerializer.getInstance().deserializeArray(bodies, CWVUserTrade.class);
-				for (CWVUserTrade item : items) {
-					if (item.getTradeId() == null) {
+				List<CWVUserPropertyIncome> items = JsonSerializer.getInstance().deserializeArray(bodies, CWVUserPropertyIncome.class);
+				for (CWVUserPropertyIncome item : items) {
+					if (item.getIncomeId() == null) {
 					}
 				}
 				
@@ -104,20 +104,20 @@ public class CWVUserTradeCtrl extends BaseRestCtrl {
 				size = dao.batchInsert(items);
 				if("2".equals(req.getParameter("retobj"))){
 					List<Object> keysid = new ArrayList<>();
-					for(CWVUserTrade it:items){
-						keysid.add(it.getTradeId());
+					for(CWVUserPropertyIncome it:items){
+						keysid.add(it.getIncomeId());
 					}
 					return JsonSerializer.formatToString(new ReturnInfo("Success", -1, keysid, true));
 				}
 			} else {
-				CWVUserTrade item = JsonSerializer.getInstance().deserialize(bodies, CWVUserTrade.class);
-				if (item.getTradeId() == null) {
+				CWVUserPropertyIncome item = JsonSerializer.getInstance().deserialize(bodies, CWVUserPropertyIncome.class);
+				if (item.getIncomeId() == null) {
 					
 				}
 				obj=item;
 				size = dao.insertSelective(item);
 				if("2".equals(req.getParameter("retobj"))){
-					return JsonSerializer.formatToString(new ReturnInfo("Success", -1, item.getTradeId(), true));
+					return JsonSerializer.formatToString(new ReturnInfo("Success", -1, item.getIncomeId(), true));
 				}
 			}
 			if("1".equals(req.getParameter("retobj"))){
@@ -138,10 +138,10 @@ public class CWVUserTradeCtrl extends BaseRestCtrl {
 		try {
 			int size;
 			if (StringUtils.isNotBlank(key)) {
-				CWVUserTrade item = JsonSerializer.getInstance().deserialize(bodies, CWVUserTrade.class);
+				CWVUserPropertyIncome item = JsonSerializer.getInstance().deserialize(bodies, CWVUserPropertyIncome.class);
 				String allkeys[] = key.split(",");
 				if(allkeys.length>1){
-					CWVUserTradeExample example=new CWVUserTradeExample();
+					CWVUserPropertyIncomeExample example=new CWVUserPropertyIncomeExample();
 					List<Integer> keylist = new ArrayList<>();
 					for (String akey : allkeys) {
 						if(StringUtils.isNotBlank(akey))	
@@ -150,25 +150,25 @@ public class CWVUserTradeCtrl extends BaseRestCtrl {
 							}	
 					}
 					if(keylist.size()>0){
-						example.createCriteria().andTradeIdIn(keylist);
+						example.createCriteria().andIncomeIdIn(keylist);
 						size=dao.updateByExampleSelective(item,example);
 					}else{
 						size = 0;
 					}			
 				}else{
-					item.setTradeId(Integer.parseInt(key.trim()));
+					item.setIncomeId(Integer.parseInt(key.trim()));
 							
 					size = dao.updateByPrimaryKeySelective(item);
 				}
 			} else {
 				if (bodies[0] == '[' && bodies[bodies.length - 1] == ']') {
-					List<CWVUserTrade> items = JsonSerializer.getInstance().deserializeArray(bodies, CWVUserTrade.class);
+					List<CWVUserPropertyIncome> items = JsonSerializer.getInstance().deserializeArray(bodies, CWVUserPropertyIncome.class);
 					size = dao.batchUpdate(items);
 				} else {
 					String example = req.getParameter("example");
-					CWVUserTrade item = JsonSerializer.getInstance().deserialize(bodies, CWVUserTrade.class);
+					CWVUserPropertyIncome item = JsonSerializer.getInstance().deserialize(bodies, CWVUserPropertyIncome.class);
 					if (StringUtils.isNotBlank(example)) {
-						CWVUserTrade exampleitem = JsonSerializer.getInstance().deserialize(example.getBytes("UTF-8"), CWVUserTrade.class);
+						CWVUserPropertyIncome exampleitem = JsonSerializer.getInstance().deserialize(example.getBytes("UTF-8"), CWVUserPropertyIncome.class);
 						size = dao.updateByExampleSelective(item, dao.getExample(exampleitem));
 					} else {
 						size = dao.updateByPrimaryKeySelective(item);
@@ -190,7 +190,7 @@ public class CWVUserTradeCtrl extends BaseRestCtrl {
 			
 				String allkeys[] = key.split(",");
 				if(allkeys.length>1){
-					CWVUserTradeExample example=new CWVUserTradeExample();
+					CWVUserPropertyIncomeExample example=new CWVUserPropertyIncomeExample();
 					List<Integer> keylist = new ArrayList<>();
 					for (String akey : allkeys) {
 						if(StringUtils.isNotBlank(akey))	
@@ -200,18 +200,18 @@ public class CWVUserTradeCtrl extends BaseRestCtrl {
 					}
 					
 					if(keylist.size()>0){
-						example.createCriteria().andTradeIdIn(keylist);
+						example.createCriteria().andIncomeIdIn(keylist);
 						size=dao.deleteByExample(example);
 					}else{
 						size = 0;
 					}			
 				}else{
-					size = dao.deleteByPrimaryKey(new CWVUserTradeKey(Integer.parseInt(key.trim())));
+					size = dao.deleteByPrimaryKey(new CWVUserPropertyIncomeKey(Integer.parseInt(key.trim())));
 					
 				}
 			} else {
 				if (bodies[0] == '[' && bodies[bodies.length - 1] == ']') {
-					List<CWVUserTrade> items = JsonSerializer.getInstance().deserializeArray(bodies, CWVUserTrade.class);
+					List<CWVUserPropertyIncome> items = JsonSerializer.getInstance().deserializeArray(bodies, CWVUserPropertyIncome.class);
 					size = dao.batchDelete(items);
 				} else {
 					if(!deleteByExampleEnabled){
@@ -219,12 +219,12 @@ public class CWVUserTradeCtrl extends BaseRestCtrl {
 					}
 					
 					String example = req.getParameter("example");
-					CWVUserTrade item=null;
+					CWVUserPropertyIncome item=null;
 					if (StringUtils.isNotBlank(example)) {
-						item = JsonSerializer.getInstance().deserialize(bodies, CWVUserTrade.class);
+						item = JsonSerializer.getInstance().deserialize(bodies, CWVUserPropertyIncome.class);
 					} else {
 						if (bodies.length > 10) {
-							item = JsonSerializer.getInstance().deserialize(bodies, CWVUserTrade.class);
+							item = JsonSerializer.getInstance().deserialize(bodies, CWVUserPropertyIncome.class);
 						}
 					}
 					if(item!=null)

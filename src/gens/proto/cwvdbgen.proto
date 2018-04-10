@@ -43,15 +43,17 @@ message PBCWVGameProperty
 	int32 property_id = 1;
 	int32 game_map_id = 2;
 	int32 property_template_id = 3;
-	string property_name = 4;
-	string property_type = 5;
-	string property_status = 6;
-	double last_price = 7;
-	int64 last_price_time = 8;
-	string image_url = 9;
-	string is_display = 10;
-	int64 created_time = 11;
-	string property_template = 12;
+	int32 owner = 4;
+	string property_name = 5;
+	string property_type = 6;
+	string property_status = 7;
+	double income = 8;
+	double last_price = 9;
+	int64 last_price_time = 10;
+	string image_url = 11;
+	string is_display = 12;
+	int64 created_time = 13;
+	string property_template = 14;
 }
 
 message PBCWVCommonCountry
@@ -103,12 +105,34 @@ message PBCWVAuthUser
 	string country_code = 14;
 }
 
-message PBCWVUserTrade
+message PBCWVUserPropertyIncome
+{
+	int32 income_id = 1;
+	int32 user_id = 2;
+	string type = 3;
+	double amount = 4;
+	string status = 5;
+	int64 start_time = 6;
+	int64 end_time = 7;
+}
+
+message PBCWVUserTradePwd
 {
 	int32 trade_id = 1;
 	int32 user_id = 2;
 	string trade_password = 3;
 	int64 created_time = 4;
+}
+
+message PBCWVUserTransactionRecord
+{
+	int32 record_id = 1;
+	int32 user_id = 2;
+	int32 trade_id = 3;
+	string detail = 4;
+	double gain_cost = 5;
+	int64 create_time = 6;
+	int64 create_user = 7;
 }
 
 message PBCWVUserWallet
@@ -119,5 +143,55 @@ message PBCWVUserWallet
 	double topup_balance = 4;
 	int32 draw_count = 5;
 	int64 last_update_time = 6;
+}
+
+message PBCWVMarketAuctionList
+{
+	int32 auction_id = 1;
+	int32 bid_id = 2;
+	int64 nick_name = 3;
+	int64 bid_price = 4;
+	double user_id = 5;
+	int64 create_time = 6;
+	string create_user = 7;
+}
+
+message PBCWVMarketBid
+{
+	int32 bid_id = 1;
+	int32 game_property_id = 2;
+	int64 auction_start = 3;
+	int64 auction_end = 4;
+	double increase_ladder = 5;
+	double bid_start = 6;
+	double bid_amount = 7;
+	int32 bidders_count = 8;
+	string status = 9;
+	int64 last_update_time = 10;
+	int64 announce_time = 11;
+	int64 create_time = 12;
+	string create_user = 13;
+}
+
+message PBCWVMarketDraw
+{
+	int32 draw_id = 1;
+	int32 property_id = 2;
+	int32 user_id = 3;
+	int64 create_time = 4;
+	int64 create_user = 5;
+}
+
+message PBCWVMarketExchange
+{
+	int32 exchange_id = 1;
+	int32 property_id = 2;
+	int32 user_id = 3;
+	double sell_price = 4;
+	double tax = 5;
+	string status = 6;
+	int64 update_time = 7;
+	int64 create_time = 8;
+	int64 create_user = 9;
 }
 

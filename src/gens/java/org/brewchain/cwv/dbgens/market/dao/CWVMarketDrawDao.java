@@ -1,4 +1,4 @@
-package org.brewchain.cwv.dbgens.user.dao;
+package org.brewchain.cwv.dbgens.market.dao;
 
 import java.sql.Connection;
 import java.sql.SQLException;
@@ -15,11 +15,11 @@ import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 //import org.springframework.transaction.annotation.Transactional;
 
-import org.brewchain.cwv.dbgens.user.entity.CWVUserTrade;
-import org.brewchain.cwv.dbgens.user.entity.CWVUserTradeExample;
-import org.brewchain.cwv.dbgens.user.entity.CWVUserTradeExample.Criteria;
-import org.brewchain.cwv.dbgens.user.entity.CWVUserTradeKey;
-import org.brewchain.cwv.dbgens.user.mapper.CWVUserTradeMapper;
+import org.brewchain.cwv.dbgens.market.entity.CWVMarketDraw;
+import org.brewchain.cwv.dbgens.market.entity.CWVMarketDrawExample;
+import org.brewchain.cwv.dbgens.market.entity.CWVMarketDrawExample.Criteria;
+import org.brewchain.cwv.dbgens.market.entity.CWVMarketDrawKey;
+import org.brewchain.cwv.dbgens.market.mapper.CWVMarketDrawMapper;
 import onight.tfw.ojpa.api.annotations.Tab;
 import onight.tfw.ojpa.ordb.ExtendDaoSupper;
 import onight.tfw.mservice.ThreadContext;
@@ -27,44 +27,44 @@ import onight.tfw.mservice.ThreadContext;
 
 @Data
 @EqualsAndHashCode(callSuper=false)
-@Tab(name="CWV_USER_TRADE")
-public class CWVUserTradeDao extends ExtendDaoSupper<CWVUserTrade, CWVUserTradeExample, CWVUserTradeKey>{
+@Tab(name="CWV_MARKET_DRAW")
+public class CWVMarketDrawDao extends ExtendDaoSupper<CWVMarketDraw, CWVMarketDrawExample, CWVMarketDrawKey>{
 
-	private CWVUserTradeMapper mapper;
+	private CWVMarketDrawMapper mapper;
 
 	private SqlSessionFactory sqlSessionFactory;
 	
 	
 	@Override
-	public int countByExample(CWVUserTradeExample example) {
+	public int countByExample(CWVMarketDrawExample example) {
 		return mapper.countByExample(example);
 	}
 
 	@Override
-	public int deleteByExample(CWVUserTradeExample example)  throws Exception{
+	public int deleteByExample(CWVMarketDrawExample example)  throws Exception{
 		return mapper.deleteByExample(example);
 	}
 
 	@Override
-	public int deleteByPrimaryKey(CWVUserTradeKey key)  throws Exception{
+	public int deleteByPrimaryKey(CWVMarketDrawKey key)  throws Exception{
 		return mapper.deleteByPrimaryKey(key);
 	}
 
 	@Override
-	public int insert(CWVUserTrade record)   throws Exception{
+	public int insert(CWVMarketDraw record)   throws Exception{
 		return mapper.insert(record);
 	}
 
 	@Override
-	public int insertSelective(CWVUserTrade record)   throws Exception{
+	public int insertSelective(CWVMarketDraw record)   throws Exception{
 		return mapper.insertSelective(record);
 	}
 
 	@Override
 	//@Transactional
-	public int batchUpdate(List<CWVUserTrade> records) throws Exception
+	public int batchUpdate(List<CWVMarketDraw> records) throws Exception
 			 {
-		for(CWVUserTrade record : records){
+		for(CWVMarketDraw record : records){
 			mapper.updateByPrimaryKeySelective(record);
 		}
 		return records.size();
@@ -72,34 +72,34 @@ public class CWVUserTradeDao extends ExtendDaoSupper<CWVUserTrade, CWVUserTradeE
 
 	@Override
 	//@Transactional
-	public int batchDelete(List<CWVUserTrade> records) throws Exception
+	public int batchDelete(List<CWVMarketDraw> records) throws Exception
 			 {
-		for(CWVUserTrade record : records){
+		for(CWVMarketDraw record : records){
 			mapper.deleteByPrimaryKey(record);
 		}
 		return records.size();
 	}
 
 	@Override
-	public List<CWVUserTrade> selectByExample(CWVUserTradeExample example)
+	public List<CWVMarketDraw> selectByExample(CWVMarketDrawExample example)
 			 {
 		return mapper.selectByExample(example);
 	}
 
 	@Override
-	public CWVUserTrade selectByPrimaryKey(CWVUserTradeKey key)
+	public CWVMarketDraw selectByPrimaryKey(CWVMarketDrawKey key)
 			 {
 		return mapper.selectByPrimaryKey(key);
 	}
 
 	@Override
-	public List<CWVUserTrade> findAll(List<CWVUserTrade> records) {
+	public List<CWVMarketDraw> findAll(List<CWVMarketDraw> records) {
 		if(records==null||records.size()<=0){
-			return mapper.selectByExample(new CWVUserTradeExample());
+			return mapper.selectByExample(new CWVMarketDrawExample());
 		}
-		List<CWVUserTrade> list = new ArrayList<>();
-		for(CWVUserTrade record : records){
-			CWVUserTrade result = mapper.selectByPrimaryKey(record);
+		List<CWVMarketDraw> list = new ArrayList<>();
+		for(CWVMarketDraw record : records){
+			CWVMarketDraw result = mapper.selectByPrimaryKey(record);
 			if(result!=null){
 				list.add(result);
 			}
@@ -108,61 +108,64 @@ public class CWVUserTradeDao extends ExtendDaoSupper<CWVUserTrade, CWVUserTradeE
 	}
 
 	@Override
-	public int updateByExampleSelective(CWVUserTrade record, CWVUserTradeExample example)  throws Exception {
+	public int updateByExampleSelective(CWVMarketDraw record, CWVMarketDrawExample example)  throws Exception {
 		return mapper.updateByExampleSelective(record, example);
 	}
 
 	@Override
-	public int updateByExample(CWVUserTrade record, CWVUserTradeExample example)  throws Exception{
+	public int updateByExample(CWVMarketDraw record, CWVMarketDrawExample example)  throws Exception{
 		return mapper.updateByExample(record, example);
 	}
 
 	@Override
-	public int updateByPrimaryKeySelective(CWVUserTrade record)  throws Exception{
+	public int updateByPrimaryKeySelective(CWVMarketDraw record)  throws Exception{
 		return mapper.updateByPrimaryKeySelective(record);
 	}
 
 	@Override
-	public int updateByPrimaryKey(CWVUserTrade record)  throws Exception{
+	public int updateByPrimaryKey(CWVMarketDraw record)  throws Exception{
 		return mapper.updateByPrimaryKey(record);
 	}
 
 	@Override
-	public int sumByExample(CWVUserTradeExample example) {
+	public int sumByExample(CWVMarketDrawExample example) {
 		return 0;
 	}
 
 	@Override
 	public void deleteAll()  throws Exception {
-		mapper.deleteByExample(new CWVUserTradeExample());
+		mapper.deleteByExample(new CWVMarketDrawExample());
 	}
 
 	@Override
-	public CWVUserTradeExample getExample(CWVUserTrade record) {
-		CWVUserTradeExample example = new CWVUserTradeExample();
+	public CWVMarketDrawExample getExample(CWVMarketDraw record) {
+		CWVMarketDrawExample example = new CWVMarketDrawExample();
 		if(record!=null){
 			Criteria criteria = example.createCriteria();
-							if(record.getTradeId()!=null){
-				criteria.andTradeIdEqualTo(record.getTradeId());
+							if(record.getDrawId()!=null){
+				criteria.andDrawIdEqualTo(record.getDrawId());
+				}
+				if(record.getPropertyId()!=null){
+				criteria.andPropertyIdEqualTo(record.getPropertyId());
 				}
 				if(record.getUserId()!=null){
 				criteria.andUserIdEqualTo(record.getUserId());
 				}
-				if(record.getTradePassword()!=null){
-				criteria.andTradePasswordEqualTo(record.getTradePassword());
+				if(record.getCreateTime()!=null){
+				criteria.andCreateTimeEqualTo(record.getCreateTime());
 				}
-				if(record.getCreatedTime()!=null){
-				criteria.andCreatedTimeEqualTo(record.getCreatedTime());
+				if(record.getCreateUser()!=null){
+				criteria.andCreateUserEqualTo(record.getCreateUser());
 				}
 
 		}
 		return example;
 	}
 	
-	public CWVUserTrade selectOneByExample(CWVUserTradeExample example)
+	public CWVMarketDraw selectOneByExample(CWVMarketDrawExample example)
 			 {
 		example.setLimit(1);
-		List<CWVUserTrade> list=mapper.selectByExample(example);
+		List<CWVMarketDraw> list=mapper.selectByExample(example);
 		if(list!=null&&list.size()>0){
 			return list.get(0);
 		}
@@ -171,7 +174,7 @@ public class CWVUserTradeDao extends ExtendDaoSupper<CWVUserTrade, CWVUserTradeE
 	
 	@Override
 	//@Transactional
-	public int batchInsert(List<CWVUserTrade> records) throws Exception {
+	public int batchInsert(List<CWVMarketDraw> records) throws Exception {
 		if(records.size()<=0)return 0;
 		
 		Connection txconn = (Connection) ThreadContext.getContext("__connection");
@@ -189,11 +192,11 @@ public class CWVUserTradeDao extends ExtendDaoSupper<CWVUserTrade, CWVUserTradeE
 				conn.setAutoCommit(false);
 			}		
 			StringBuffer sb=new StringBuffer();
-			sb.append("INSERT INTO CWV_USER_TRADE(trade_id,user_id,trade_password,created_time) values");
+			sb.append("INSERT INTO CWV_MARKET_DRAW(draw_id,property_id,user_id,create_time,create_user) values");
 			
 				int i=0;
 				st = conn.createStatement();
-				for (CWVUserTrade record : records) {
+				for (CWVMarketDraw record : records) {
 					if(i>0){
 						sb.append(",");
 					}
@@ -202,11 +205,20 @@ public class CWVUserTradeDao extends ExtendDaoSupper<CWVUserTrade, CWVUserTradeE
 			
 				sb.append("(");
 			
-				if(record.getTradeId()==null){
+				if(record.getDrawId()==null){
 						sb.append("null");
 				}else{
 				// java type==Integer
-						sb.append("'"+record.getTradeId()+"'");
+						sb.append("'"+record.getDrawId()+"'");
+				}
+			
+				sb.append(",");
+			
+				if(record.getPropertyId()==null){
+						sb.append("null");
+				}else{
+				// java type==Integer
+						sb.append("'"+record.getPropertyId()+"'");
 				}
 			
 				sb.append(",");
@@ -220,21 +232,22 @@ public class CWVUserTradeDao extends ExtendDaoSupper<CWVUserTrade, CWVUserTradeE
 			
 				sb.append(",");
 			
-				if(record.getTradePassword()==null){
-						sb.append("null");
-				}else{
-				// java type==String
-						sb.append("'"+record.getTradePassword()+"'");
-				}
-			
-				sb.append(",");
-			
-				if(record.getCreatedTime()==null){
+				if(record.getCreateTime()==null){
 						sb.append("null");
 				}else{
 				// java type==Date
 					    java.text.SimpleDateFormat sdf = new java.text.SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SSS");
-						sb.append("'"+sdf.format(record.getCreatedTime())+"'");
+						sb.append("'"+sdf.format(record.getCreateTime())+"'");
+				}
+			
+				sb.append(",");
+			
+				if(record.getCreateUser()==null){
+						sb.append("null");
+				}else{
+				// java type==Date
+					    java.text.SimpleDateFormat sdf = new java.text.SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SSS");
+						sb.append("'"+sdf.format(record.getCreateUser())+"'");
 				}
 							sb.append(")");
 			
