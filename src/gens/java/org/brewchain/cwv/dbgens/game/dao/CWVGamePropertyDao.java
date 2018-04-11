@@ -148,9 +148,6 @@ public class CWVGamePropertyDao extends ExtendDaoSupper<CWVGameProperty, CWVGame
 				if(record.getGameMapId()!=null){
 				criteria.andGameMapIdEqualTo(record.getGameMapId());
 				}
-				if(record.getPropertyTemplateId()!=null){
-				criteria.andPropertyTemplateIdEqualTo(record.getPropertyTemplateId());
-				}
 				if(record.getOwner()!=null){
 				criteria.andOwnerEqualTo(record.getOwner());
 				}
@@ -163,9 +160,6 @@ public class CWVGamePropertyDao extends ExtendDaoSupper<CWVGameProperty, CWVGame
 				if(record.getPropertyStatus()!=null){
 				criteria.andPropertyStatusEqualTo(record.getPropertyStatus());
 				}
-				if(record.getIncome()!=null){
-				criteria.andIncomeEqualTo(record.getIncome());
-				}
 				if(record.getLastPrice()!=null){
 				criteria.andLastPriceEqualTo(record.getLastPrice());
 				}
@@ -175,11 +169,17 @@ public class CWVGamePropertyDao extends ExtendDaoSupper<CWVGameProperty, CWVGame
 				if(record.getImageUrl()!=null){
 				criteria.andImageUrlEqualTo(record.getImageUrl());
 				}
+				if(record.getIncome()!=null){
+				criteria.andIncomeEqualTo(record.getIncome());
+				}
 				if(record.getIsDisplay()!=null){
 				criteria.andIsDisplayEqualTo(record.getIsDisplay());
 				}
 				if(record.getCreatedTime()!=null){
 				criteria.andCreatedTimeEqualTo(record.getCreatedTime());
+				}
+				if(record.getPropertyTemplateId()!=null){
+				criteria.andPropertyTemplateIdEqualTo(record.getPropertyTemplateId());
 				}
 				if(record.getPropertyTemplate()!=null){
 				criteria.andPropertyTemplateEqualTo(record.getPropertyTemplate());
@@ -219,7 +219,7 @@ public class CWVGamePropertyDao extends ExtendDaoSupper<CWVGameProperty, CWVGame
 				conn.setAutoCommit(false);
 			}		
 			StringBuffer sb=new StringBuffer();
-			sb.append("INSERT INTO CWV_GAME_PROPERTY(property_id,game_map_id,property_template_id,owner,property_name,property_type,property_status,income,last_price,last_price_time,image_url,is_display,created_time,property_template) values");
+			sb.append("INSERT INTO CWV_GAME_PROPERTY(property_id,game_map_id,owner,property_name,property_type,property_status,last_price,last_price_time,image_url,income,is_display,created_time,property_template_id,property_template) values");
 			
 				int i=0;
 				st = conn.createStatement();
@@ -246,15 +246,6 @@ public class CWVGamePropertyDao extends ExtendDaoSupper<CWVGameProperty, CWVGame
 				}else{
 				// java type==Integer
 						sb.append("'"+record.getGameMapId()+"'");
-				}
-			
-				sb.append(",");
-			
-				if(record.getPropertyTemplateId()==null){
-						sb.append("null");
-				}else{
-				// java type==Integer
-						sb.append("'"+record.getPropertyTemplateId()+"'");
 				}
 			
 				sb.append(",");
@@ -287,21 +278,10 @@ public class CWVGamePropertyDao extends ExtendDaoSupper<CWVGameProperty, CWVGame
 				sb.append(",");
 			
 				if(record.getPropertyStatus()==null){
-//						sb.append("'"+"1"+"'");
-						sb.append("'"+"1"+"'");
-						
+						sb.append("null");
 				}else{
 				// java type==String
 						sb.append("'"+record.getPropertyStatus()+"'");
-				}
-			
-				sb.append(",");
-			
-				if(record.getIncome()==null){
-						sb.append("null");
-				}else{
-				// java type==BigDecimal
-						sb.append("'"+record.getIncome()+"'");
 				}
 			
 				sb.append(",");
@@ -334,6 +314,15 @@ public class CWVGamePropertyDao extends ExtendDaoSupper<CWVGameProperty, CWVGame
 			
 				sb.append(",");
 			
+				if(record.getIncome()==null){
+						sb.append("null");
+				}else{
+				// java type==BigDecimal
+						sb.append("'"+record.getIncome()+"'");
+				}
+			
+				sb.append(",");
+			
 				if(record.getIsDisplay()==null){
 						sb.append("null");
 				}else{
@@ -349,6 +338,15 @@ public class CWVGamePropertyDao extends ExtendDaoSupper<CWVGameProperty, CWVGame
 				// java type==Date
 					    java.text.SimpleDateFormat sdf = new java.text.SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SSS");
 						sb.append("'"+sdf.format(record.getCreatedTime())+"'");
+				}
+			
+				sb.append(",");
+			
+				if(record.getPropertyTemplateId()==null){
+						sb.append("null");
+				}else{
+				// java type==String
+						sb.append("'"+record.getPropertyTemplateId()+"'");
 				}
 			
 				sb.append(",");

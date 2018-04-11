@@ -1,4 +1,4 @@
-package org.brewchain.cwv.dbgens.market.rest;
+package org.brewchain.cwv.dbgens.user.rest;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -22,15 +22,15 @@ import onight.tfw.outils.serialize.JsonSerializer;
 import onight.tfw.outils.serialize.UUIDGenerator;
 import org.fc.zippo.ordbutils.rest.ExcelDownload;
 
-import org.brewchain.cwv.dbgens.market.entity.CWVMarketAuctionList;
-import org.brewchain.cwv.dbgens.market.entity.CWVMarketAuctionListKey;
-import org.brewchain.cwv.dbgens.market.entity.CWVMarketAuctionListExample;
+import org.brewchain.cwv.dbgens.user.entity.CWVUserTrade;
+import org.brewchain.cwv.dbgens.user.entity.CWVUserTradeKey;
+import org.brewchain.cwv.dbgens.user.entity.CWVUserTradeExample;
 
 @Slf4j
 @SuppressWarnings({ "rawtypes", "unchecked" })
-public class CWVMarketAuctionListCtrl extends BaseRestCtrl {
+public class CWVUserTradeCtrl extends BaseRestCtrl {
 
-	public CWVMarketAuctionListCtrl(StaticTableDaoSupport dao, CommonSqlMapper mapper) {
+	public CWVUserTradeCtrl(StaticTableDaoSupport dao, CommonSqlMapper mapper) {
 		super(dao, mapper,false);
 	}
 	
@@ -41,7 +41,7 @@ public class CWVMarketAuctionListCtrl extends BaseRestCtrl {
 			
 				String allkeys[] = key.split(",");
 				String fields = req.getParameter("fields");
-				CWVMarketAuctionListExample example = new CWVMarketAuctionListExample();
+				CWVUserTradeExample example = new CWVUserTradeExample();
 				List<Integer> keylist = new ArrayList<>();
 				for (String akey : allkeys) {
 					if(StringUtils.isNotBlank(akey))
@@ -50,7 +50,7 @@ public class CWVMarketAuctionListCtrl extends BaseRestCtrl {
 					}	
 				}
 				if(keylist.size()==0)return "{}";
-				example.createCriteria().andAuctionIdIn(keylist);
+				example.createCriteria().andTradeIdIn(keylist);
 				if (StringUtils.isNoneBlank(fields)) {
 					StringBuffer sb = new StringBuffer();
 					for (SearchField sf : FieldsMapperResolver.genQueryMapper(fields).getFields()) {
@@ -74,13 +74,13 @@ public class CWVMarketAuctionListCtrl extends BaseRestCtrl {
 				}
 				return JsonSerializer.formatToString(dao.selectByExample(example));
 			} else {
-				return getBySql(CWVMarketAuctionList.class, CWVMarketAuctionListKey.class, "CWV_MARKET_AUCTION_LIST", req);
+				return getBySql(CWVUserTrade.class, CWVUserTradeKey.class, "CWV_USER_TRADE", req);
 			}
 
 		} catch (ExcelDownload ed) {
 			throw ed;
 		} catch (Exception e) {
-			log.warn("CWVMarketAuctionListCtrl get by key error..", e);
+			log.warn("CWVUserTradeCtrl get by key error..", e);
 		}
 		if (page) {
 			return JsonSerializer.formatToString(new ListInfo<>(0, null, 0, -1));
@@ -94,9 +94,9 @@ public class CWVMarketAuctionListCtrl extends BaseRestCtrl {
 			int size;
 			Object obj=null;
 			if (bodies[0] == '[' && bodies[bodies.length - 1] == ']') {
-				List<CWVMarketAuctionList> items = JsonSerializer.getInstance().deserializeArray(bodies, CWVMarketAuctionList.class);
-				for (CWVMarketAuctionList item : items) {
-					if (item.getAuctionId() == null) {
+				List<CWVUserTrade> items = JsonSerializer.getInstance().deserializeArray(bodies, CWVUserTrade.class);
+				for (CWVUserTrade item : items) {
+					if (item.getTradeId() == null) {
 					}
 				}
 				
@@ -104,20 +104,20 @@ public class CWVMarketAuctionListCtrl extends BaseRestCtrl {
 				size = dao.batchInsert(items);
 				if("2".equals(req.getParameter("retobj"))){
 					List<Object> keysid = new ArrayList<>();
-					for(CWVMarketAuctionList it:items){
-						keysid.add(it.getAuctionId());
+					for(CWVUserTrade it:items){
+						keysid.add(it.getTradeId());
 					}
 					return JsonSerializer.formatToString(new ReturnInfo("Success", -1, keysid, true));
 				}
 			} else {
-				CWVMarketAuctionList item = JsonSerializer.getInstance().deserialize(bodies, CWVMarketAuctionList.class);
-				if (item.getAuctionId() == null) {
+				CWVUserTrade item = JsonSerializer.getInstance().deserialize(bodies, CWVUserTrade.class);
+				if (item.getTradeId() == null) {
 					
 				}
 				obj=item;
 				size = dao.insertSelective(item);
 				if("2".equals(req.getParameter("retobj"))){
-					return JsonSerializer.formatToString(new ReturnInfo("Success", -1, item.getAuctionId(), true));
+					return JsonSerializer.formatToString(new ReturnInfo("Success", -1, item.getTradeId(), true));
 				}
 			}
 			if("1".equals(req.getParameter("retobj"))){
@@ -138,10 +138,10 @@ public class CWVMarketAuctionListCtrl extends BaseRestCtrl {
 		try {
 			int size;
 			if (StringUtils.isNotBlank(key)) {
-				CWVMarketAuctionList item = JsonSerializer.getInstance().deserialize(bodies, CWVMarketAuctionList.class);
+				CWVUserTrade item = JsonSerializer.getInstance().deserialize(bodies, CWVUserTrade.class);
 				String allkeys[] = key.split(",");
 				if(allkeys.length>1){
-					CWVMarketAuctionListExample example=new CWVMarketAuctionListExample();
+					CWVUserTradeExample example=new CWVUserTradeExample();
 					List<Integer> keylist = new ArrayList<>();
 					for (String akey : allkeys) {
 						if(StringUtils.isNotBlank(akey))	
@@ -150,25 +150,25 @@ public class CWVMarketAuctionListCtrl extends BaseRestCtrl {
 							}	
 					}
 					if(keylist.size()>0){
-						example.createCriteria().andAuctionIdIn(keylist);
+						example.createCriteria().andTradeIdIn(keylist);
 						size=dao.updateByExampleSelective(item,example);
 					}else{
 						size = 0;
 					}			
 				}else{
-					item.setAuctionId(Integer.parseInt(key.trim()));
+					item.setTradeId(Integer.parseInt(key.trim()));
 							
 					size = dao.updateByPrimaryKeySelective(item);
 				}
 			} else {
 				if (bodies[0] == '[' && bodies[bodies.length - 1] == ']') {
-					List<CWVMarketAuctionList> items = JsonSerializer.getInstance().deserializeArray(bodies, CWVMarketAuctionList.class);
+					List<CWVUserTrade> items = JsonSerializer.getInstance().deserializeArray(bodies, CWVUserTrade.class);
 					size = dao.batchUpdate(items);
 				} else {
 					String example = req.getParameter("example");
-					CWVMarketAuctionList item = JsonSerializer.getInstance().deserialize(bodies, CWVMarketAuctionList.class);
+					CWVUserTrade item = JsonSerializer.getInstance().deserialize(bodies, CWVUserTrade.class);
 					if (StringUtils.isNotBlank(example)) {
-						CWVMarketAuctionList exampleitem = JsonSerializer.getInstance().deserialize(example.getBytes("UTF-8"), CWVMarketAuctionList.class);
+						CWVUserTrade exampleitem = JsonSerializer.getInstance().deserialize(example.getBytes("UTF-8"), CWVUserTrade.class);
 						size = dao.updateByExampleSelective(item, dao.getExample(exampleitem));
 					} else {
 						size = dao.updateByPrimaryKeySelective(item);
@@ -190,7 +190,7 @@ public class CWVMarketAuctionListCtrl extends BaseRestCtrl {
 			
 				String allkeys[] = key.split(",");
 				if(allkeys.length>1){
-					CWVMarketAuctionListExample example=new CWVMarketAuctionListExample();
+					CWVUserTradeExample example=new CWVUserTradeExample();
 					List<Integer> keylist = new ArrayList<>();
 					for (String akey : allkeys) {
 						if(StringUtils.isNotBlank(akey))	
@@ -200,18 +200,18 @@ public class CWVMarketAuctionListCtrl extends BaseRestCtrl {
 					}
 					
 					if(keylist.size()>0){
-						example.createCriteria().andAuctionIdIn(keylist);
+						example.createCriteria().andTradeIdIn(keylist);
 						size=dao.deleteByExample(example);
 					}else{
 						size = 0;
 					}			
 				}else{
-					size = dao.deleteByPrimaryKey(new CWVMarketAuctionListKey(Integer.parseInt(key.trim())));
+					size = dao.deleteByPrimaryKey(new CWVUserTradeKey(Integer.parseInt(key.trim())));
 					
 				}
 			} else {
 				if (bodies[0] == '[' && bodies[bodies.length - 1] == ']') {
-					List<CWVMarketAuctionList> items = JsonSerializer.getInstance().deserializeArray(bodies, CWVMarketAuctionList.class);
+					List<CWVUserTrade> items = JsonSerializer.getInstance().deserializeArray(bodies, CWVUserTrade.class);
 					size = dao.batchDelete(items);
 				} else {
 					if(!deleteByExampleEnabled){
@@ -219,12 +219,12 @@ public class CWVMarketAuctionListCtrl extends BaseRestCtrl {
 					}
 					
 					String example = req.getParameter("example");
-					CWVMarketAuctionList item=null;
+					CWVUserTrade item=null;
 					if (StringUtils.isNotBlank(example)) {
-						item = JsonSerializer.getInstance().deserialize(bodies, CWVMarketAuctionList.class);
+						item = JsonSerializer.getInstance().deserialize(bodies, CWVUserTrade.class);
 					} else {
 						if (bodies.length > 10) {
-							item = JsonSerializer.getInstance().deserialize(bodies, CWVMarketAuctionList.class);
+							item = JsonSerializer.getInstance().deserialize(bodies, CWVUserTrade.class);
 						}
 					}
 					if(item!=null)

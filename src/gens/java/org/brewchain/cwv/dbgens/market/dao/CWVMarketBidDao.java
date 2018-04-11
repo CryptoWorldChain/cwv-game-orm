@@ -148,6 +148,9 @@ public class CWVMarketBidDao extends ExtendDaoSupper<CWVMarketBid, CWVMarketBidE
 				if(record.getGamePropertyId()!=null){
 				criteria.andGamePropertyIdEqualTo(record.getGamePropertyId());
 				}
+				if(record.getOwner()!=null){
+				criteria.andOwnerEqualTo(record.getOwner());
+				}
 				if(record.getAuctionStart()!=null){
 				criteria.andAuctionStartEqualTo(record.getAuctionStart());
 				}
@@ -216,7 +219,7 @@ public class CWVMarketBidDao extends ExtendDaoSupper<CWVMarketBid, CWVMarketBidE
 				conn.setAutoCommit(false);
 			}		
 			StringBuffer sb=new StringBuffer();
-			sb.append("INSERT INTO CWV_MARKET_BID(bid_id,game_property_id,auction_start,auction_end,increase_ladder,bid_start,bid_amount,bidders_count,status,last_update_time,announce_time,create_time,create_user) values");
+			sb.append("INSERT INTO CWV_MARKET_BID(bid_id,game_property_id,owner,auction_start,auction_end,increase_ladder,bid_start,bid_amount,bidders_count,status,last_update_time,announce_time,create_time,create_user) values");
 			
 				int i=0;
 				st = conn.createStatement();
@@ -243,6 +246,15 @@ public class CWVMarketBidDao extends ExtendDaoSupper<CWVMarketBid, CWVMarketBidE
 				}else{
 				// java type==Integer
 						sb.append("'"+record.getGamePropertyId()+"'");
+				}
+			
+				sb.append(",");
+			
+				if(record.getOwner()==null){
+						sb.append("null");
+				}else{
+				// java type==Integer
+						sb.append("'"+record.getOwner()+"'");
 				}
 			
 				sb.append(",");

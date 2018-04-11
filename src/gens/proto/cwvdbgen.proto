@@ -42,17 +42,17 @@ message PBCWVGameProperty
 {
 	int32 property_id = 1;
 	int32 game_map_id = 2;
-	int32 property_template_id = 3;
-	int32 owner = 4;
-	string property_name = 5;
-	string property_type = 6;
-	string property_status = 7;
-	double income = 8;
-	double last_price = 9;
-	int64 last_price_time = 10;
-	string image_url = 11;
-	string is_display = 12;
-	int64 created_time = 13;
+	int32 owner = 3;
+	string property_name = 4;
+	string property_type = 5;
+	string property_status = 6;
+	double last_price = 7;
+	int64 last_price_time = 8;
+	string image_url = 9;
+	double income = 10;
+	string is_display = 11;
+	int64 created_time = 12;
+	string property_template_id = 13;
 	string property_template = 14;
 }
 
@@ -116,6 +116,14 @@ message PBCWVUserPropertyIncome
 	int64 end_time = 7;
 }
 
+message PBCWVUserTrade
+{
+	int32 trade_id = 1;
+	int32 user_id = 2;
+	string trade_password = 3;
+	int64 created_time = 4;
+}
+
 message PBCWVUserTradePwd
 {
 	int32 trade_id = 1;
@@ -128,11 +136,10 @@ message PBCWVUserTransactionRecord
 {
 	int32 record_id = 1;
 	int32 user_id = 2;
-	int32 trade_id = 3;
-	string detail = 4;
-	double gain_cost = 5;
-	int64 create_time = 6;
-	int64 create_user = 7;
+	string detail = 3;
+	double gain_cost = 4;
+	int64 create_time = 5;
+	int64 create_user = 6;
 }
 
 message PBCWVUserWallet
@@ -145,32 +152,32 @@ message PBCWVUserWallet
 	int64 last_update_time = 6;
 }
 
-message PBCWVMarketAuctionList
+message PBCWVMarketAuction
 {
 	int32 auction_id = 1;
 	int32 bid_id = 2;
-	int64 nick_name = 3;
-	int64 bid_price = 4;
-	double user_id = 5;
+	int32 user_id = 3;
+	double bid_price = 4;
+	string status = 5;
 	int64 create_time = 6;
-	string create_user = 7;
 }
 
 message PBCWVMarketBid
 {
 	int32 bid_id = 1;
 	int32 game_property_id = 2;
-	int64 auction_start = 3;
-	int64 auction_end = 4;
-	double increase_ladder = 5;
-	double bid_start = 6;
-	double bid_amount = 7;
-	int32 bidders_count = 8;
-	string status = 9;
-	int64 last_update_time = 10;
-	int64 announce_time = 11;
-	int64 create_time = 12;
-	string create_user = 13;
+	int32 owner = 3;
+	int64 auction_start = 4;
+	int64 auction_end = 5;
+	double increase_ladder = 6;
+	double bid_start = 7;
+	double bid_amount = 8;
+	int32 bidders_count = 9;
+	string status = 10;
+	int64 last_update_time = 11;
+	int64 announce_time = 12;
+	int64 create_time = 13;
+	string create_user = 14;
 }
 
 message PBCWVMarketDraw
@@ -179,7 +186,6 @@ message PBCWVMarketDraw
 	int32 property_id = 2;
 	int32 user_id = 3;
 	int64 create_time = 4;
-	int64 create_user = 5;
 }
 
 message PBCWVMarketExchange
@@ -192,6 +198,6 @@ message PBCWVMarketExchange
 	string status = 6;
 	int64 update_time = 7;
 	int64 create_time = 8;
-	int64 create_user = 9;
+	int32 create_user = 9;
 }
 

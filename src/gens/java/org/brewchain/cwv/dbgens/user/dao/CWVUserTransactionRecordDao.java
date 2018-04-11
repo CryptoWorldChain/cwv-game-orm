@@ -148,9 +148,6 @@ public class CWVUserTransactionRecordDao extends ExtendDaoSupper<CWVUserTransact
 				if(record.getUserId()!=null){
 				criteria.andUserIdEqualTo(record.getUserId());
 				}
-				if(record.getTradeId()!=null){
-				criteria.andTradeIdEqualTo(record.getTradeId());
-				}
 				if(record.getDetail()!=null){
 				criteria.andDetailEqualTo(record.getDetail());
 				}
@@ -198,7 +195,7 @@ public class CWVUserTransactionRecordDao extends ExtendDaoSupper<CWVUserTransact
 				conn.setAutoCommit(false);
 			}		
 			StringBuffer sb=new StringBuffer();
-			sb.append("INSERT INTO CWV_USER_TRANSACTION_RECORD(record_id,user_id,trade_id,detail,gain_cost,create_time,create_user) values");
+			sb.append("INSERT INTO CWV_USER_TRANSACTION_RECORD(record_id,user_id,detail,gain_cost,create_time,create_user) values");
 			
 				int i=0;
 				st = conn.createStatement();
@@ -225,15 +222,6 @@ public class CWVUserTransactionRecordDao extends ExtendDaoSupper<CWVUserTransact
 				}else{
 				// java type==Integer
 						sb.append("'"+record.getUserId()+"'");
-				}
-			
-				sb.append(",");
-			
-				if(record.getTradeId()==null){
-						sb.append("null");
-				}else{
-				// java type==Integer
-						sb.append("'"+record.getTradeId()+"'");
 				}
 			
 				sb.append(",");
