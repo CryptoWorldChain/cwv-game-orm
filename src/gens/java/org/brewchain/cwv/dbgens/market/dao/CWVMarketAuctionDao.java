@@ -238,7 +238,7 @@ public class CWVMarketAuctionDao extends ExtendDaoSupper<CWVMarketAuction, CWVMa
 				if(record.getBidPrice()==null){
 						sb.append("null");
 				}else{
-				// java type==Long
+				// java type==BigDecimal
 						sb.append("'"+record.getBidPrice()+"'");
 				}
 			

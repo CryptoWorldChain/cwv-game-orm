@@ -148,8 +148,8 @@ public class CWVGamePropertyDao extends ExtendDaoSupper<CWVGameProperty, CWVGame
 				if(record.getGameMapId()!=null){
 				criteria.andGameMapIdEqualTo(record.getGameMapId());
 				}
-				if(record.getOwner()!=null){
-				criteria.andOwnerEqualTo(record.getOwner());
+				if(record.getUserId()!=null){
+				criteria.andUserIdEqualTo(record.getUserId());
 				}
 				if(record.getPropertyName()!=null){
 				criteria.andPropertyNameEqualTo(record.getPropertyName());
@@ -219,7 +219,7 @@ public class CWVGamePropertyDao extends ExtendDaoSupper<CWVGameProperty, CWVGame
 				conn.setAutoCommit(false);
 			}		
 			StringBuffer sb=new StringBuffer();
-			sb.append("INSERT INTO CWV_GAME_PROPERTY(property_id,game_map_id,owner,property_name,property_type,property_status,last_price,last_price_time,image_url,income,is_display,created_time,property_template_id,property_template) values");
+			sb.append("INSERT INTO CWV_GAME_PROPERTY(property_id,game_map_id,user_id,property_name,property_type,property_status,last_price,last_price_time,image_url,income,is_display,created_time,property_template_id,property_template) values");
 			
 				int i=0;
 				st = conn.createStatement();
@@ -250,11 +250,11 @@ public class CWVGamePropertyDao extends ExtendDaoSupper<CWVGameProperty, CWVGame
 			
 				sb.append(",");
 			
-				if(record.getOwner()==null){
+				if(record.getUserId()==null){
 						sb.append("null");
 				}else{
 				// java type==Integer
-						sb.append("'"+record.getOwner()+"'");
+						sb.append("'"+record.getUserId()+"'");
 				}
 			
 				sb.append(",");

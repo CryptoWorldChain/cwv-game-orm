@@ -26,6 +26,16 @@ message PBCWVGameCountry
 	int32 map_num = 7;
 }
 
+message PBCWVGameDic
+{
+	int32 dic_id = 1;
+	string key = 2;
+	string value = 3;
+	string parent_key = 4;
+	string parent_value = 5;
+	int64 seq = 6;
+}
+
 message PBCWVGameMap
 {
 	int32 map_id = 1;
@@ -42,7 +52,7 @@ message PBCWVGameProperty
 {
 	int32 property_id = 1;
 	int32 game_map_id = 2;
-	int32 owner = 3;
+	int32 user_id = 3;
 	string property_name = 4;
 	string property_type = 5;
 	string property_status = 6;
@@ -54,6 +64,16 @@ message PBCWVGameProperty
 	int64 created_time = 12;
 	string property_template_id = 13;
 	string property_template = 14;
+}
+
+message PBCWVCommonConf
+{
+	int32 conf_id = 1;
+	string parent = 2;
+	string name = 3;
+	string host = 4;
+	string description = 5;
+	string status = 6;
 }
 
 message PBCWVCommonCountry
@@ -146,10 +166,14 @@ message PBCWVUserWallet
 {
 	int32 wallet_id = 1;
 	int32 user_id = 2;
-	double balance = 3;
-	double topup_balance = 4;
-	int32 draw_count = 5;
-	int64 last_update_time = 6;
+	string coin_type = 3;
+	string account = 4;
+	double balance = 5;
+	double topup_balance = 6;
+	int32 draw_count = 7;
+	int64 update_time = 8;
+	int64 create_time = 9;
+	string coin_icon = 10;
 }
 
 message PBCWVMarketAuction
