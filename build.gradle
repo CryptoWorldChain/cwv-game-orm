@@ -2,7 +2,7 @@ buildscript { dependencies { classpath "onight.osgi:zpp-gradle:3.0.0" } }
 
 project.group='org.brewchain.cwv'
 
-version = '1.0.10'
+version = '1.0.11'
 
 apply plugin:'zippo'
 

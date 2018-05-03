@@ -257,9 +257,8 @@ public class CWVUserTransactionRecordDao extends ExtendDaoSupper<CWVUserTransact
 				if(record.getCreateUser()==null){
 						sb.append("null");
 				}else{
-				// java type==Date
-					    java.text.SimpleDateFormat sdf = new java.text.SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SSS");
-						sb.append("'"+sdf.format(record.getCreateUser())+"'");
+				// java type==Integer
+						sb.append("'"+record.getCreateUser()+"'");
 				}
 							sb.append(")");
 			

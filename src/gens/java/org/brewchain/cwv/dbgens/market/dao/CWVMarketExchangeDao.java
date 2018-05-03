@@ -169,6 +169,39 @@ public class CWVMarketExchangeDao extends ExtendDaoSupper<CWVMarketExchange, CWV
 				if(record.getCreateUser()!=null){
 				criteria.andCreateUserEqualTo(record.getCreateUser());
 				}
+				if(record.getCountryId()!=null){
+				criteria.andCountryIdEqualTo(record.getCountryId());
+				}
+				if(record.getMapId()!=null){
+				criteria.andMapIdEqualTo(record.getMapId());
+				}
+				if(record.getPropertyTemplateId()!=null){
+				criteria.andPropertyTemplateIdEqualTo(record.getPropertyTemplateId());
+				}
+				if(record.getPropertyTemplate()!=null){
+				criteria.andPropertyTemplateEqualTo(record.getPropertyTemplate());
+				}
+				if(record.getNickName()!=null){
+				criteria.andNickNameEqualTo(record.getNickName());
+				}
+				if(record.getPropertyName()!=null){
+				criteria.andPropertyNameEqualTo(record.getPropertyName());
+				}
+				if(record.getPropertyType()!=null){
+				criteria.andPropertyTypeEqualTo(record.getPropertyType());
+				}
+				if(record.getPropertyStatus()!=null){
+				criteria.andPropertyStatusEqualTo(record.getPropertyStatus());
+				}
+				if(record.getIncomeRemark()!=null){
+				criteria.andIncomeRemarkEqualTo(record.getIncomeRemark());
+				}
+				if(record.getIncome()!=null){
+				criteria.andIncomeEqualTo(record.getIncome());
+				}
+				if(record.getLastPrice()!=null){
+				criteria.andLastPriceEqualTo(record.getLastPrice());
+				}
 
 		}
 		return example;
@@ -204,7 +237,7 @@ public class CWVMarketExchangeDao extends ExtendDaoSupper<CWVMarketExchange, CWV
 				conn.setAutoCommit(false);
 			}		
 			StringBuffer sb=new StringBuffer();
-			sb.append("INSERT INTO CWV_MARKET_EXCHANGE(exchange_id,property_id,user_id,sell_price,tax,status,update_time,create_time,create_user) values");
+			sb.append("INSERT INTO CWV_MARKET_EXCHANGE(exchange_id,property_id,user_id,sell_price,tax,status,update_time,create_time,create_user,country_id,map_id,property_template_id,property_template,nick_name,property_name,property_type,property_status,income_remark,income,last_price) values");
 			
 				int i=0;
 				st = conn.createStatement();
@@ -296,6 +329,105 @@ public class CWVMarketExchangeDao extends ExtendDaoSupper<CWVMarketExchange, CWV
 				}else{
 				// java type==Integer
 						sb.append("'"+record.getCreateUser()+"'");
+				}
+			
+				sb.append(",");
+			
+				if(record.getCountryId()==null){
+						sb.append("null");
+				}else{
+				// java type==Integer
+						sb.append("'"+record.getCountryId()+"'");
+				}
+			
+				sb.append(",");
+			
+				if(record.getMapId()==null){
+						sb.append("null");
+				}else{
+				// java type==Integer
+						sb.append("'"+record.getMapId()+"'");
+				}
+			
+				sb.append(",");
+			
+				if(record.getPropertyTemplateId()==null){
+						sb.append("null");
+				}else{
+				// java type==String
+						sb.append("'"+record.getPropertyTemplateId()+"'");
+				}
+			
+				sb.append(",");
+			
+				if(record.getPropertyTemplate()==null){
+						sb.append("null");
+				}else{
+				// java type==String
+						sb.append("'"+record.getPropertyTemplate()+"'");
+				}
+			
+				sb.append(",");
+			
+				if(record.getNickName()==null){
+						sb.append("null");
+				}else{
+				// java type==String
+						sb.append("'"+record.getNickName()+"'");
+				}
+			
+				sb.append(",");
+			
+				if(record.getPropertyName()==null){
+						sb.append("null");
+				}else{
+				// java type==String
+						sb.append("'"+record.getPropertyName()+"'");
+				}
+			
+				sb.append(",");
+			
+				if(record.getPropertyType()==null){
+						sb.append("null");
+				}else{
+				// java type==String
+						sb.append("'"+record.getPropertyType()+"'");
+				}
+			
+				sb.append(",");
+			
+				if(record.getPropertyStatus()==null){
+						sb.append("null");
+				}else{
+				// java type==String
+						sb.append("'"+record.getPropertyStatus()+"'");
+				}
+			
+				sb.append(",");
+			
+				if(record.getIncomeRemark()==null){
+						sb.append("null");
+				}else{
+				// java type==String
+						sb.append("'"+record.getIncomeRemark()+"'");
+				}
+			
+				sb.append(",");
+			
+				if(record.getIncome()==null){
+						sb.append("null");
+				}else{
+				// java type==BigDecimal
+						sb.append("'"+record.getIncome()+"'");
+				}
+			
+				sb.append(",");
+			
+				if(record.getLastPrice()==null){
+						sb.append("null");
+				}else{
+				// java type==BigDecimal
+						sb.append("'"+record.getLastPrice()+"'");
 				}
 							sb.append(")");
 			
