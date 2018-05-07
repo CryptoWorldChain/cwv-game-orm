@@ -172,6 +172,9 @@ public class CWVMarketExchangeDao extends ExtendDaoSupper<CWVMarketExchange, CWV
 				if(record.getCountryId()!=null){
 				criteria.andCountryIdEqualTo(record.getCountryId());
 				}
+				if(record.getCityId()!=null){
+				criteria.andCityIdEqualTo(record.getCityId());
+				}
 				if(record.getMapId()!=null){
 				criteria.andMapIdEqualTo(record.getMapId());
 				}
@@ -201,6 +204,9 @@ public class CWVMarketExchangeDao extends ExtendDaoSupper<CWVMarketExchange, CWV
 				}
 				if(record.getLastPrice()!=null){
 				criteria.andLastPriceEqualTo(record.getLastPrice());
+				}
+				if(record.getImageUrl()!=null){
+				criteria.andImageUrlEqualTo(record.getImageUrl());
 				}
 
 		}
@@ -237,7 +243,7 @@ public class CWVMarketExchangeDao extends ExtendDaoSupper<CWVMarketExchange, CWV
 				conn.setAutoCommit(false);
 			}		
 			StringBuffer sb=new StringBuffer();
-			sb.append("INSERT INTO CWV_MARKET_EXCHANGE(exchange_id,property_id,user_id,sell_price,tax,status,update_time,create_time,create_user,country_id,map_id,property_template_id,property_template,nick_name,property_name,property_type,property_status,income_remark,income,last_price) values");
+			sb.append("INSERT INTO CWV_MARKET_EXCHANGE(exchange_id,property_id,user_id,sell_price,tax,status,update_time,create_time,create_user,country_id,city_id,map_id,property_template_id,property_template,nick_name,property_name,property_type,property_status,income_remark,income,last_price,image_url) values");
 			
 				int i=0;
 				st = conn.createStatement();
@@ -342,6 +348,15 @@ public class CWVMarketExchangeDao extends ExtendDaoSupper<CWVMarketExchange, CWV
 			
 				sb.append(",");
 			
+				if(record.getCityId()==null){
+						sb.append("null");
+				}else{
+				// java type==Integer
+						sb.append("'"+record.getCityId()+"'");
+				}
+			
+				sb.append(",");
+			
 				if(record.getMapId()==null){
 						sb.append("null");
 				}else{
@@ -428,6 +443,15 @@ public class CWVMarketExchangeDao extends ExtendDaoSupper<CWVMarketExchange, CWV
 				}else{
 				// java type==BigDecimal
 						sb.append("'"+record.getLastPrice()+"'");
+				}
+			
+				sb.append(",");
+			
+				if(record.getImageUrl()==null){
+						sb.append("null");
+				}else{
+				// java type==String
+						sb.append("'"+record.getImageUrl()+"'");
 				}
 							sb.append(")");
 			

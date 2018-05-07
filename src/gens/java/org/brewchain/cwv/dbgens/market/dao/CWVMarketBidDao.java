@@ -214,6 +214,9 @@ public class CWVMarketBidDao extends ExtendDaoSupper<CWVMarketBid, CWVMarketBidE
 				if(record.getLastPrice()!=null){
 				criteria.andLastPriceEqualTo(record.getLastPrice());
 				}
+				if(record.getImageUrl()!=null){
+				criteria.andImageUrlEqualTo(record.getImageUrl());
+				}
 
 		}
 		return example;
@@ -249,7 +252,7 @@ public class CWVMarketBidDao extends ExtendDaoSupper<CWVMarketBid, CWVMarketBidE
 				conn.setAutoCommit(false);
 			}		
 			StringBuffer sb=new StringBuffer();
-			sb.append("INSERT INTO CWV_MARKET_BID(bid_id,game_property_id,owner,auction_start,auction_end,increase_ladder,bid_start,bid_amount,bidders_count,status,last_update_time,announce_time,create_time,create_user,country_id,map_id,property_template_id,property_template,nick_name,property_name,property_type,property_status,income_remark,last_price) values");
+			sb.append("INSERT INTO CWV_MARKET_BID(bid_id,game_property_id,owner,auction_start,auction_end,increase_ladder,bid_start,bid_amount,bidders_count,status,last_update_time,announce_time,create_time,create_user,country_id,map_id,property_template_id,property_template,nick_name,property_name,property_type,property_status,income_remark,last_price,image_url) values");
 			
 				int i=0;
 				st = conn.createStatement();
@@ -479,6 +482,15 @@ public class CWVMarketBidDao extends ExtendDaoSupper<CWVMarketBid, CWVMarketBidE
 				}else{
 				// java type==BigDecimal
 						sb.append("'"+record.getLastPrice()+"'");
+				}
+			
+				sb.append(",");
+			
+				if(record.getImageUrl()==null){
+						sb.append("null");
+				}else{
+				// java type==String
+						sb.append("'"+record.getImageUrl()+"'");
 				}
 							sb.append(")");
 			

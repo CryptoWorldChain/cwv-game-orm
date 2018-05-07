@@ -129,6 +129,14 @@
  		<property name="mapper" ref="cWVUserWalletMapper" />
  		<property name="sqlSessionFactory" ref="sqlSessionFactory" />
  	</bean>
+	<bean id="cWVUserWalletTopupMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">
+		<property name="mapperInterface" value="org.brewchain.cwv.dbgens.user.mapper.CWVUserWalletTopupMapper" />
+		<property name="sqlSessionFactory" ref="sqlSessionFactory" />
+	</bean>
+	 <bean id="cwvuserwallettopupDao" class="org.brewchain.cwv.dbgens.user.dao.CWVUserWalletTopupDao" >
+ 		<property name="mapper" ref="cWVUserWalletTopupMapper" />
+ 		<property name="sqlSessionFactory" ref="sqlSessionFactory" />
+ 	</bean>
 	<bean id="cWVMarketAuctionMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">
 		<property name="mapperInterface" value="org.brewchain.cwv.dbgens.market.mapper.CWVMarketAuctionMapper" />
 		<property name="sqlSessionFactory" ref="sqlSessionFactory" />

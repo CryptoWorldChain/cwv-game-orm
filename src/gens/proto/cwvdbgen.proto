@@ -64,6 +64,8 @@ message PBCWVGameProperty
 	int64 created_time = 12;
 	string property_template_id = 13;
 	string property_template = 14;
+	string longitude = 15;
+	string latitude = 16;
 }
 
 message PBCWVCommonConf
@@ -176,6 +178,17 @@ message PBCWVUserWallet
 	string coin_icon = 10;
 }
 
+message PBCWVUserWalletTopup
+{
+	int32 topup_id = 1;
+	int32 user_id = 2;
+	string coin_type = 3;
+	string address = 4;
+	double amount = 5;
+	string status = 6;
+	int64 create_time = 7;
+}
+
 message PBCWVMarketAuction
 {
 	int32 auction_id = 1;
@@ -212,6 +225,7 @@ message PBCWVMarketBid
 	string property_status = 22;
 	string income_remark = 23;
 	double last_price = 24;
+	string image_url = 25;
 }
 
 message PBCWVMarketBidCopy
@@ -252,16 +266,18 @@ message PBCWVMarketExchange
 	int64 create_time = 8;
 	int32 create_user = 9;
 	int32 country_id = 10;
-	int32 map_id = 11;
-	string property_template_id = 12;
-	string property_template = 13;
-	string nick_name = 14;
-	string property_name = 15;
-	string property_type = 16;
-	string property_status = 17;
-	string income_remark = 18;
-	double income = 19;
-	double last_price = 20;
+	int32 city_id = 11;
+	int32 map_id = 12;
+	string property_template_id = 13;
+	string property_template = 14;
+	string nick_name = 15;
+	string property_name = 16;
+	string property_type = 17;
+	string property_status = 18;
+	string income_remark = 19;
+	double income = 20;
+	double last_price = 21;
+	string image_url = 22;
 }
 
 message PBCWVMarketExchangeCopy
