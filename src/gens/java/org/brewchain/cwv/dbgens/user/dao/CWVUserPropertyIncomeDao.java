@@ -151,6 +151,9 @@ public class CWVUserPropertyIncomeDao extends ExtendDaoSupper<CWVUserPropertyInc
 				if(record.getType()!=null){
 				criteria.andTypeEqualTo(record.getType());
 				}
+				if(record.getPropertyId()!=null){
+				criteria.andPropertyIdEqualTo(record.getPropertyId());
+				}
 				if(record.getAmount()!=null){
 				criteria.andAmountEqualTo(record.getAmount());
 				}
@@ -198,7 +201,7 @@ public class CWVUserPropertyIncomeDao extends ExtendDaoSupper<CWVUserPropertyInc
 				conn.setAutoCommit(false);
 			}		
 			StringBuffer sb=new StringBuffer();
-			sb.append("INSERT INTO CWV_USER_PROPERTY_INCOME(income_id,user_id,type,amount,status,start_time,end_time) values");
+			sb.append("INSERT INTO CWV_USER_PROPERTY_INCOME(income_id,user_id,type,property_id,amount,status,start_time,end_time) values");
 			
 				int i=0;
 				st = conn.createStatement();
@@ -234,6 +237,15 @@ public class CWVUserPropertyIncomeDao extends ExtendDaoSupper<CWVUserPropertyInc
 				}else{
 				// java type==Byte
 						sb.append("'"+record.getType()+"'");
+				}
+			
+				sb.append(",");
+			
+				if(record.getPropertyId()==null){
+						sb.append("null");
+				}else{
+				// java type==Integer
+						sb.append("'"+record.getPropertyId()+"'");
 				}
 			
 				sb.append(",");

@@ -55,17 +55,19 @@ message PBCWVGameProperty
 	int32 user_id = 3;
 	string property_name = 4;
 	string property_type = 5;
-	string property_status = 6;
-	double last_price = 7;
-	int64 last_price_time = 8;
-	string image_url = 9;
-	double income = 10;
-	string is_display = 11;
-	int64 created_time = 12;
-	string property_template_id = 13;
-	string property_template = 14;
-	string longitude = 15;
-	string latitude = 16;
+	string property_sub_type = 6;
+	string property_market_type = 7;
+	string property_status = 8;
+	double last_price = 9;
+	int64 last_price_time = 10;
+	string image_url = 11;
+	double income = 12;
+	string is_display = 13;
+	int64 created_time = 14;
+	string property_template_id = 15;
+	string property_template = 16;
+	string longitude = 17;
+	string latitude = 18;
 }
 
 message PBCWVCommonConf
@@ -132,10 +134,11 @@ message PBCWVUserPropertyIncome
 	int32 income_id = 1;
 	int32 user_id = 2;
 	string type = 3;
-	double amount = 4;
-	string status = 5;
-	int64 start_time = 6;
-	int64 end_time = 7;
+	int32 property_id = 4;
+	double amount = 5;
+	string status = 6;
+	int64 start_time = 7;
+	int64 end_time = 8;
 }
 
 message PBCWVUserTrade
@@ -173,9 +176,12 @@ message PBCWVUserWallet
 	double balance = 5;
 	double topup_balance = 6;
 	int32 draw_count = 7;
-	int64 update_time = 8;
-	int64 create_time = 9;
-	string coin_icon = 10;
+	double income_ordinary = 8;
+	double income_typical = 9;
+	double income_functional = 10;
+	int64 update_time = 11;
+	int64 create_time = 12;
+	string coin_icon = 13;
 }
 
 message PBCWVUserWalletTopup

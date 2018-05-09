@@ -157,6 +157,12 @@ public class CWVGamePropertyDao extends ExtendDaoSupper<CWVGameProperty, CWVGame
 				if(record.getPropertyType()!=null){
 				criteria.andPropertyTypeEqualTo(record.getPropertyType());
 				}
+				if(record.getPropertySubType()!=null){
+				criteria.andPropertySubTypeEqualTo(record.getPropertySubType());
+				}
+				if(record.getPropertyMarketType()!=null){
+				criteria.andPropertyMarketTypeEqualTo(record.getPropertyMarketType());
+				}
 				if(record.getPropertyStatus()!=null){
 				criteria.andPropertyStatusEqualTo(record.getPropertyStatus());
 				}
@@ -225,7 +231,7 @@ public class CWVGamePropertyDao extends ExtendDaoSupper<CWVGameProperty, CWVGame
 				conn.setAutoCommit(false);
 			}		
 			StringBuffer sb=new StringBuffer();
-			sb.append("INSERT INTO CWV_GAME_PROPERTY(property_id,game_map_id,user_id,property_name,property_type,property_status,last_price,last_price_time,image_url,income,is_display,created_time,property_template_id,property_template,longitude,latitude) values");
+			sb.append("INSERT INTO CWV_GAME_PROPERTY(property_id,game_map_id,user_id,property_name,property_type,property_sub_type,property_market_type,property_status,last_price,last_price_time,image_url,income,is_display,created_time,property_template_id,property_template,longitude,latitude) values");
 			
 				int i=0;
 				st = conn.createStatement();
@@ -279,6 +285,24 @@ public class CWVGamePropertyDao extends ExtendDaoSupper<CWVGameProperty, CWVGame
 				}else{
 				// java type==String
 						sb.append("'"+record.getPropertyType()+"'");
+				}
+			
+				sb.append(",");
+			
+				if(record.getPropertySubType()==null){
+						sb.append("null");
+				}else{
+				// java type==Byte
+						sb.append("'"+record.getPropertySubType()+"'");
+				}
+			
+				sb.append(",");
+			
+				if(record.getPropertyMarketType()==null){
+						sb.append("null");
+				}else{
+				// java type==Byte
+						sb.append("'"+record.getPropertyMarketType()+"'");
 				}
 			
 				sb.append(",");

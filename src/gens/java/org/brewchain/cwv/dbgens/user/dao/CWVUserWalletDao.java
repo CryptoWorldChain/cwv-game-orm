@@ -163,6 +163,15 @@ public class CWVUserWalletDao extends ExtendDaoSupper<CWVUserWallet, CWVUserWall
 				if(record.getDrawCount()!=null){
 				criteria.andDrawCountEqualTo(record.getDrawCount());
 				}
+				if(record.getIncomeOrdinary()!=null){
+				criteria.andIncomeOrdinaryEqualTo(record.getIncomeOrdinary());
+				}
+				if(record.getIncomeTypical()!=null){
+				criteria.andIncomeTypicalEqualTo(record.getIncomeTypical());
+				}
+				if(record.getIncomeFunctional()!=null){
+				criteria.andIncomeFunctionalEqualTo(record.getIncomeFunctional());
+				}
 				if(record.getUpdateTime()!=null){
 				criteria.andUpdateTimeEqualTo(record.getUpdateTime());
 				}
@@ -207,7 +216,7 @@ public class CWVUserWalletDao extends ExtendDaoSupper<CWVUserWallet, CWVUserWall
 				conn.setAutoCommit(false);
 			}		
 			StringBuffer sb=new StringBuffer();
-			sb.append("INSERT INTO CWV_USER_WALLET(wallet_id,user_id,coin_type,account,balance,topup_balance,draw_count,update_time,create_time,coin_icon) values");
+			sb.append("INSERT INTO CWV_USER_WALLET(wallet_id,user_id,coin_type,account,balance,topup_balance,draw_count,income_ordinary,income_typical,income_functional,update_time,create_time,coin_icon) values");
 			
 				int i=0;
 				st = conn.createStatement();
@@ -279,6 +288,33 @@ public class CWVUserWalletDao extends ExtendDaoSupper<CWVUserWallet, CWVUserWall
 				}else{
 				// java type==Integer
 						sb.append("'"+record.getDrawCount()+"'");
+				}
+			
+				sb.append(",");
+			
+				if(record.getIncomeOrdinary()==null){
+						sb.append("null");
+				}else{
+				// java type==BigDecimal
+						sb.append("'"+record.getIncomeOrdinary()+"'");
+				}
+			
+				sb.append(",");
+			
+				if(record.getIncomeTypical()==null){
+						sb.append("null");
+				}else{
+				// java type==BigDecimal
+						sb.append("'"+record.getIncomeTypical()+"'");
+				}
+			
+				sb.append(",");
+			
+				if(record.getIncomeFunctional()==null){
+						sb.append("null");
+				}else{
+				// java type==BigDecimal
+						sb.append("'"+record.getIncomeFunctional()+"'");
 				}
 			
 				sb.append(",");
