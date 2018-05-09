@@ -185,5 +185,13 @@
  		<property name="mapper" ref="cWVMarketExchangeCopyMapper" />
  		<property name="sqlSessionFactory" ref="sqlSessionFactory" />
  	</bean>
+	<bean id="cWVSysSettingMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">
+		<property name="mapperInterface" value="org.brewchain.cwv.dbgens.sys.mapper.CWVSysSettingMapper" />
+		<property name="sqlSessionFactory" ref="sqlSessionFactory" />
+	</bean>
+	 <bean id="cwvsyssettingDao" class="org.brewchain.cwv.dbgens.sys.dao.CWVSysSettingDao" >
+ 		<property name="mapper" ref="cWVSysSettingMapper" />
+ 		<property name="sqlSessionFactory" ref="sqlSessionFactory" />
+ 	</bean>
 	
 </beans>

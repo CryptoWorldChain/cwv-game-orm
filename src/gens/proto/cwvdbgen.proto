@@ -299,3 +299,10 @@ message PBCWVMarketExchangeCopy
 	int32 create_user = 9;
 }
 
+message PBCWVSysSetting
+{
+	int32 setting_id = 1;
+	string name = 2;
+	string value = 3;
+}
+
