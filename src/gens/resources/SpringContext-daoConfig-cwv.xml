@@ -49,6 +49,14 @@
  		<property name="mapper" ref="cWVGamePropertyMapper" />
  		<property name="sqlSessionFactory" ref="sqlSessionFactory" />
  	</bean>
+	<bean id="cWVGameProperty01Mapper" class="org.mybatis.spring.mapper.MapperFactoryBean">
+		<property name="mapperInterface" value="org.brewchain.cwv.dbgens.game.mapper.CWVGameProperty01Mapper" />
+		<property name="sqlSessionFactory" ref="sqlSessionFactory" />
+	</bean>
+	 <bean id="cwvgameproperty01Dao" class="org.brewchain.cwv.dbgens.game.dao.CWVGameProperty01Dao" >
+ 		<property name="mapper" ref="cWVGameProperty01Mapper" />
+ 		<property name="sqlSessionFactory" ref="sqlSessionFactory" />
+ 	</bean>
 	<bean id="cWVCommonConfMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">
 		<property name="mapperInterface" value="org.brewchain.cwv.dbgens.common.mapper.CWVCommonConfMapper" />
 		<property name="sqlSessionFactory" ref="sqlSessionFactory" />
@@ -159,6 +167,14 @@
 	</bean>
 	 <bean id="cwvmarketbidcopyDao" class="org.brewchain.cwv.dbgens.market.dao.CWVMarketBidCopyDao" >
  		<property name="mapper" ref="cWVMarketBidCopyMapper" />
+ 		<property name="sqlSessionFactory" ref="sqlSessionFactory" />
+ 	</bean>
+	<bean id="cWVMarketChainRecordMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">
+		<property name="mapperInterface" value="org.brewchain.cwv.dbgens.market.mapper.CWVMarketChainRecordMapper" />
+		<property name="sqlSessionFactory" ref="sqlSessionFactory" />
+	</bean>
+	 <bean id="cwvmarketchainrecordDao" class="org.brewchain.cwv.dbgens.market.dao.CWVMarketChainRecordDao" >
+ 		<property name="mapper" ref="cWVMarketChainRecordMapper" />
  		<property name="sqlSessionFactory" ref="sqlSessionFactory" />
  	</bean>
 	<bean id="cWVMarketDrawMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">

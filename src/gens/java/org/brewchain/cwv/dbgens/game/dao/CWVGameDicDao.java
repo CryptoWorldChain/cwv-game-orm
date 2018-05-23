@@ -145,11 +145,11 @@ public class CWVGameDicDao extends ExtendDaoSupper<CWVGameDic, CWVGameDicExample
 							if(record.getDicId()!=null){
 				criteria.andDicIdEqualTo(record.getDicId());
 				}
-				if(record.getKey()!=null){
-				criteria.andKeyEqualTo(record.getKey());
+				if(record.getDicKey()!=null){
+				criteria.andDicKeyEqualTo(record.getDicKey());
 				}
-				if(record.getValue()!=null){
-				criteria.andValueEqualTo(record.getValue());
+				if(record.getDicValue()!=null){
+				criteria.andDicValueEqualTo(record.getDicValue());
 				}
 				if(record.getParentKey()!=null){
 				criteria.andParentKeyEqualTo(record.getParentKey());
@@ -195,7 +195,7 @@ public class CWVGameDicDao extends ExtendDaoSupper<CWVGameDic, CWVGameDicExample
 				conn.setAutoCommit(false);
 			}		
 			StringBuffer sb=new StringBuffer();
-			sb.append("INSERT INTO CWV_GAME_DIC(dic_id,key,value,parent_key,parent_value,seq) values");
+			sb.append("INSERT INTO CWV_GAME_DIC(dic_id,dic_key,dic_value,parent_key,parent_value,seq) values");
 			
 				int i=0;
 				st = conn.createStatement();
@@ -217,20 +217,20 @@ public class CWVGameDicDao extends ExtendDaoSupper<CWVGameDic, CWVGameDicExample
 			
 				sb.append(",");
 			
-				if(record.getKey()==null){
+				if(record.getDicKey()==null){
 						sb.append("null");
 				}else{
 				// java type==String
-						sb.append("'"+record.getKey()+"'");
+						sb.append("'"+record.getDicKey()+"'");
 				}
 			
 				sb.append(",");
 			
-				if(record.getValue()==null){
+				if(record.getDicValue()==null){
 						sb.append("null");
 				}else{
 				// java type==String
-						sb.append("'"+record.getValue()+"'");
+						sb.append("'"+record.getDicValue()+"'");
 				}
 			
 				sb.append(",");

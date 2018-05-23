@@ -151,6 +151,9 @@ public class CWVSysSettingDao extends ExtendDaoSupper<CWVSysSetting, CWVSysSetti
 				if(record.getValue()!=null){
 				criteria.andValueEqualTo(record.getValue());
 				}
+				if(record.getDescription()!=null){
+				criteria.andDescriptionEqualTo(record.getDescription());
+				}
 
 		}
 		return example;
@@ -186,7 +189,7 @@ public class CWVSysSettingDao extends ExtendDaoSupper<CWVSysSetting, CWVSysSetti
 				conn.setAutoCommit(false);
 			}		
 			StringBuffer sb=new StringBuffer();
-			sb.append("INSERT INTO CWV_SYS_SETTING(setting_id,name,value) values");
+			sb.append("INSERT INTO CWV_SYS_SETTING(setting_id,name,value,description) values");
 			
 				int i=0;
 				st = conn.createStatement();
@@ -222,6 +225,15 @@ public class CWVSysSettingDao extends ExtendDaoSupper<CWVSysSetting, CWVSysSetti
 				}else{
 				// java type==String
 						sb.append("'"+record.getValue()+"'");
+				}
+			
+				sb.append(",");
+			
+				if(record.getDescription()==null){
+						sb.append("null");
+				}else{
+				// java type==String
+						sb.append("'"+record.getDescription()+"'");
 				}
 							sb.append(")");
 			

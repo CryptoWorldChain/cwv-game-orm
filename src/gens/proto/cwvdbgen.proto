@@ -29,8 +29,8 @@ message PBCWVGameCountry
 message PBCWVGameDic
 {
 	int32 dic_id = 1;
-	string key = 2;
-	string value = 3;
+	string dic_key = 2;
+	string dic_value = 3;
 	string parent_key = 4;
 	string parent_value = 5;
 	int64 seq = 6;
@@ -49,6 +49,28 @@ message PBCWVGameMap
 }
 
 message PBCWVGameProperty
+{
+	int32 property_id = 1;
+	int32 game_map_id = 2;
+	int32 user_id = 3;
+	string property_name = 4;
+	string property_type = 5;
+	string property_sub_type = 6;
+	string property_market_type = 7;
+	string property_status = 8;
+	double last_price = 9;
+	int64 last_price_time = 10;
+	string image_url = 11;
+	double income = 12;
+	string is_display = 13;
+	int64 created_time = 14;
+	string property_template_id = 15;
+	string property_template = 16;
+	string longitude = 17;
+	string latitude = 18;
+}
+
+message PBCWVGameProperty01
 {
 	int32 property_id = 1;
 	int32 game_map_id = 2;
@@ -176,12 +198,14 @@ message PBCWVUserWallet
 	double balance = 5;
 	double topup_balance = 6;
 	int32 draw_count = 7;
-	double income_ordinary = 8;
-	double income_typical = 9;
-	double income_functional = 10;
-	int64 update_time = 11;
-	int64 create_time = 12;
-	string coin_icon = 13;
+	int32 draw_count_history = 8;
+	int32 draw_count_record = 9;
+	double income_ordinary = 10;
+	double income_typical = 11;
+	double income_functional = 12;
+	int64 update_time = 13;
+	int64 create_time = 14;
+	string coin_icon = 15;
 }
 
 message PBCWVUserWalletTopup
@@ -252,6 +276,20 @@ message PBCWVMarketBidCopy
 	string create_user = 14;
 }
 
+message PBCWVMarketChainRecord
+{
+	int32 chain_record_id = 1;
+	int32 property_id = 2;
+	int32 user_id = 3;
+	string transaction_hash = 4;
+	string contract_address = 5;
+	string contract_type = 6;
+	int64 contract_subtype = 7;
+	string status = 8;
+	int64 create_time = 9;
+	int64 update_time = 10;
+}
+
 message PBCWVMarketDraw
 {
 	int32 draw_id = 1;
@@ -304,5 +342,6 @@ message PBCWVSysSetting
 	int32 setting_id = 1;
 	string name = 2;
 	string value = 3;
+	string description = 4;
 }
 
