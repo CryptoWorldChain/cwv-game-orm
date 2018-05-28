@@ -92,6 +92,20 @@ message PBCWVGameProperty01
 	string latitude = 18;
 }
 
+message PBCWVGamePropertyGame
+{
+	int32 game_id = 1;
+	int32 property_id = 2;
+	string name = 3;
+	int64 type = 4;
+	string invoke_game = 5;
+	int32 players_count = 6;
+	int32 developers_count = 7;
+	string instructions = 8;
+	string images = 9;
+	string status = 10;
+}
+
 message PBCWVCommonConf
 {
 	int32 conf_id = 1;

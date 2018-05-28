@@ -57,6 +57,14 @@
  		<property name="mapper" ref="cWVGameProperty01Mapper" />
  		<property name="sqlSessionFactory" ref="sqlSessionFactory" />
  	</bean>
+	<bean id="cWVGamePropertyGameMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">
+		<property name="mapperInterface" value="org.brewchain.cwv.dbgens.game.mapper.CWVGamePropertyGameMapper" />
+		<property name="sqlSessionFactory" ref="sqlSessionFactory" />
+	</bean>
+	 <bean id="cwvgamepropertygameDao" class="org.brewchain.cwv.dbgens.game.dao.CWVGamePropertyGameDao" >
+ 		<property name="mapper" ref="cWVGamePropertyGameMapper" />
+ 		<property name="sqlSessionFactory" ref="sqlSessionFactory" />
+ 	</bean>
 	<bean id="cWVCommonConfMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">
 		<property name="mapperInterface" value="org.brewchain.cwv.dbgens.common.mapper.CWVCommonConfMapper" />
 		<property name="sqlSessionFactory" ref="sqlSessionFactory" />
