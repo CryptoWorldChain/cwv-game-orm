@@ -160,6 +160,15 @@ public class CWVMarketAuctionDao extends ExtendDaoSupper<CWVMarketAuction, CWVMa
 				if(record.getCreateTime()!=null){
 				criteria.andCreateTimeEqualTo(record.getCreateTime());
 				}
+				if(record.getChainStatus()!=null){
+				criteria.andChainStatusEqualTo(record.getChainStatus());
+				}
+				if(record.getChainTransHash()!=null){
+				criteria.andChainTransHashEqualTo(record.getChainTransHash());
+				}
+				if(record.getChainContract()!=null){
+				criteria.andChainContractEqualTo(record.getChainContract());
+				}
 
 		}
 		return example;
@@ -195,7 +204,7 @@ public class CWVMarketAuctionDao extends ExtendDaoSupper<CWVMarketAuction, CWVMa
 				conn.setAutoCommit(false);
 			}		
 			StringBuffer sb=new StringBuffer();
-			sb.append("INSERT INTO CWV_MARKET_AUCTION(auction_id,bid_id,user_id,bid_price,status,create_time) values");
+			sb.append("INSERT INTO CWV_MARKET_AUCTION(auction_id,bid_id,user_id,bid_price,status,create_time,chain_status,chain_trans_hash,chain_contract) values");
 			
 				int i=0;
 				st = conn.createStatement();
@@ -259,6 +268,33 @@ public class CWVMarketAuctionDao extends ExtendDaoSupper<CWVMarketAuction, CWVMa
 				// java type==Date
 					    java.text.SimpleDateFormat sdf = new java.text.SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SSS");
 						sb.append("'"+sdf.format(record.getCreateTime())+"'");
+				}
+			
+				sb.append(",");
+			
+				if(record.getChainStatus()==null){
+						sb.append("null");
+				}else{
+				// java type==Byte
+						sb.append("'"+record.getChainStatus()+"'");
+				}
+			
+				sb.append(",");
+			
+				if(record.getChainTransHash()==null){
+						sb.append("null");
+				}else{
+				// java type==String
+						sb.append("'"+record.getChainTransHash()+"'");
+				}
+			
+				sb.append(",");
+			
+				if(record.getChainContract()==null){
+						sb.append("null");
+				}else{
+				// java type==String
+						sb.append("'"+record.getChainContract()+"'");
 				}
 							sb.append(")");
 			

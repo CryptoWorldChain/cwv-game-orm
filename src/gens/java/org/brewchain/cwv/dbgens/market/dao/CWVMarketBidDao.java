@@ -172,6 +172,15 @@ public class CWVMarketBidDao extends ExtendDaoSupper<CWVMarketBid, CWVMarketBidE
 				if(record.getStatus()!=null){
 				criteria.andStatusEqualTo(record.getStatus());
 				}
+				if(record.getChainStatus()!=null){
+				criteria.andChainStatusEqualTo(record.getChainStatus());
+				}
+				if(record.getChainTransHash()!=null){
+				criteria.andChainTransHashEqualTo(record.getChainTransHash());
+				}
+				if(record.getChainContract()!=null){
+				criteria.andChainContractEqualTo(record.getChainContract());
+				}
 				if(record.getLastUpdateTime()!=null){
 				criteria.andLastUpdateTimeEqualTo(record.getLastUpdateTime());
 				}
@@ -252,7 +261,7 @@ public class CWVMarketBidDao extends ExtendDaoSupper<CWVMarketBid, CWVMarketBidE
 				conn.setAutoCommit(false);
 			}		
 			StringBuffer sb=new StringBuffer();
-			sb.append("INSERT INTO CWV_MARKET_BID(bid_id,game_property_id,owner,auction_start,auction_end,increase_ladder,bid_start,bid_amount,bidders_count,status,last_update_time,announce_time,create_time,create_user,country_id,map_id,property_template_id,property_template,nick_name,property_name,property_type,property_status,income_remark,last_price,image_url) values");
+			sb.append("INSERT INTO CWV_MARKET_BID(bid_id,game_property_id,owner,auction_start,auction_end,increase_ladder,bid_start,bid_amount,bidders_count,status,chain_status,chain_trans_hash,chain_contract,last_update_time,announce_time,create_time,create_user,country_id,map_id,property_template_id,property_template,nick_name,property_name,property_type,property_status,income_remark,last_price,image_url) values");
 			
 				int i=0;
 				st = conn.createStatement();
@@ -353,6 +362,33 @@ public class CWVMarketBidDao extends ExtendDaoSupper<CWVMarketBid, CWVMarketBidE
 				}else{
 				// java type==Byte
 						sb.append("'"+record.getStatus()+"'");
+				}
+			
+				sb.append(",");
+			
+				if(record.getChainStatus()==null){
+						sb.append("null");
+				}else{
+				// java type==Byte
+						sb.append("'"+record.getChainStatus()+"'");
+				}
+			
+				sb.append(",");
+			
+				if(record.getChainTransHash()==null){
+						sb.append("null");
+				}else{
+				// java type==String
+						sb.append("'"+record.getChainTransHash()+"'");
+				}
+			
+				sb.append(",");
+			
+				if(record.getChainContract()==null){
+						sb.append("null");
+				}else{
+				// java type==String
+						sb.append("'"+record.getChainContract()+"'");
 				}
 			
 				sb.append(",");

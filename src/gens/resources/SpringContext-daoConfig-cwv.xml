@@ -113,6 +113,14 @@
  		<property name="mapper" ref="cWVUserPropertyIncomeMapper" />
  		<property name="sqlSessionFactory" ref="sqlSessionFactory" />
  	</bean>
+	<bean id="cWVUserRechargeAddressMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">
+		<property name="mapperInterface" value="org.brewchain.cwv.dbgens.user.mapper.CWVUserRechargeAddressMapper" />
+		<property name="sqlSessionFactory" ref="sqlSessionFactory" />
+	</bean>
+	 <bean id="cwvuserrechargeaddressDao" class="org.brewchain.cwv.dbgens.user.dao.CWVUserRechargeAddressDao" >
+ 		<property name="mapper" ref="cWVUserRechargeAddressMapper" />
+ 		<property name="sqlSessionFactory" ref="sqlSessionFactory" />
+ 	</bean>
 	<bean id="cWVUserTradeMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">
 		<property name="mapperInterface" value="org.brewchain.cwv.dbgens.user.mapper.CWVUserTradeMapper" />
 		<property name="sqlSessionFactory" ref="sqlSessionFactory" />

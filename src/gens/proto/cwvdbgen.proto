@@ -177,6 +177,13 @@ message PBCWVUserPropertyIncome
 	int64 end_time = 8;
 }
 
+message PBCWVUserRechargeAddress
+{
+	int32 recharge_address_id = 1;
+	string recharge_address = 2;
+	string coin_type = 3;
+}
+
 message PBCWVUserTrade
 {
 	int32 trade_id = 1;
@@ -231,6 +238,8 @@ message PBCWVUserWalletTopup
 	double amount = 5;
 	string status = 6;
 	int64 create_time = 7;
+	string tx_hash = 8;
+	string input_address = 9;
 }
 
 message PBCWVMarketAuction
@@ -241,6 +250,9 @@ message PBCWVMarketAuction
 	double bid_price = 4;
 	string status = 5;
 	int64 create_time = 6;
+	string chain_status = 7;
+	string chain_trans_hash = 8;
+	string chain_contract = 9;
 }
 
 message PBCWVMarketBid
@@ -255,21 +267,24 @@ message PBCWVMarketBid
 	double bid_amount = 8;
 	int32 bidders_count = 9;
 	string status = 10;
-	int64 last_update_time = 11;
-	int64 announce_time = 12;
-	int64 create_time = 13;
-	string create_user = 14;
-	int32 country_id = 15;
-	int32 map_id = 16;
-	string property_template_id = 17;
-	string property_template = 18;
-	string nick_name = 19;
-	string property_name = 20;
-	string property_type = 21;
-	string property_status = 22;
-	string income_remark = 23;
-	double last_price = 24;
-	string image_url = 25;
+	string chain_status = 11;
+	string chain_trans_hash = 12;
+	string chain_contract = 13;
+	int64 last_update_time = 14;
+	int64 announce_time = 15;
+	int64 create_time = 16;
+	string create_user = 17;
+	int32 country_id = 18;
+	int32 map_id = 19;
+	string property_template_id = 20;
+	string property_template = 21;
+	string nick_name = 22;
+	string property_name = 23;
+	string property_type = 24;
+	string property_status = 25;
+	string income_remark = 26;
+	double last_price = 27;
+	string image_url = 28;
 }
 
 message PBCWVMarketBidCopy
@@ -310,6 +325,9 @@ message PBCWVMarketDraw
 	int32 property_id = 2;
 	int32 user_id = 3;
 	int64 create_time = 4;
+	string chain_status = 5;
+	string chain_trans_hash = 6;
+	string chain_contract = 7;
 }
 
 message PBCWVMarketExchange
@@ -320,22 +338,25 @@ message PBCWVMarketExchange
 	double sell_price = 4;
 	double tax = 5;
 	string status = 6;
-	int64 update_time = 7;
-	int64 create_time = 8;
-	int32 create_user = 9;
-	int32 country_id = 10;
-	int32 city_id = 11;
-	int32 map_id = 12;
-	string property_template_id = 13;
-	string property_template = 14;
-	string nick_name = 15;
-	string property_name = 16;
-	string property_type = 17;
-	string property_status = 18;
-	string income_remark = 19;
-	double income = 20;
-	double last_price = 21;
-	string image_url = 22;
+	string chain_status = 7;
+	string chain_trans_hash = 8;
+	string chain_contract = 9;
+	int64 update_time = 10;
+	int64 create_time = 11;
+	int32 create_user = 12;
+	int32 country_id = 13;
+	int32 city_id = 14;
+	int32 map_id = 15;
+	string property_template_id = 16;
+	string property_template = 17;
+	string nick_name = 18;
+	string property_name = 19;
+	string property_type = 20;
+	string property_status = 21;
+	string income_remark = 22;
+	double income = 23;
+	double last_price = 24;
+	string image_url = 25;
 }
 
 message PBCWVMarketExchangeCopy
