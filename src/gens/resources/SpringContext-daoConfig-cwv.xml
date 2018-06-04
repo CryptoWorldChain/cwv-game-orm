@@ -17,6 +17,14 @@
  		<property name="mapper" ref="cWVGameCityMapper" />
  		<property name="sqlSessionFactory" ref="sqlSessionFactory" />
  	</bean>
+	<bean id="cWVGameContractAddressMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">
+		<property name="mapperInterface" value="org.brewchain.cwv.dbgens.game.mapper.CWVGameContractAddressMapper" />
+		<property name="sqlSessionFactory" ref="sqlSessionFactory" />
+	</bean>
+	 <bean id="cwvgamecontractaddressDao" class="org.brewchain.cwv.dbgens.game.dao.CWVGameContractAddressDao" >
+ 		<property name="mapper" ref="cWVGameContractAddressMapper" />
+ 		<property name="sqlSessionFactory" ref="sqlSessionFactory" />
+ 	</bean>
 	<bean id="cWVGameCountryMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">
 		<property name="mapperInterface" value="org.brewchain.cwv.dbgens.game.mapper.CWVGameCountryMapper" />
 		<property name="sqlSessionFactory" ref="sqlSessionFactory" />

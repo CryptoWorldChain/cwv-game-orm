@@ -15,6 +15,13 @@ message PBCWVGameCity
 	int64 created_time = 8;
 }
 
+message PBCWVGameContractAddress
+{
+	int32 contract_address_id = 1;
+	string contract_address = 2;
+	string contract_type = 3;
+}
+
 message PBCWVGameCountry
 {
 	int32 country_id = 1;
@@ -68,6 +75,7 @@ message PBCWVGameProperty
 	string property_template = 16;
 	string longitude = 17;
 	string latitude = 18;
+	string crypto_token = 19;
 }
 
 message PBCWVGameProperty01
@@ -204,10 +212,13 @@ message PBCWVUserTransactionRecord
 {
 	int32 record_id = 1;
 	int32 user_id = 2;
-	string detail = 3;
-	double gain_cost = 4;
-	int64 create_time = 5;
-	int32 create_user = 6;
+	int32 market_id = 3;
+	string type = 4;
+	string detail = 5;
+	double gain_cost = 6;
+	int64 create_time = 7;
+	int32 create_user = 8;
+	string status = 9;
 }
 
 message PBCWVUserWallet
@@ -248,11 +259,12 @@ message PBCWVMarketAuction
 	int32 bid_id = 2;
 	int32 user_id = 3;
 	double bid_price = 4;
-	string status = 5;
-	int64 create_time = 6;
-	string chain_status = 7;
-	string chain_trans_hash = 8;
-	string chain_contract = 9;
+	double last_bid_price = 5;
+	string status = 6;
+	int64 create_time = 7;
+	string chain_status = 8;
+	string chain_trans_hash = 9;
+	string chain_contract = 10;
 }
 
 message PBCWVMarketBid

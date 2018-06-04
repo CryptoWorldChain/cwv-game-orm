@@ -154,6 +154,9 @@ public class CWVMarketAuctionDao extends ExtendDaoSupper<CWVMarketAuction, CWVMa
 				if(record.getBidPrice()!=null){
 				criteria.andBidPriceEqualTo(record.getBidPrice());
 				}
+				if(record.getLastBidPrice()!=null){
+				criteria.andLastBidPriceEqualTo(record.getLastBidPrice());
+				}
 				if(record.getStatus()!=null){
 				criteria.andStatusEqualTo(record.getStatus());
 				}
@@ -204,7 +207,7 @@ public class CWVMarketAuctionDao extends ExtendDaoSupper<CWVMarketAuction, CWVMa
 				conn.setAutoCommit(false);
 			}		
 			StringBuffer sb=new StringBuffer();
-			sb.append("INSERT INTO CWV_MARKET_AUCTION(auction_id,bid_id,user_id,bid_price,status,create_time,chain_status,chain_trans_hash,chain_contract) values");
+			sb.append("INSERT INTO CWV_MARKET_AUCTION(auction_id,bid_id,user_id,bid_price,last_bid_price,status,create_time,chain_status,chain_trans_hash,chain_contract) values");
 			
 				int i=0;
 				st = conn.createStatement();
@@ -249,6 +252,15 @@ public class CWVMarketAuctionDao extends ExtendDaoSupper<CWVMarketAuction, CWVMa
 				}else{
 				// java type==BigDecimal
 						sb.append("'"+record.getBidPrice()+"'");
+				}
+			
+				sb.append(",");
+			
+				if(record.getLastBidPrice()==null){
+						sb.append("null");
+				}else{
+				// java type==BigDecimal
+						sb.append("'"+record.getLastBidPrice()+"'");
 				}
 			
 				sb.append(",");

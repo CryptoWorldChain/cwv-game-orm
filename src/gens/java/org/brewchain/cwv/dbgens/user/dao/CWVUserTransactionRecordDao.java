@@ -148,6 +148,12 @@ public class CWVUserTransactionRecordDao extends ExtendDaoSupper<CWVUserTransact
 				if(record.getUserId()!=null){
 				criteria.andUserIdEqualTo(record.getUserId());
 				}
+				if(record.getMarketId()!=null){
+				criteria.andMarketIdEqualTo(record.getMarketId());
+				}
+				if(record.getType()!=null){
+				criteria.andTypeEqualTo(record.getType());
+				}
 				if(record.getDetail()!=null){
 				criteria.andDetailEqualTo(record.getDetail());
 				}
@@ -159,6 +165,9 @@ public class CWVUserTransactionRecordDao extends ExtendDaoSupper<CWVUserTransact
 				}
 				if(record.getCreateUser()!=null){
 				criteria.andCreateUserEqualTo(record.getCreateUser());
+				}
+				if(record.getStatus()!=null){
+				criteria.andStatusEqualTo(record.getStatus());
 				}
 
 		}
@@ -195,7 +204,7 @@ public class CWVUserTransactionRecordDao extends ExtendDaoSupper<CWVUserTransact
 				conn.setAutoCommit(false);
 			}		
 			StringBuffer sb=new StringBuffer();
-			sb.append("INSERT INTO CWV_USER_TRANSACTION_RECORD(record_id,user_id,detail,gain_cost,create_time,create_user) values");
+			sb.append("INSERT INTO CWV_USER_TRANSACTION_RECORD(record_id,user_id,market_id,type,detail,gain_cost,create_time,create_user,status) values");
 			
 				int i=0;
 				st = conn.createStatement();
@@ -222,6 +231,24 @@ public class CWVUserTransactionRecordDao extends ExtendDaoSupper<CWVUserTransact
 				}else{
 				// java type==Integer
 						sb.append("'"+record.getUserId()+"'");
+				}
+			
+				sb.append(",");
+			
+				if(record.getMarketId()==null){
+						sb.append("null");
+				}else{
+				// java type==Integer
+						sb.append("'"+record.getMarketId()+"'");
+				}
+			
+				sb.append(",");
+			
+				if(record.getType()==null){
+						sb.append("null");
+				}else{
+				// java type==Byte
+						sb.append("'"+record.getType()+"'");
 				}
 			
 				sb.append(",");
@@ -259,6 +286,15 @@ public class CWVUserTransactionRecordDao extends ExtendDaoSupper<CWVUserTransact
 				}else{
 				// java type==Integer
 						sb.append("'"+record.getCreateUser()+"'");
+				}
+			
+				sb.append(",");
+			
+				if(record.getStatus()==null){
+						sb.append("null");
+				}else{
+				// java type==Byte
+						sb.append("'"+record.getStatus()+"'");
 				}
 							sb.append(")");
 			
