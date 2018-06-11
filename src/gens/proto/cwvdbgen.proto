@@ -20,6 +20,7 @@ message PBCWVGameContractAddress
 	int32 contract_address_id = 1;
 	string contract_address = 2;
 	string contract_type = 3;
+	string contract_state = 4;
 }
 
 message PBCWVGameCountry
@@ -78,7 +79,7 @@ message PBCWVGameProperty
 	string crypto_token = 19;
 }
 
-message PBCWVGameProperty01
+message PBCWVGamePropertyCopy
 {
 	int32 property_id = 1;
 	int32 game_map_id = 2;
@@ -98,6 +99,7 @@ message PBCWVGameProperty01
 	string property_template = 16;
 	string longitude = 17;
 	string latitude = 18;
+	string crypto_token = 19;
 }
 
 message PBCWVGamePropertyGame
@@ -190,6 +192,19 @@ message PBCWVUserRechargeAddress
 	int32 recharge_address_id = 1;
 	string recharge_address = 2;
 	string coin_type = 3;
+}
+
+message PBCWVUserSendRecord
+{
+	int32 record_id = 1;
+	int32 user_id = 2;
+	string coin_type = 3;
+	string input_address = 4;
+	string out_address = 5;
+	double amount = 6;
+	string status = 7;
+	int64 create_time = 8;
+	string tx_hash = 9;
 }
 
 message PBCWVUserTrade

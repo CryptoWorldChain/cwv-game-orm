@@ -57,12 +57,12 @@
  		<property name="mapper" ref="cWVGamePropertyMapper" />
  		<property name="sqlSessionFactory" ref="sqlSessionFactory" />
  	</bean>
-	<bean id="cWVGameProperty01Mapper" class="org.mybatis.spring.mapper.MapperFactoryBean">
-		<property name="mapperInterface" value="org.brewchain.cwv.dbgens.game.mapper.CWVGameProperty01Mapper" />
+	<bean id="cWVGamePropertyCopyMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">
+		<property name="mapperInterface" value="org.brewchain.cwv.dbgens.game.mapper.CWVGamePropertyCopyMapper" />
 		<property name="sqlSessionFactory" ref="sqlSessionFactory" />
 	</bean>
-	 <bean id="cwvgameproperty01Dao" class="org.brewchain.cwv.dbgens.game.dao.CWVGameProperty01Dao" >
- 		<property name="mapper" ref="cWVGameProperty01Mapper" />
+	 <bean id="cwvgamepropertycopyDao" class="org.brewchain.cwv.dbgens.game.dao.CWVGamePropertyCopyDao" >
+ 		<property name="mapper" ref="cWVGamePropertyCopyMapper" />
  		<property name="sqlSessionFactory" ref="sqlSessionFactory" />
  	</bean>
 	<bean id="cWVGamePropertyGameMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">
@@ -127,6 +127,14 @@
 	</bean>
 	 <bean id="cwvuserrechargeaddressDao" class="org.brewchain.cwv.dbgens.user.dao.CWVUserRechargeAddressDao" >
  		<property name="mapper" ref="cWVUserRechargeAddressMapper" />
+ 		<property name="sqlSessionFactory" ref="sqlSessionFactory" />
+ 	</bean>
+	<bean id="cWVUserSendRecordMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">
+		<property name="mapperInterface" value="org.brewchain.cwv.dbgens.user.mapper.CWVUserSendRecordMapper" />
+		<property name="sqlSessionFactory" ref="sqlSessionFactory" />
+	</bean>
+	 <bean id="cwvusersendrecordDao" class="org.brewchain.cwv.dbgens.user.dao.CWVUserSendRecordDao" >
+ 		<property name="mapper" ref="cWVUserSendRecordMapper" />
  		<property name="sqlSessionFactory" ref="sqlSessionFactory" />
  	</bean>
 	<bean id="cWVUserTradeMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">
