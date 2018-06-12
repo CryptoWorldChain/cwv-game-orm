@@ -151,8 +151,17 @@ public class CWVGamePropertyGameDao extends ExtendDaoSupper<CWVGamePropertyGame,
 				if(record.getName()!=null){
 				criteria.andNameEqualTo(record.getName());
 				}
+				if(record.getGameType()!=null){
+				criteria.andGameTypeEqualTo(record.getGameType());
+				}
+				if(record.getGameUrl()!=null){
+				criteria.andGameUrlEqualTo(record.getGameUrl());
+				}
 				if(record.getType()!=null){
 				criteria.andTypeEqualTo(record.getType());
+				}
+				if(record.getIcon()!=null){
+				criteria.andIconEqualTo(record.getIcon());
 				}
 				if(record.getInvokeGame()!=null){
 				criteria.andInvokeGameEqualTo(record.getInvokeGame());
@@ -207,7 +216,7 @@ public class CWVGamePropertyGameDao extends ExtendDaoSupper<CWVGamePropertyGame,
 				conn.setAutoCommit(false);
 			}		
 			StringBuffer sb=new StringBuffer();
-			sb.append("INSERT INTO CWV_GAME_PROPERTY_GAME(game_id,property_id,name,type,invoke_game,players_count,developers_count,instructions,images,status) values");
+			sb.append("INSERT INTO CWV_GAME_PROPERTY_GAME(game_id,property_id,name,game_type,game_url,type,icon,invoke_game,players_count,developers_count,instructions,images,status) values");
 			
 				int i=0;
 				st = conn.createStatement();
@@ -247,11 +256,38 @@ public class CWVGamePropertyGameDao extends ExtendDaoSupper<CWVGamePropertyGame,
 			
 				sb.append(",");
 			
+				if(record.getGameType()==null){
+						sb.append("null");
+				}else{
+				// java type==String
+						sb.append("'"+record.getGameType()+"'");
+				}
+			
+				sb.append(",");
+			
+				if(record.getGameUrl()==null){
+						sb.append("null");
+				}else{
+				// java type==String
+						sb.append("'"+record.getGameUrl()+"'");
+				}
+			
+				sb.append(",");
+			
 				if(record.getType()==null){
 						sb.append("null");
 				}else{
 				// java type==Short
 						sb.append("'"+record.getType()+"'");
+				}
+			
+				sb.append(",");
+			
+				if(record.getIcon()==null){
+						sb.append("null");
+				}else{
+				// java type==String
+						sb.append("'"+record.getIcon()+"'");
 				}
 			
 				sb.append(",");
