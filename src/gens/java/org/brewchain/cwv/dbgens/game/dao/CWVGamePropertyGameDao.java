@@ -151,14 +151,17 @@ public class CWVGamePropertyGameDao extends ExtendDaoSupper<CWVGamePropertyGame,
 				if(record.getName()!=null){
 				criteria.andNameEqualTo(record.getName());
 				}
+				if(record.getType()!=null){
+				criteria.andTypeEqualTo(record.getType());
+				}
 				if(record.getGameType()!=null){
 				criteria.andGameTypeEqualTo(record.getGameType());
 				}
 				if(record.getGameUrl()!=null){
 				criteria.andGameUrlEqualTo(record.getGameUrl());
 				}
-				if(record.getType()!=null){
-				criteria.andTypeEqualTo(record.getType());
+				if(record.getGameStatus()!=null){
+				criteria.andGameStatusEqualTo(record.getGameStatus());
 				}
 				if(record.getIcon()!=null){
 				criteria.andIconEqualTo(record.getIcon());
@@ -180,6 +183,9 @@ public class CWVGamePropertyGameDao extends ExtendDaoSupper<CWVGamePropertyGame,
 				}
 				if(record.getStatus()!=null){
 				criteria.andStatusEqualTo(record.getStatus());
+				}
+				if(record.getIncome()!=null){
+				criteria.andIncomeEqualTo(record.getIncome());
 				}
 
 		}
@@ -216,7 +222,7 @@ public class CWVGamePropertyGameDao extends ExtendDaoSupper<CWVGamePropertyGame,
 				conn.setAutoCommit(false);
 			}		
 			StringBuffer sb=new StringBuffer();
-			sb.append("INSERT INTO CWV_GAME_PROPERTY_GAME(game_id,property_id,name,game_type,game_url,type,icon,invoke_game,players_count,developers_count,instructions,images,status) values");
+			sb.append("INSERT INTO CWV_GAME_PROPERTY_GAME(game_id,property_id,name,type,game_type,game_url,game_status,icon,invoke_game,players_count,developers_count,instructions,images,status,income) values");
 			
 				int i=0;
 				st = conn.createStatement();
@@ -256,6 +262,15 @@ public class CWVGamePropertyGameDao extends ExtendDaoSupper<CWVGamePropertyGame,
 			
 				sb.append(",");
 			
+				if(record.getType()==null){
+						sb.append("null");
+				}else{
+				// java type==Short
+						sb.append("'"+record.getType()+"'");
+				}
+			
+				sb.append(",");
+			
 				if(record.getGameType()==null){
 						sb.append("null");
 				}else{
@@ -274,11 +289,11 @@ public class CWVGamePropertyGameDao extends ExtendDaoSupper<CWVGamePropertyGame,
 			
 				sb.append(",");
 			
-				if(record.getType()==null){
+				if(record.getGameStatus()==null){
 						sb.append("null");
 				}else{
-				// java type==Short
-						sb.append("'"+record.getType()+"'");
+				// java type==String
+						sb.append("'"+record.getGameStatus()+"'");
 				}
 			
 				sb.append(",");
@@ -342,6 +357,15 @@ public class CWVGamePropertyGameDao extends ExtendDaoSupper<CWVGamePropertyGame,
 				}else{
 				// java type==Byte
 						sb.append("'"+record.getStatus()+"'");
+				}
+			
+				sb.append(",");
+			
+				if(record.getIncome()==null){
+						sb.append("null");
+				}else{
+				// java type==BigDecimal
+						sb.append("'"+record.getIncome()+"'");
 				}
 							sb.append(")");
 			

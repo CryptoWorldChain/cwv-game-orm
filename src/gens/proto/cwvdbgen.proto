@@ -107,16 +107,18 @@ message PBCWVGamePropertyGame
 	int32 game_id = 1;
 	int32 property_id = 2;
 	string name = 3;
-	string game_type = 4;
-	string game_url = 5;
-	int64 type = 6;
-	string icon = 7;
-	string invoke_game = 8;
-	int32 players_count = 9;
-	int32 developers_count = 10;
-	string instructions = 11;
-	string images = 12;
-	string status = 13;
+	int64 type = 4;
+	string game_type = 5;
+	string game_url = 6;
+	string game_status = 7;
+	string icon = 8;
+	string invoke_game = 9;
+	int32 players_count = 10;
+	int32 developers_count = 11;
+	string instructions = 12;
+	string images = 13;
+	string status = 14;
+	double income = 15;
 }
 
 message PBCWVCommonConf
