@@ -387,6 +387,8 @@ message PBCWVMarketExchangeBuy
 	string chain_status = 6;
 	string chain_trans_hash = 7;
 	string property_token = 8;
+	string chain_status_group = 9;
+	string chain_trans_hash_group = 10;
 }
 
 message PBCWVSysSetting
