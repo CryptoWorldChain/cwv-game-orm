@@ -21,17 +21,20 @@ message PBCWVGameContractAddress
 	string contract_address = 2;
 	string contract_type = 3;
 	string contract_state = 4;
+	int32 contract_num = 5;
+	int64 create_time = 6;
 }
 
 message PBCWVGameCountry
 {
 	int32 country_id = 1;
 	string country_name = 2;
-	string image_url = 3;
-	string status = 4;
-	string is_display = 5;
-	int64 created_time = 6;
-	int32 map_num = 7;
+	string country_name_zh = 3;
+	string image_url = 4;
+	string status = 5;
+	string is_display = 6;
+	int64 created_time = 7;
+	int32 map_num = 8;
 }
 
 message PBCWVGameDic
@@ -48,12 +51,14 @@ message PBCWVGameMap
 {
 	int32 map_id = 1;
 	string map_name = 2;
-	int32 game_city_id = 3;
-	int32 template = 4;
-	string image_url = 5;
-	int64 created_time = 6;
-	string status = 7;
-	string is_display = 8;
+	string map_name_zh = 3;
+	int32 game_city_id = 4;
+	int32 template = 5;
+	string image_url = 6;
+	int64 created_time = 7;
+	string status = 8;
+	int32 total_count = 9;
+	string is_display = 10;
 }
 
 message PBCWVGameProperty
@@ -67,42 +72,39 @@ message PBCWVGameProperty
 	string property_market_type = 7;
 	string property_status = 8;
 	double last_price = 9;
-	int64 last_price_time = 10;
-	string image_url = 11;
-	double income = 12;
-	string is_display = 13;
-	int64 created_time = 14;
-	string property_template_id = 15;
-	string property_template = 16;
-	string longitude = 17;
-	string latitude = 18;
-	string crypto_token = 19;
-}
-
-message PBCWVGamePropertyCopy
-{
-	int32 property_id = 1;
-	int32 game_map_id = 2;
-	int32 user_id = 3;
-	string property_name = 4;
-	string property_type = 5;
-	string property_sub_type = 6;
-	string property_market_type = 7;
-	string property_status = 8;
-	double last_price = 9;
-	int64 last_price_time = 10;
-	string image_url = 11;
-	double income = 12;
-	string is_display = 13;
-	int64 created_time = 14;
-	string property_template_id = 15;
-	string property_template = 16;
-	string longitude = 17;
-	string latitude = 18;
-	string crypto_token = 19;
+	double price_increase = 10;
+	int64 last_price_time = 11;
+	string image_url = 12;
+	double income = 13;
+	string is_display = 14;
+	int64 created_time = 15;
+	string property_template_id = 16;
+	string property_template = 17;
+	string longitude = 18;
+	string latitude = 19;
+	string crypto_token = 20;
 }
 
 message PBCWVGamePropertyGame
+{
+	int32 game_id = 1;
+	int32 property_id = 2;
+	string name = 3;
+	int64 type = 4;
+	string game_type = 5;
+	string game_url = 6;
+	string game_status = 7;
+	string icon = 8;
+	string invoke_game = 9;
+	int32 players_count = 10;
+	int32 developers_count = 11;
+	string instructions = 12;
+	string images = 13;
+	string status = 14;
+	double income = 15;
+}
+
+message PBCWVGamePropertyGameCopy
 {
 	int32 game_id = 1;
 	int32 property_id = 2;
@@ -319,24 +321,6 @@ message PBCWVMarketBid
 	string image_url = 28;
 }
 
-message PBCWVMarketBidCopy
-{
-	int32 bid_id = 1;
-	int32 game_property_id = 2;
-	int32 owner = 3;
-	int64 auction_start = 4;
-	int64 auction_end = 5;
-	double increase_ladder = 6;
-	double bid_start = 7;
-	double bid_amount = 8;
-	int32 bidders_count = 9;
-	string status = 10;
-	int64 last_update_time = 11;
-	int64 announce_time = 12;
-	int64 create_time = 13;
-	string create_user = 14;
-}
-
 message PBCWVMarketChainRecord
 {
 	int32 chain_record_id = 1;
@@ -360,6 +344,8 @@ message PBCWVMarketDraw
 	string chain_status = 5;
 	string chain_trans_hash = 6;
 	string chain_contract = 7;
+	string user_address = 8;
+	string property_token = 9;
 }
 
 message PBCWVMarketExchange
@@ -391,17 +377,16 @@ message PBCWVMarketExchange
 	string image_url = 25;
 }
 
-message PBCWVMarketExchangeCopy
+message PBCWVMarketExchangeBuy
 {
 	int32 exchange_id = 1;
-	int32 property_id = 2;
-	int32 user_id = 3;
-	double sell_price = 4;
-	double tax = 5;
-	string status = 6;
-	int64 update_time = 7;
-	int64 create_time = 8;
-	int32 create_user = 9;
+	double amount = 2;
+	string buyer_address = 3;
+	string seller_address = 4;
+	int32 status = 5;
+	string chain_status = 6;
+	string chain_trans_hash = 7;
+	string property_token = 8;
 }
 
 message PBCWVSysSetting
@@ -410,5 +395,22 @@ message PBCWVSysSetting
 	string name = 2;
 	string value = 3;
 	string description = 4;
+}
+
+message PBCWVSysUrlResource
+{
+	string url_resource_id = 1;
+	string url_resource_name = 2;
+	string url_resource_path = 3;
+	int32 url_resource_type = 4;
+	string url_log_out = 5;
+	string resource = 6;
+	string status = 7;
+	string created_time = 8;
+	string created_by = 9;
+	string modified_time = 10;
+	string modified_by = 11;
+	string reserved_field1 = 12;
+	string reserved_field2 = 13;
 }
 

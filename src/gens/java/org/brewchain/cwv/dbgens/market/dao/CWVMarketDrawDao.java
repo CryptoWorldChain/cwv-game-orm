@@ -163,6 +163,12 @@ public class CWVMarketDrawDao extends ExtendDaoSupper<CWVMarketDraw, CWVMarketDr
 				if(record.getChainContract()!=null){
 				criteria.andChainContractEqualTo(record.getChainContract());
 				}
+				if(record.getUserAddress()!=null){
+				criteria.andUserAddressEqualTo(record.getUserAddress());
+				}
+				if(record.getPropertyToken()!=null){
+				criteria.andPropertyTokenEqualTo(record.getPropertyToken());
+				}
 
 		}
 		return example;
@@ -198,7 +204,7 @@ public class CWVMarketDrawDao extends ExtendDaoSupper<CWVMarketDraw, CWVMarketDr
 				conn.setAutoCommit(false);
 			}		
 			StringBuffer sb=new StringBuffer();
-			sb.append("INSERT INTO CWV_MARKET_DRAW(draw_id,property_id,user_id,create_time,chain_status,chain_trans_hash,chain_contract) values");
+			sb.append("INSERT INTO CWV_MARKET_DRAW(draw_id,property_id,user_id,create_time,chain_status,chain_trans_hash,chain_contract,user_address,property_token) values");
 			
 				int i=0;
 				st = conn.createStatement();
@@ -271,6 +277,24 @@ public class CWVMarketDrawDao extends ExtendDaoSupper<CWVMarketDraw, CWVMarketDr
 				}else{
 				// java type==String
 						sb.append("'"+record.getChainContract()+"'");
+				}
+			
+				sb.append(",");
+			
+				if(record.getUserAddress()==null){
+						sb.append("null");
+				}else{
+				// java type==String
+						sb.append("'"+record.getUserAddress()+"'");
+				}
+			
+				sb.append(",");
+			
+				if(record.getPropertyToken()==null){
+						sb.append("null");
+				}else{
+				// java type==String
+						sb.append("'"+record.getPropertyToken()+"'");
 				}
 							sb.append(")");
 			

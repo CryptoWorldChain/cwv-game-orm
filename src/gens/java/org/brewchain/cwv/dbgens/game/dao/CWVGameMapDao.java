@@ -148,6 +148,9 @@ public class CWVGameMapDao extends ExtendDaoSupper<CWVGameMap, CWVGameMapExample
 				if(record.getMapName()!=null){
 				criteria.andMapNameEqualTo(record.getMapName());
 				}
+				if(record.getMapNameZh()!=null){
+				criteria.andMapNameZhEqualTo(record.getMapNameZh());
+				}
 				if(record.getGameCityId()!=null){
 				criteria.andGameCityIdEqualTo(record.getGameCityId());
 				}
@@ -162,6 +165,9 @@ public class CWVGameMapDao extends ExtendDaoSupper<CWVGameMap, CWVGameMapExample
 				}
 				if(record.getStatus()!=null){
 				criteria.andStatusEqualTo(record.getStatus());
+				}
+				if(record.getTotalCount()!=null){
+				criteria.andTotalCountEqualTo(record.getTotalCount());
 				}
 				if(record.getIsDisplay()!=null){
 				criteria.andIsDisplayEqualTo(record.getIsDisplay());
@@ -201,7 +207,7 @@ public class CWVGameMapDao extends ExtendDaoSupper<CWVGameMap, CWVGameMapExample
 				conn.setAutoCommit(false);
 			}		
 			StringBuffer sb=new StringBuffer();
-			sb.append("INSERT INTO CWV_GAME_MAP(map_id,map_name,game_city_id,template,image_url,created_time,status,is_display) values");
+			sb.append("INSERT INTO CWV_GAME_MAP(map_id,map_name,map_name_zh,game_city_id,template,image_url,created_time,status,total_count,is_display) values");
 			
 				int i=0;
 				st = conn.createStatement();
@@ -228,6 +234,15 @@ public class CWVGameMapDao extends ExtendDaoSupper<CWVGameMap, CWVGameMapExample
 				}else{
 				// java type==String
 						sb.append("'"+record.getMapName()+"'");
+				}
+			
+				sb.append(",");
+			
+				if(record.getMapNameZh()==null){
+						sb.append("null");
+				}else{
+				// java type==String
+						sb.append("'"+record.getMapNameZh()+"'");
 				}
 			
 				sb.append(",");
@@ -274,6 +289,15 @@ public class CWVGameMapDao extends ExtendDaoSupper<CWVGameMap, CWVGameMapExample
 				}else{
 				// java type==String
 						sb.append("'"+record.getStatus()+"'");
+				}
+			
+				sb.append(",");
+			
+				if(record.getTotalCount()==null){
+						sb.append("null");
+				}else{
+				// java type==Integer
+						sb.append("'"+record.getTotalCount()+"'");
 				}
 			
 				sb.append(",");

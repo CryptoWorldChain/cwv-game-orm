@@ -148,6 +148,9 @@ public class CWVGameCountryDao extends ExtendDaoSupper<CWVGameCountry, CWVGameCo
 				if(record.getCountryName()!=null){
 				criteria.andCountryNameEqualTo(record.getCountryName());
 				}
+				if(record.getCountryNameZh()!=null){
+				criteria.andCountryNameZhEqualTo(record.getCountryNameZh());
+				}
 				if(record.getImageUrl()!=null){
 				criteria.andImageUrlEqualTo(record.getImageUrl());
 				}
@@ -198,7 +201,7 @@ public class CWVGameCountryDao extends ExtendDaoSupper<CWVGameCountry, CWVGameCo
 				conn.setAutoCommit(false);
 			}		
 			StringBuffer sb=new StringBuffer();
-			sb.append("INSERT INTO CWV_GAME_COUNTRY(country_id,country_name,image_url,status,is_display,created_time,map_num) values");
+			sb.append("INSERT INTO CWV_GAME_COUNTRY(country_id,country_name,country_name_zh,image_url,status,is_display,created_time,map_num) values");
 			
 				int i=0;
 				st = conn.createStatement();
@@ -225,6 +228,15 @@ public class CWVGameCountryDao extends ExtendDaoSupper<CWVGameCountry, CWVGameCo
 				}else{
 				// java type==String
 						sb.append("'"+record.getCountryName()+"'");
+				}
+			
+				sb.append(",");
+			
+				if(record.getCountryNameZh()==null){
+						sb.append("null");
+				}else{
+				// java type==String
+						sb.append("'"+record.getCountryNameZh()+"'");
 				}
 			
 				sb.append(",");

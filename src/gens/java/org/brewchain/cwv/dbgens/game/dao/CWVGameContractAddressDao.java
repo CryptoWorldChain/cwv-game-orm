@@ -154,6 +154,12 @@ public class CWVGameContractAddressDao extends ExtendDaoSupper<CWVGameContractAd
 				if(record.getContractState()!=null){
 				criteria.andContractStateEqualTo(record.getContractState());
 				}
+				if(record.getContractNum()!=null){
+				criteria.andContractNumEqualTo(record.getContractNum());
+				}
+				if(record.getCreateTime()!=null){
+				criteria.andCreateTimeEqualTo(record.getCreateTime());
+				}
 
 		}
 		return example;
@@ -189,7 +195,7 @@ public class CWVGameContractAddressDao extends ExtendDaoSupper<CWVGameContractAd
 				conn.setAutoCommit(false);
 			}		
 			StringBuffer sb=new StringBuffer();
-			sb.append("INSERT INTO CWV_GAME_CONTRACT_ADDRESS(contract_address_id,contract_address,contract_type,contract_state) values");
+			sb.append("INSERT INTO CWV_GAME_CONTRACT_ADDRESS(contract_address_id,contract_address,contract_type,contract_state,contract_num,create_time) values");
 			
 				int i=0;
 				st = conn.createStatement();
@@ -236,6 +242,25 @@ public class CWVGameContractAddressDao extends ExtendDaoSupper<CWVGameContractAd
 				}else{
 				// java type==String
 						sb.append("'"+record.getContractState()+"'");
+				}
+			
+				sb.append(",");
+			
+				if(record.getContractNum()==null){
+						sb.append("null");
+				}else{
+				// java type==Integer
+						sb.append("'"+record.getContractNum()+"'");
+				}
+			
+				sb.append(",");
+			
+				if(record.getCreateTime()==null){
+						sb.append("null");
+				}else{
+				// java type==Date
+					    java.text.SimpleDateFormat sdf = new java.text.SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SSS");
+						sb.append("'"+sdf.format(record.getCreateTime())+"'");
 				}
 							sb.append(")");
 			
