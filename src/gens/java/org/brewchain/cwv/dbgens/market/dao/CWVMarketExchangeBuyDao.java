@@ -172,6 +172,12 @@ public class CWVMarketExchangeBuyDao extends ExtendDaoSupper<CWVMarketExchangeBu
 				if(record.getChainTransHashGroup()!=null){
 				criteria.andChainTransHashGroupEqualTo(record.getChainTransHashGroup());
 				}
+				if(record.getChainStatusRollback()!=null){
+				criteria.andChainStatusRollbackEqualTo(record.getChainStatusRollback());
+				}
+				if(record.getChainTransHashRollback()!=null){
+				criteria.andChainTransHashRollbackEqualTo(record.getChainTransHashRollback());
+				}
 
 		}
 		return example;
@@ -207,7 +213,7 @@ public class CWVMarketExchangeBuyDao extends ExtendDaoSupper<CWVMarketExchangeBu
 				conn.setAutoCommit(false);
 			}		
 			StringBuffer sb=new StringBuffer();
-			sb.append("INSERT INTO CWV_MARKET_EXCHANGE_BUY(exchange_id,amount,buyer_address,seller_address,status,chain_status,chain_trans_hash,property_token,chain_status_group,chain_trans_hash_group) values");
+			sb.append("INSERT INTO CWV_MARKET_EXCHANGE_BUY(exchange_id,amount,buyer_address,seller_address,status,chain_status,chain_trans_hash,property_token,chain_status_group,chain_trans_hash_group,chain_status_rollback,chain_trans_hash_rollback) values");
 			
 				int i=0;
 				st = conn.createStatement();
@@ -306,6 +312,24 @@ public class CWVMarketExchangeBuyDao extends ExtendDaoSupper<CWVMarketExchangeBu
 				}else{
 				// java type==String
 						sb.append("'"+record.getChainTransHashGroup()+"'");
+				}
+			
+				sb.append(",");
+			
+				if(record.getChainStatusRollback()==null){
+						sb.append("null");
+				}else{
+				// java type==Byte
+						sb.append("'"+record.getChainStatusRollback()+"'");
+				}
+			
+				sb.append(",");
+			
+				if(record.getChainTransHashRollback()==null){
+						sb.append("null");
+				}else{
+				// java type==String
+						sb.append("'"+record.getChainTransHashRollback()+"'");
 				}
 							sb.append(")");
 			

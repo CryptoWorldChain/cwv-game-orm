@@ -389,6 +389,8 @@ message PBCWVMarketExchangeBuy
 	string property_token = 8;
 	string chain_status_group = 9;
 	string chain_trans_hash_group = 10;
+	string chain_status_rollback = 11;
+	string chain_trans_hash_rollback = 12;
 }
 
 message PBCWVSysSetting
