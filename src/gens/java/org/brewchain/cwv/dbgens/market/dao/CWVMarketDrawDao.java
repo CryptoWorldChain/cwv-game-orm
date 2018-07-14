@@ -154,6 +154,15 @@ public class CWVMarketDrawDao extends ExtendDaoSupper<CWVMarketDraw, CWVMarketDr
 				if(record.getCreateTime()!=null){
 				criteria.andCreateTimeEqualTo(record.getCreateTime());
 				}
+				if(record.getChainRandom()!=null){
+				criteria.andChainRandomEqualTo(record.getChainRandom());
+				}
+				if(record.getChainStatusRandom()!=null){
+				criteria.andChainStatusRandomEqualTo(record.getChainStatusRandom());
+				}
+				if(record.getChainTransHashRandom()!=null){
+				criteria.andChainTransHashRandomEqualTo(record.getChainTransHashRandom());
+				}
 				if(record.getChainStatus()!=null){
 				criteria.andChainStatusEqualTo(record.getChainStatus());
 				}
@@ -204,7 +213,7 @@ public class CWVMarketDrawDao extends ExtendDaoSupper<CWVMarketDraw, CWVMarketDr
 				conn.setAutoCommit(false);
 			}		
 			StringBuffer sb=new StringBuffer();
-			sb.append("INSERT INTO CWV_MARKET_DRAW(draw_id,property_id,user_id,create_time,chain_status,chain_trans_hash,chain_contract,user_address,property_token) values");
+			sb.append("INSERT INTO CWV_MARKET_DRAW(draw_id,property_id,user_id,create_time,chain_random,chain_status_random,chain_trans_hash_random,chain_status,chain_trans_hash,chain_contract,user_address,property_token) values");
 			
 				int i=0;
 				st = conn.createStatement();
@@ -250,6 +259,33 @@ public class CWVMarketDrawDao extends ExtendDaoSupper<CWVMarketDraw, CWVMarketDr
 				// java type==Date
 					    java.text.SimpleDateFormat sdf = new java.text.SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SSS");
 						sb.append("'"+sdf.format(record.getCreateTime())+"'");
+				}
+			
+				sb.append(",");
+			
+				if(record.getChainRandom()==null){
+						sb.append("null");
+				}else{
+				// java type==String
+						sb.append("'"+record.getChainRandom()+"'");
+				}
+			
+				sb.append(",");
+			
+				if(record.getChainStatusRandom()==null){
+						sb.append("null");
+				}else{
+				// java type==Byte
+						sb.append("'"+record.getChainStatusRandom()+"'");
+				}
+			
+				sb.append(",");
+			
+				if(record.getChainTransHashRandom()==null){
+						sb.append("null");
+				}else{
+				// java type==String
+						sb.append("'"+record.getChainTransHashRandom()+"'");
 				}
 			
 				sb.append(",");
