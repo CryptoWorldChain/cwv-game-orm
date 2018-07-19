@@ -22,7 +22,9 @@ message PBCWVGameContractAddress
 	string contract_type = 3;
 	string contract_state = 4;
 	int32 contract_num = 5;
-	int64 create_time = 6;
+	string chain_status = 6;
+	string chain_trans_hash = 7;
+	int64 create_time = 8;
 }
 
 message PBCWVGameCountry
@@ -189,10 +191,14 @@ message PBCWVUserPropertyIncome
 	int32 user_id = 2;
 	string type = 3;
 	int32 property_id = 4;
-	double amount = 5;
-	string status = 6;
-	int64 start_time = 7;
-	int64 end_time = 8;
+	string chain_status = 5;
+	string chain_trans_hash = 6;
+	string chain_status_claim = 7;
+	string chain_trans_hash_claim = 8;
+	double amount = 9;
+	string status = 10;
+	int64 start_time = 11;
+	int64 end_time = 12;
 }
 
 message PBCWVUserRechargeAddress
@@ -255,12 +261,13 @@ message PBCWVUserWallet
 	int32 draw_count = 7;
 	int32 draw_count_history = 8;
 	int32 draw_count_record = 9;
-	double income_ordinary = 10;
-	double income_typical = 11;
-	double income_functional = 12;
-	int64 update_time = 13;
-	int64 create_time = 14;
-	string coin_icon = 15;
+	string income_address = 10;
+	double income_ordinary = 11;
+	double income_typical = 12;
+	double income_functional = 13;
+	int64 update_time = 14;
+	int64 create_time = 15;
+	string coin_icon = 16;
 }
 
 message PBCWVUserWalletTopup
@@ -272,8 +279,9 @@ message PBCWVUserWalletTopup
 	double amount = 5;
 	string status = 6;
 	int64 create_time = 7;
-	string tx_hash = 8;
-	string input_address = 9;
+	string chain_status = 8;
+	string tx_hash = 9;
+	string input_address = 10;
 }
 
 message PBCWVMarketAuction
@@ -320,24 +328,6 @@ message PBCWVMarketBid
 	string income_remark = 26;
 	double last_price = 27;
 	string image_url = 28;
-}
-
-message PBCWVMarketBidCopy
-{
-	int32 bid_id = 1;
-	int32 game_property_id = 2;
-	int32 owner = 3;
-	int64 auction_start = 4;
-	int64 auction_end = 5;
-	double increase_ladder = 6;
-	double bid_start = 7;
-	double bid_amount = 8;
-	int32 bidders_count = 9;
-	string status = 10;
-	int64 last_update_time = 11;
-	int64 announce_time = 12;
-	int64 create_time = 13;
-	string create_user = 14;
 }
 
 message PBCWVMarketChainRecord
@@ -413,19 +403,6 @@ message PBCWVMarketExchangeBuy
 	string chain_trans_hash_group = 10;
 	string chain_status_rollback = 11;
 	string chain_trans_hash_rollback = 12;
-}
-
-message PBCWVMarketExchangeCopy
-{
-	int32 exchange_id = 1;
-	int32 property_id = 2;
-	int32 user_id = 3;
-	double sell_price = 4;
-	double tax = 5;
-	string status = 6;
-	int64 update_time = 7;
-	int64 create_time = 8;
-	int32 create_user = 9;
 }
 
 message PBCWVSysSetting

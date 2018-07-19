@@ -154,6 +154,18 @@ public class CWVUserPropertyIncomeDao extends ExtendDaoSupper<CWVUserPropertyInc
 				if(record.getPropertyId()!=null){
 				criteria.andPropertyIdEqualTo(record.getPropertyId());
 				}
+				if(record.getChainStatus()!=null){
+				criteria.andChainStatusEqualTo(record.getChainStatus());
+				}
+				if(record.getChainTransHash()!=null){
+				criteria.andChainTransHashEqualTo(record.getChainTransHash());
+				}
+				if(record.getChainStatusClaim()!=null){
+				criteria.andChainStatusClaimEqualTo(record.getChainStatusClaim());
+				}
+				if(record.getChainTransHashClaim()!=null){
+				criteria.andChainTransHashClaimEqualTo(record.getChainTransHashClaim());
+				}
 				if(record.getAmount()!=null){
 				criteria.andAmountEqualTo(record.getAmount());
 				}
@@ -201,7 +213,7 @@ public class CWVUserPropertyIncomeDao extends ExtendDaoSupper<CWVUserPropertyInc
 				conn.setAutoCommit(false);
 			}		
 			StringBuffer sb=new StringBuffer();
-			sb.append("INSERT INTO CWV_USER_PROPERTY_INCOME(income_id,user_id,type,property_id,amount,status,start_time,end_time) values");
+			sb.append("INSERT INTO CWV_USER_PROPERTY_INCOME(income_id,user_id,type,property_id,chain_status,chain_trans_hash,chain_status_claim,chain_trans_hash_claim,amount,status,start_time,end_time) values");
 			
 				int i=0;
 				st = conn.createStatement();
@@ -246,6 +258,42 @@ public class CWVUserPropertyIncomeDao extends ExtendDaoSupper<CWVUserPropertyInc
 				}else{
 				// java type==Integer
 						sb.append("'"+record.getPropertyId()+"'");
+				}
+			
+				sb.append(",");
+			
+				if(record.getChainStatus()==null){
+						sb.append("null");
+				}else{
+				// java type==Byte
+						sb.append("'"+record.getChainStatus()+"'");
+				}
+			
+				sb.append(",");
+			
+				if(record.getChainTransHash()==null){
+						sb.append("null");
+				}else{
+				// java type==String
+						sb.append("'"+record.getChainTransHash()+"'");
+				}
+			
+				sb.append(",");
+			
+				if(record.getChainStatusClaim()==null){
+						sb.append("null");
+				}else{
+				// java type==Byte
+						sb.append("'"+record.getChainStatusClaim()+"'");
+				}
+			
+				sb.append(",");
+			
+				if(record.getChainTransHashClaim()==null){
+						sb.append("null");
+				}else{
+				// java type==String
+						sb.append("'"+record.getChainTransHashClaim()+"'");
 				}
 			
 				sb.append(",");

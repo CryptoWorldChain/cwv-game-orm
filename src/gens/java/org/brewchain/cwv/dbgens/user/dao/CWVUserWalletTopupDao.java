@@ -163,6 +163,9 @@ public class CWVUserWalletTopupDao extends ExtendDaoSupper<CWVUserWalletTopup, C
 				if(record.getCreateTime()!=null){
 				criteria.andCreateTimeEqualTo(record.getCreateTime());
 				}
+				if(record.getChainStatus()!=null){
+				criteria.andChainStatusEqualTo(record.getChainStatus());
+				}
 				if(record.getTxHash()!=null){
 				criteria.andTxHashEqualTo(record.getTxHash());
 				}
@@ -204,7 +207,7 @@ public class CWVUserWalletTopupDao extends ExtendDaoSupper<CWVUserWalletTopup, C
 				conn.setAutoCommit(false);
 			}		
 			StringBuffer sb=new StringBuffer();
-			sb.append("INSERT INTO CWV_USER_WALLET_TOPUP(topup_id,user_id,coin_type,address,amount,status,create_time,tx_hash,input_address) values");
+			sb.append("INSERT INTO CWV_USER_WALLET_TOPUP(topup_id,user_id,coin_type,address,amount,status,create_time,chain_status,tx_hash,input_address) values");
 			
 				int i=0;
 				st = conn.createStatement();
@@ -277,6 +280,15 @@ public class CWVUserWalletTopupDao extends ExtendDaoSupper<CWVUserWalletTopup, C
 				// java type==Date
 					    java.text.SimpleDateFormat sdf = new java.text.SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SSS");
 						sb.append("'"+sdf.format(record.getCreateTime())+"'");
+				}
+			
+				sb.append(",");
+			
+				if(record.getChainStatus()==null){
+						sb.append("null");
+				}else{
+				// java type==Byte
+						sb.append("'"+record.getChainStatus()+"'");
 				}
 			
 				sb.append(",");

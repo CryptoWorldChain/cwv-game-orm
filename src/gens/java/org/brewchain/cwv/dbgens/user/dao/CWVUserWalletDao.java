@@ -169,6 +169,9 @@ public class CWVUserWalletDao extends ExtendDaoSupper<CWVUserWallet, CWVUserWall
 				if(record.getDrawCountRecord()!=null){
 				criteria.andDrawCountRecordEqualTo(record.getDrawCountRecord());
 				}
+				if(record.getIncomeAddress()!=null){
+				criteria.andIncomeAddressEqualTo(record.getIncomeAddress());
+				}
 				if(record.getIncomeOrdinary()!=null){
 				criteria.andIncomeOrdinaryEqualTo(record.getIncomeOrdinary());
 				}
@@ -222,7 +225,7 @@ public class CWVUserWalletDao extends ExtendDaoSupper<CWVUserWallet, CWVUserWall
 				conn.setAutoCommit(false);
 			}		
 			StringBuffer sb=new StringBuffer();
-			sb.append("INSERT INTO CWV_USER_WALLET(wallet_id,user_id,coin_type,account,balance,topup_balance,draw_count,draw_count_history,draw_count_record,income_ordinary,income_typical,income_functional,update_time,create_time,coin_icon) values");
+			sb.append("INSERT INTO CWV_USER_WALLET(wallet_id,user_id,coin_type,account,balance,topup_balance,draw_count,draw_count_history,draw_count_record,income_address,income_ordinary,income_typical,income_functional,update_time,create_time,coin_icon) values");
 			
 				int i=0;
 				st = conn.createStatement();
@@ -312,6 +315,15 @@ public class CWVUserWalletDao extends ExtendDaoSupper<CWVUserWallet, CWVUserWall
 				}else{
 				// java type==Integer
 						sb.append("'"+record.getDrawCountRecord()+"'");
+				}
+			
+				sb.append(",");
+			
+				if(record.getIncomeAddress()==null){
+						sb.append("null");
+				}else{
+				// java type==String
+						sb.append("'"+record.getIncomeAddress()+"'");
 				}
 			
 				sb.append(",");
