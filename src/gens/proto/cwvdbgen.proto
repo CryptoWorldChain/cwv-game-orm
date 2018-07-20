@@ -86,6 +86,7 @@ message PBCWVGameProperty
 	string latitude = 19;
 	string crypto_token = 20;
 	string chain_status = 21;
+	string chain_trans_hash = 22;
 }
 
 message PBCWVGamePropertyGame
@@ -124,6 +125,25 @@ message PBCWVGamePropertyGameCopy
 	string images = 13;
 	string status = 14;
 	double income = 15;
+}
+
+message PBCWVGameTxHandle
+{
+	int32 id = 1;
+	int32 type = 2;
+	string tx_hash = 3;
+	string description = 4;
+	int32 status = 5;
+}
+
+message PBCWVGameTxManage
+{
+	int32 id = 1;
+	string type = 2;
+	string tx_hash = 3;
+	string description = 4;
+	int32 chain_status = 5;
+	int32 status = 6;
 }
 
 message PBCWVCommonConf
