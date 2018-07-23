@@ -127,15 +127,6 @@ message PBCWVGamePropertyGameCopy
 	double income = 15;
 }
 
-message PBCWVGameTxHandle
-{
-	int32 id = 1;
-	int32 type = 2;
-	string tx_hash = 3;
-	string description = 4;
-	int32 status = 5;
-}
-
 message PBCWVGameTxManage
 {
 	int32 id = 1;
@@ -216,9 +207,10 @@ message PBCWVUserPropertyIncome
 	string chain_status_claim = 7;
 	string chain_trans_hash_claim = 8;
 	double amount = 9;
-	string status = 10;
-	int64 start_time = 11;
-	int64 end_time = 12;
+	int32 master = 10;
+	string status = 11;
+	int64 start_time = 12;
+	int64 end_time = 13;
 }
 
 message PBCWVUserRechargeAddress
