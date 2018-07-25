@@ -27,7 +27,7 @@ import onight.tfw.mservice.ThreadContext;
 
 @Data
 @EqualsAndHashCode(callSuper=false)
-@Tab(name="CWV_GAME_PROPERTY_GAME_COPY")
+@Tab(name="cwv_game_property_game_copy")
 public class CWVGamePropertyGameCopyDao extends ExtendDaoSupper<CWVGamePropertyGameCopy, CWVGamePropertyGameCopyExample, CWVGamePropertyGameCopyKey>{
 
 	private CWVGamePropertyGameCopyMapper mapper;
@@ -222,7 +222,7 @@ public class CWVGamePropertyGameCopyDao extends ExtendDaoSupper<CWVGamePropertyG
 				conn.setAutoCommit(false);
 			}		
 			StringBuffer sb=new StringBuffer();
-			sb.append("INSERT INTO CWV_GAME_PROPERTY_GAME_COPY(game_id,property_id,name,type,game_type,game_url,game_status,icon,invoke_game,players_count,developers_count,instructions,images,status,income) values");
+			sb.append("INSERT INTO cwv_game_property_game_copy(game_id,property_id,name,type,game_type,game_url,game_status,icon,invoke_game,players_count,developers_count,instructions,images,status,income) values");
 			
 				int i=0;
 				st = conn.createStatement();

@@ -74,7 +74,7 @@ public class CWVGameTxManageCtrl extends BaseRestCtrl {
 				}
 				return JsonSerializer.formatToString(dao.selectByExample(example));
 			} else {
-				return getBySql(CWVGameTxManage.class, CWVGameTxManageKey.class, "CWV_GAME_TX_MANAGE", req);
+				return getBySql(CWVGameTxManage.class, CWVGameTxManageKey.class, "cwv_game_tx_manage", req);
 			}
 
 		} catch (ExcelDownload ed) {

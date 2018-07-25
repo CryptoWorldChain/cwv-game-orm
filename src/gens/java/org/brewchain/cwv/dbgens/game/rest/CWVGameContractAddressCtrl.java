@@ -74,7 +74,7 @@ public class CWVGameContractAddressCtrl extends BaseRestCtrl {
 				}
 				return JsonSerializer.formatToString(dao.selectByExample(example));
 			} else {
-				return getBySql(CWVGameContractAddress.class, CWVGameContractAddressKey.class, "CWV_GAME_CONTRACT_ADDRESS", req);
+				return getBySql(CWVGameContractAddress.class, CWVGameContractAddressKey.class, "cwv_game_contract_address", req);
 			}
 
 		} catch (ExcelDownload ed) {

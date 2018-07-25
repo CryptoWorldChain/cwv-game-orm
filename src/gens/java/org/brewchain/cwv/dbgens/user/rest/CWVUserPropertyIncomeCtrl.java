@@ -74,7 +74,7 @@ public class CWVUserPropertyIncomeCtrl extends BaseRestCtrl {
 				}
 				return JsonSerializer.formatToString(dao.selectByExample(example));
 			} else {
-				return getBySql(CWVUserPropertyIncome.class, CWVUserPropertyIncomeKey.class, "CWV_USER_PROPERTY_INCOME", req);
+				return getBySql(CWVUserPropertyIncome.class, CWVUserPropertyIncomeKey.class, "cwv_user_property_income", req);
 			}
 
 		} catch (ExcelDownload ed) {

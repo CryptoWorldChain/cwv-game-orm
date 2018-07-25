@@ -27,7 +27,7 @@ import onight.tfw.mservice.ThreadContext;
 
 @Data
 @EqualsAndHashCode(callSuper=false)
-@Tab(name="CWV_MARKET_AUCTION")
+@Tab(name="cwv_market_auction")
 public class CWVMarketAuctionDao extends ExtendDaoSupper<CWVMarketAuction, CWVMarketAuctionExample, CWVMarketAuctionKey>{
 
 	private CWVMarketAuctionMapper mapper;
@@ -207,7 +207,7 @@ public class CWVMarketAuctionDao extends ExtendDaoSupper<CWVMarketAuction, CWVMa
 				conn.setAutoCommit(false);
 			}		
 			StringBuffer sb=new StringBuffer();
-			sb.append("INSERT INTO CWV_MARKET_AUCTION(auction_id,bid_id,user_id,bid_price,last_bid_price,status,create_time,chain_status,chain_trans_hash,chain_contract) values");
+			sb.append("INSERT INTO cwv_market_auction(auction_id,bid_id,user_id,bid_price,last_bid_price,status,create_time,chain_status,chain_trans_hash,chain_contract) values");
 			
 				int i=0;
 				st = conn.createStatement();

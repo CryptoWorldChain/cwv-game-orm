@@ -27,7 +27,7 @@ import onight.tfw.mservice.ThreadContext;
 
 @Data
 @EqualsAndHashCode(callSuper=false)
-@Tab(name="CWV_MARKET_CHAIN_RECORD")
+@Tab(name="cwv_market_chain_record")
 public class CWVMarketChainRecordDao extends ExtendDaoSupper<CWVMarketChainRecord, CWVMarketChainRecordExample, CWVMarketChainRecordKey>{
 
 	private CWVMarketChainRecordMapper mapper;
@@ -207,7 +207,7 @@ public class CWVMarketChainRecordDao extends ExtendDaoSupper<CWVMarketChainRecor
 				conn.setAutoCommit(false);
 			}		
 			StringBuffer sb=new StringBuffer();
-			sb.append("INSERT INTO CWV_MARKET_CHAIN_RECORD(chain_record_id,property_id,user_id,transaction_hash,contract_address,contract_type,contract_subtype,status,create_time,update_time) values");
+			sb.append("INSERT INTO cwv_market_chain_record(chain_record_id,property_id,user_id,transaction_hash,contract_address,contract_type,contract_subtype,status,create_time,update_time) values");
 			
 				int i=0;
 				st = conn.createStatement();

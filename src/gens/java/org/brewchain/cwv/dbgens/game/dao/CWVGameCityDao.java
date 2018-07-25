@@ -27,7 +27,7 @@ import onight.tfw.mservice.ThreadContext;
 
 @Data
 @EqualsAndHashCode(callSuper=false)
-@Tab(name="CWV_GAME_CITY")
+@Tab(name="cwv_game_city")
 public class CWVGameCityDao extends ExtendDaoSupper<CWVGameCity, CWVGameCityExample, CWVGameCityKey>{
 
 	private CWVGameCityMapper mapper;
@@ -201,7 +201,7 @@ public class CWVGameCityDao extends ExtendDaoSupper<CWVGameCity, CWVGameCityExam
 				conn.setAutoCommit(false);
 			}		
 			StringBuffer sb=new StringBuffer();
-			sb.append("INSERT INTO CWV_GAME_CITY(city_id,city_name,city_name_cn,map_num,game_country_id,status,is_display,created_time) values");
+			sb.append("INSERT INTO cwv_game_city(city_id,city_name,city_name_cn,map_num,game_country_id,status,is_display,created_time) values");
 			
 				int i=0;
 				st = conn.createStatement();

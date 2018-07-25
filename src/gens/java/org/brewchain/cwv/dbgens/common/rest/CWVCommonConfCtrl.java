@@ -74,7 +74,7 @@ public class CWVCommonConfCtrl extends BaseRestCtrl {
 				}
 				return JsonSerializer.formatToString(dao.selectByExample(example));
 			} else {
-				return getBySql(CWVCommonConf.class, CWVCommonConfKey.class, "CWV_COMMON_CONF", req);
+				return getBySql(CWVCommonConf.class, CWVCommonConfKey.class, "cwv_common_conf", req);
 			}
 
 		} catch (ExcelDownload ed) {

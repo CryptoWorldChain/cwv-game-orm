@@ -27,7 +27,7 @@ import onight.tfw.mservice.ThreadContext;
 
 @Data
 @EqualsAndHashCode(callSuper=false)
-@Tab(name="CWV_COMMON_CONF")
+@Tab(name="cwv_common_conf")
 public class CWVCommonConfDao extends ExtendDaoSupper<CWVCommonConf, CWVCommonConfExample, CWVCommonConfKey>{
 
 	private CWVCommonConfMapper mapper;
@@ -195,7 +195,7 @@ public class CWVCommonConfDao extends ExtendDaoSupper<CWVCommonConf, CWVCommonCo
 				conn.setAutoCommit(false);
 			}		
 			StringBuffer sb=new StringBuffer();
-			sb.append("INSERT INTO CWV_COMMON_CONF(conf_id,parent,name,host,description,status) values");
+			sb.append("INSERT INTO cwv_common_conf(conf_id,parent,name,host,description,status) values");
 			
 				int i=0;
 				st = conn.createStatement();

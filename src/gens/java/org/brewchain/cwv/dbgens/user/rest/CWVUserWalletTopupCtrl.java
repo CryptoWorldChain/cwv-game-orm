@@ -74,7 +74,7 @@ public class CWVUserWalletTopupCtrl extends BaseRestCtrl {
 				}
 				return JsonSerializer.formatToString(dao.selectByExample(example));
 			} else {
-				return getBySql(CWVUserWalletTopup.class, CWVUserWalletTopupKey.class, "CWV_USER_WALLET_TOPUP", req);
+				return getBySql(CWVUserWalletTopup.class, CWVUserWalletTopupKey.class, "cwv_user_wallet_topup", req);
 			}
 
 		} catch (ExcelDownload ed) {

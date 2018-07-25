@@ -74,7 +74,7 @@ public class CWVUserSendRecordCtrl extends BaseRestCtrl {
 				}
 				return JsonSerializer.formatToString(dao.selectByExample(example));
 			} else {
-				return getBySql(CWVUserSendRecord.class, CWVUserSendRecordKey.class, "CWV_USER_SEND_RECORD", req);
+				return getBySql(CWVUserSendRecord.class, CWVUserSendRecordKey.class, "cwv_user_send_record", req);
 			}
 
 		} catch (ExcelDownload ed) {

@@ -74,7 +74,7 @@ public class CWVGamePropertyCtrl extends BaseRestCtrl {
 				}
 				return JsonSerializer.formatToString(dao.selectByExample(example));
 			} else {
-				return getBySql(CWVGameProperty.class, CWVGamePropertyKey.class, "CWV_GAME_PROPERTY", req);
+				return getBySql(CWVGameProperty.class, CWVGamePropertyKey.class, "cwv_game_property", req);
 			}
 
 		} catch (ExcelDownload ed) {

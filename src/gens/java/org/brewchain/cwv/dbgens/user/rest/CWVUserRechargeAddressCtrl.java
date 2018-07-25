@@ -74,7 +74,7 @@ public class CWVUserRechargeAddressCtrl extends BaseRestCtrl {
 				}
 				return JsonSerializer.formatToString(dao.selectByExample(example));
 			} else {
-				return getBySql(CWVUserRechargeAddress.class, CWVUserRechargeAddressKey.class, "CWV_USER_RECHARGE_ADDRESS", req);
+				return getBySql(CWVUserRechargeAddress.class, CWVUserRechargeAddressKey.class, "cwv_user_recharge_address", req);
 			}
 
 		} catch (ExcelDownload ed) {

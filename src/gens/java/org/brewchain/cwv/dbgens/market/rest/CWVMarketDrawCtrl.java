@@ -74,7 +74,7 @@ public class CWVMarketDrawCtrl extends BaseRestCtrl {
 				}
 				return JsonSerializer.formatToString(dao.selectByExample(example));
 			} else {
-				return getBySql(CWVMarketDraw.class, CWVMarketDrawKey.class, "CWV_MARKET_DRAW", req);
+				return getBySql(CWVMarketDraw.class, CWVMarketDrawKey.class, "cwv_market_draw", req);
 			}
 
 		} catch (ExcelDownload ed) {

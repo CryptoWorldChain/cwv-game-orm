@@ -74,7 +74,7 @@ public class CWVUserTradeCtrl extends BaseRestCtrl {
 				}
 				return JsonSerializer.formatToString(dao.selectByExample(example));
 			} else {
-				return getBySql(CWVUserTrade.class, CWVUserTradeKey.class, "CWV_USER_TRADE", req);
+				return getBySql(CWVUserTrade.class, CWVUserTradeKey.class, "cwv_user_trade", req);
 			}
 
 		} catch (ExcelDownload ed) {

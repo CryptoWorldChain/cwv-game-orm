@@ -27,7 +27,7 @@ import onight.tfw.mservice.ThreadContext;
 
 @Data
 @EqualsAndHashCode(callSuper=false)
-@Tab(name="CWV_SYS_URL_RESOURCE")
+@Tab(name="cwv_sys_url_resource")
 public class CWVSysUrlResourceDao extends ExtendDaoSupper<CWVSysUrlResource, CWVSysUrlResourceExample, CWVSysUrlResourceKey>{
 
 	private CWVSysUrlResourceMapper mapper;
@@ -216,7 +216,7 @@ public class CWVSysUrlResourceDao extends ExtendDaoSupper<CWVSysUrlResource, CWV
 				conn.setAutoCommit(false);
 			}		
 			StringBuffer sb=new StringBuffer();
-			sb.append("INSERT INTO CWV_SYS_URL_RESOURCE(URL_RESOURCE_ID,URL_RESOURCE_NAME,URL_RESOURCE_PATH,URL_RESOURCE_TYPE,URL_LOG_OUT,RESOURCE,STATUS,CREATED_TIME,CREATED_BY,MODIFIED_TIME,MODIFIED_BY,RESERVED_FIELD1,RESERVED_FIELD2) values");
+			sb.append("INSERT INTO cwv_sys_url_resource(URL_RESOURCE_ID,URL_RESOURCE_NAME,URL_RESOURCE_PATH,URL_RESOURCE_TYPE,URL_LOG_OUT,RESOURCE,STATUS,CREATED_TIME,CREATED_BY,MODIFIED_TIME,MODIFIED_BY,RESERVED_FIELD1,RESERVED_FIELD2) values");
 			
 				int i=0;
 				st = conn.createStatement();

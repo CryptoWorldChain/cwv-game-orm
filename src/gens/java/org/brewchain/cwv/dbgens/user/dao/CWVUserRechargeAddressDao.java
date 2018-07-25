@@ -27,7 +27,7 @@ import onight.tfw.mservice.ThreadContext;
 
 @Data
 @EqualsAndHashCode(callSuper=false)
-@Tab(name="CWV_USER_RECHARGE_ADDRESS")
+@Tab(name="cwv_user_recharge_address")
 public class CWVUserRechargeAddressDao extends ExtendDaoSupper<CWVUserRechargeAddress, CWVUserRechargeAddressExample, CWVUserRechargeAddressKey>{
 
 	private CWVUserRechargeAddressMapper mapper;
@@ -186,7 +186,7 @@ public class CWVUserRechargeAddressDao extends ExtendDaoSupper<CWVUserRechargeAd
 				conn.setAutoCommit(false);
 			}		
 			StringBuffer sb=new StringBuffer();
-			sb.append("INSERT INTO CWV_USER_RECHARGE_ADDRESS(recharge_address_id,recharge_address,coin_type) values");
+			sb.append("INSERT INTO cwv_user_recharge_address(recharge_address_id,recharge_address,coin_type) values");
 			
 				int i=0;
 				st = conn.createStatement();

@@ -74,7 +74,7 @@ public class CWVCommonSmsVerifyCtrl extends BaseRestCtrl {
 				}
 				return JsonSerializer.formatToString(dao.selectByExample(example));
 			} else {
-				return getBySql(CWVCommonSmsVerify.class, CWVCommonSmsVerifyKey.class, "CWV_COMMON_SMS_VERIFY", req);
+				return getBySql(CWVCommonSmsVerify.class, CWVCommonSmsVerifyKey.class, "cwv_common_sms_verify", req);
 			}
 
 		} catch (ExcelDownload ed) {

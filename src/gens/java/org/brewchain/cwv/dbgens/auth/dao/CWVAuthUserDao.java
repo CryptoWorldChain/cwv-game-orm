@@ -27,7 +27,7 @@ import onight.tfw.mservice.ThreadContext;
 
 @Data
 @EqualsAndHashCode(callSuper=false)
-@Tab(name="CWV_AUTH_USER")
+@Tab(name="cwv_auth_user")
 public class CWVAuthUserDao extends ExtendDaoSupper<CWVAuthUser, CWVAuthUserExample, CWVAuthUserKey>{
 
 	private CWVAuthUserMapper mapper;
@@ -219,7 +219,7 @@ public class CWVAuthUserDao extends ExtendDaoSupper<CWVAuthUser, CWVAuthUserExam
 				conn.setAutoCommit(false);
 			}		
 			StringBuffer sb=new StringBuffer();
-			sb.append("INSERT INTO CWV_AUTH_USER(user_id,user_name,nick_name,password,salt,phone,email,image_url,validate_phone,validate_email,status,created_time,country_id,country_code) values");
+			sb.append("INSERT INTO cwv_auth_user(user_id,user_name,nick_name,password,salt,phone,email,image_url,validate_phone,validate_email,status,created_time,country_id,country_code) values");
 			
 				int i=0;
 				st = conn.createStatement();

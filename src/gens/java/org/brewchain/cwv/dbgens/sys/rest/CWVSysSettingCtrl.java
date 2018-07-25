@@ -74,7 +74,7 @@ public class CWVSysSettingCtrl extends BaseRestCtrl {
 				}
 				return JsonSerializer.formatToString(dao.selectByExample(example));
 			} else {
-				return getBySql(CWVSysSetting.class, CWVSysSettingKey.class, "CWV_SYS_SETTING", req);
+				return getBySql(CWVSysSetting.class, CWVSysSettingKey.class, "cwv_sys_setting", req);
 			}
 
 		} catch (ExcelDownload ed) {

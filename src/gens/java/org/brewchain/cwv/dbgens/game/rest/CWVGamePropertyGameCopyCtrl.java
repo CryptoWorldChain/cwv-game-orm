@@ -74,7 +74,7 @@ public class CWVGamePropertyGameCopyCtrl extends BaseRestCtrl {
 				}
 				return JsonSerializer.formatToString(dao.selectByExample(example));
 			} else {
-				return getBySql(CWVGamePropertyGameCopy.class, CWVGamePropertyGameCopyKey.class, "CWV_GAME_PROPERTY_GAME_COPY", req);
+				return getBySql(CWVGamePropertyGameCopy.class, CWVGamePropertyGameCopyKey.class, "cwv_game_property_game_copy", req);
 			}
 
 		} catch (ExcelDownload ed) {

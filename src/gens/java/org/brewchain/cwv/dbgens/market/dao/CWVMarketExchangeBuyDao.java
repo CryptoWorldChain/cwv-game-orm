@@ -27,7 +27,7 @@ import onight.tfw.mservice.ThreadContext;
 
 @Data
 @EqualsAndHashCode(callSuper=false)
-@Tab(name="CWV_MARKET_EXCHANGE_BUY")
+@Tab(name="cwv_market_exchange_buy")
 public class CWVMarketExchangeBuyDao extends ExtendDaoSupper<CWVMarketExchangeBuy, CWVMarketExchangeBuyExample, CWVMarketExchangeBuyKey>{
 
 	private CWVMarketExchangeBuyMapper mapper;
@@ -213,7 +213,7 @@ public class CWVMarketExchangeBuyDao extends ExtendDaoSupper<CWVMarketExchangeBu
 				conn.setAutoCommit(false);
 			}		
 			StringBuffer sb=new StringBuffer();
-			sb.append("INSERT INTO CWV_MARKET_EXCHANGE_BUY(exchange_id,amount,buyer_address,seller_address,status,chain_status,chain_trans_hash,property_token,chain_status_group,chain_trans_hash_group,chain_status_rollback,chain_trans_hash_rollback) values");
+			sb.append("INSERT INTO cwv_market_exchange_buy(exchange_id,amount,buyer_address,seller_address,status,chain_status,chain_trans_hash,property_token,chain_status_group,chain_trans_hash_group,chain_status_rollback,chain_trans_hash_rollback) values");
 			
 				int i=0;
 				st = conn.createStatement();

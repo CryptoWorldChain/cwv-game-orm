@@ -27,7 +27,7 @@ import onight.tfw.mservice.ThreadContext;
 
 @Data
 @EqualsAndHashCode(callSuper=false)
-@Tab(name="CWV_GAME_TX_MANAGE")
+@Tab(name="cwv_game_tx_manage")
 public class CWVGameTxManageDao extends ExtendDaoSupper<CWVGameTxManage, CWVGameTxManageExample, CWVGameTxManageKey>{
 
 	private CWVGameTxManageMapper mapper;
@@ -195,7 +195,7 @@ public class CWVGameTxManageDao extends ExtendDaoSupper<CWVGameTxManage, CWVGame
 				conn.setAutoCommit(false);
 			}		
 			StringBuffer sb=new StringBuffer();
-			sb.append("INSERT INTO CWV_GAME_TX_MANAGE(id,type,tx_hash,description,chain_status,status) values");
+			sb.append("INSERT INTO cwv_game_tx_manage(id,type,tx_hash,description,chain_status,status) values");
 			
 				int i=0;
 				st = conn.createStatement();

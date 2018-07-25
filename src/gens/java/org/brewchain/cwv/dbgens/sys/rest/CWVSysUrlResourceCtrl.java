@@ -74,7 +74,7 @@ public class CWVSysUrlResourceCtrl extends BaseRestCtrl {
 				}
 				return JsonSerializer.formatToString(dao.selectByExample(example));
 			} else {
-				return getBySql(CWVSysUrlResource.class, CWVSysUrlResourceKey.class, "CWV_SYS_URL_RESOURCE", req);
+				return getBySql(CWVSysUrlResource.class, CWVSysUrlResourceKey.class, "cwv_sys_url_resource", req);
 			}
 
 		} catch (ExcelDownload ed) {

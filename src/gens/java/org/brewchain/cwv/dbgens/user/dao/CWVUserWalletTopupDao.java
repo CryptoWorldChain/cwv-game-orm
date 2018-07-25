@@ -27,7 +27,7 @@ import onight.tfw.mservice.ThreadContext;
 
 @Data
 @EqualsAndHashCode(callSuper=false)
-@Tab(name="CWV_USER_WALLET_TOPUP")
+@Tab(name="cwv_user_wallet_topup")
 public class CWVUserWalletTopupDao extends ExtendDaoSupper<CWVUserWalletTopup, CWVUserWalletTopupExample, CWVUserWalletTopupKey>{
 
 	private CWVUserWalletTopupMapper mapper;
@@ -207,7 +207,7 @@ public class CWVUserWalletTopupDao extends ExtendDaoSupper<CWVUserWalletTopup, C
 				conn.setAutoCommit(false);
 			}		
 			StringBuffer sb=new StringBuffer();
-			sb.append("INSERT INTO CWV_USER_WALLET_TOPUP(topup_id,user_id,coin_type,address,amount,status,create_time,chain_status,tx_hash,input_address) values");
+			sb.append("INSERT INTO cwv_user_wallet_topup(topup_id,user_id,coin_type,address,amount,status,create_time,chain_status,tx_hash,input_address) values");
 			
 				int i=0;
 				st = conn.createStatement();

@@ -27,7 +27,7 @@ import onight.tfw.mservice.ThreadContext;
 
 @Data
 @EqualsAndHashCode(callSuper=false)
-@Tab(name="CWV_AUTH_REFRESH_TOKEN")
+@Tab(name="cwv_auth_refresh_token")
 public class CWVAuthRefreshTokenDao extends ExtendDaoSupper<CWVAuthRefreshToken, CWVAuthRefreshTokenExample, CWVAuthRefreshTokenKey>{
 
 	private CWVAuthRefreshTokenMapper mapper;
@@ -192,7 +192,7 @@ public class CWVAuthRefreshTokenDao extends ExtendDaoSupper<CWVAuthRefreshToken,
 				conn.setAutoCommit(false);
 			}		
 			StringBuffer sb=new StringBuffer();
-			sb.append("INSERT INTO CWV_AUTH_REFRESH_TOKEN(id,refresh_token,expires,client_id,user_id) values");
+			sb.append("INSERT INTO cwv_auth_refresh_token(id,refresh_token,expires,client_id,user_id) values");
 			
 				int i=0;
 				st = conn.createStatement();

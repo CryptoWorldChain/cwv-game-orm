@@ -27,7 +27,7 @@ import onight.tfw.mservice.ThreadContext;
 
 @Data
 @EqualsAndHashCode(callSuper=false)
-@Tab(name="CWV_GAME_CONTRACT_ADDRESS")
+@Tab(name="cwv_game_contract_address")
 public class CWVGameContractAddressDao extends ExtendDaoSupper<CWVGameContractAddress, CWVGameContractAddressExample, CWVGameContractAddressKey>{
 
 	private CWVGameContractAddressMapper mapper;
@@ -201,7 +201,7 @@ public class CWVGameContractAddressDao extends ExtendDaoSupper<CWVGameContractAd
 				conn.setAutoCommit(false);
 			}		
 			StringBuffer sb=new StringBuffer();
-			sb.append("INSERT INTO CWV_GAME_CONTRACT_ADDRESS(contract_address_id,contract_address,contract_type,contract_state,contract_num,chain_status,chain_trans_hash,create_time) values");
+			sb.append("INSERT INTO cwv_game_contract_address(contract_address_id,contract_address,contract_type,contract_state,contract_num,chain_status,chain_trans_hash,create_time) values");
 			
 				int i=0;
 				st = conn.createStatement();

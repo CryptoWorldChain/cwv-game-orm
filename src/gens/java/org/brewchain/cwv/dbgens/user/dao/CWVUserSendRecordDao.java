@@ -27,7 +27,7 @@ import onight.tfw.mservice.ThreadContext;
 
 @Data
 @EqualsAndHashCode(callSuper=false)
-@Tab(name="CWV_USER_SEND_RECORD")
+@Tab(name="cwv_user_send_record")
 public class CWVUserSendRecordDao extends ExtendDaoSupper<CWVUserSendRecord, CWVUserSendRecordExample, CWVUserSendRecordKey>{
 
 	private CWVUserSendRecordMapper mapper;
@@ -204,7 +204,7 @@ public class CWVUserSendRecordDao extends ExtendDaoSupper<CWVUserSendRecord, CWV
 				conn.setAutoCommit(false);
 			}		
 			StringBuffer sb=new StringBuffer();
-			sb.append("INSERT INTO CWV_USER_SEND_RECORD(record_id,user_id,coin_type,input_address,out_address,amount,status,create_time,tx_hash) values");
+			sb.append("INSERT INTO cwv_user_send_record(record_id,user_id,coin_type,input_address,out_address,amount,status,create_time,tx_hash) values");
 			
 				int i=0;
 				st = conn.createStatement();

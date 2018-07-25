@@ -27,7 +27,7 @@ import onight.tfw.mservice.ThreadContext;
 
 @Data
 @EqualsAndHashCode(callSuper=false)
-@Tab(name="CWV_COMMON_SMS_VERIFY")
+@Tab(name="cwv_common_sms_verify")
 public class CWVCommonSmsVerifyDao extends ExtendDaoSupper<CWVCommonSmsVerify, CWVCommonSmsVerifyExample, CWVCommonSmsVerifyKey>{
 
 	private CWVCommonSmsVerifyMapper mapper;
@@ -198,7 +198,7 @@ public class CWVCommonSmsVerifyDao extends ExtendDaoSupper<CWVCommonSmsVerify, C
 				conn.setAutoCommit(false);
 			}		
 			StringBuffer sb=new StringBuffer();
-			sb.append("INSERT INTO CWV_COMMON_SMS_VERIFY(verify_id,phone,country_code,verify_code,verify_type,is_verify,expires) values");
+			sb.append("INSERT INTO cwv_common_sms_verify(verify_id,phone,country_code,verify_code,verify_type,is_verify,expires) values");
 			
 				int i=0;
 				st = conn.createStatement();

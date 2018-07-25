@@ -74,7 +74,7 @@ public class CWVGameMapCtrl extends BaseRestCtrl {
 				}
 				return JsonSerializer.formatToString(dao.selectByExample(example));
 			} else {
-				return getBySql(CWVGameMap.class, CWVGameMapKey.class, "CWV_GAME_MAP", req);
+				return getBySql(CWVGameMap.class, CWVGameMapKey.class, "cwv_game_map", req);
 			}
 
 		} catch (ExcelDownload ed) {

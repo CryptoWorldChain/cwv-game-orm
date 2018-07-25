@@ -27,7 +27,7 @@ import onight.tfw.mservice.ThreadContext;
 
 @Data
 @EqualsAndHashCode(callSuper=false)
-@Tab(name="CWV_USER_TRADE")
+@Tab(name="cwv_user_trade")
 public class CWVUserTradeDao extends ExtendDaoSupper<CWVUserTrade, CWVUserTradeExample, CWVUserTradeKey>{
 
 	private CWVUserTradeMapper mapper;
@@ -189,7 +189,7 @@ public class CWVUserTradeDao extends ExtendDaoSupper<CWVUserTrade, CWVUserTradeE
 				conn.setAutoCommit(false);
 			}		
 			StringBuffer sb=new StringBuffer();
-			sb.append("INSERT INTO CWV_USER_TRADE(trade_id,user_id,trade_password,created_time) values");
+			sb.append("INSERT INTO cwv_user_trade(trade_id,user_id,trade_password,created_time) values");
 			
 				int i=0;
 				st = conn.createStatement();

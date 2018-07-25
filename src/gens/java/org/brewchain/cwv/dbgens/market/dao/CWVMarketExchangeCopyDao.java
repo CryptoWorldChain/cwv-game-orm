@@ -27,7 +27,7 @@ import onight.tfw.mservice.ThreadContext;
 
 @Data
 @EqualsAndHashCode(callSuper=false)
-@Tab(name="CWV_MARKET_EXCHANGE_COPY")
+@Tab(name="cwv_market_exchange_copy")
 public class CWVMarketExchangeCopyDao extends ExtendDaoSupper<CWVMarketExchangeCopy, CWVMarketExchangeCopyExample, CWVMarketExchangeCopyKey>{
 
 	private CWVMarketExchangeCopyMapper mapper;
@@ -204,7 +204,7 @@ public class CWVMarketExchangeCopyDao extends ExtendDaoSupper<CWVMarketExchangeC
 				conn.setAutoCommit(false);
 			}		
 			StringBuffer sb=new StringBuffer();
-			sb.append("INSERT INTO CWV_MARKET_EXCHANGE_COPY(exchange_id,property_id,user_id,sell_price,tax,status,update_time,create_time,create_user) values");
+			sb.append("INSERT INTO cwv_market_exchange_copy(exchange_id,property_id,user_id,sell_price,tax,status,update_time,create_time,create_user) values");
 			
 				int i=0;
 				st = conn.createStatement();

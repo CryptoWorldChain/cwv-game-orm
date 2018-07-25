@@ -74,7 +74,7 @@ public class CWVGameCountryCtrl extends BaseRestCtrl {
 				}
 				return JsonSerializer.formatToString(dao.selectByExample(example));
 			} else {
-				return getBySql(CWVGameCountry.class, CWVGameCountryKey.class, "CWV_GAME_COUNTRY", req);
+				return getBySql(CWVGameCountry.class, CWVGameCountryKey.class, "cwv_game_country", req);
 			}
 
 		} catch (ExcelDownload ed) {

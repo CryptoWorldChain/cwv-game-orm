@@ -74,7 +74,7 @@ public class CWVMarketExchangeCtrl extends BaseRestCtrl {
 				}
 				return JsonSerializer.formatToString(dao.selectByExample(example));
 			} else {
-				return getBySql(CWVMarketExchange.class, CWVMarketExchangeKey.class, "CWV_MARKET_EXCHANGE", req);
+				return getBySql(CWVMarketExchange.class, CWVMarketExchangeKey.class, "cwv_market_exchange", req);
 			}
 
 		} catch (ExcelDownload ed) {

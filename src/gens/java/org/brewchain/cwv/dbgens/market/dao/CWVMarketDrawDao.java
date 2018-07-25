@@ -27,7 +27,7 @@ import onight.tfw.mservice.ThreadContext;
 
 @Data
 @EqualsAndHashCode(callSuper=false)
-@Tab(name="CWV_MARKET_DRAW")
+@Tab(name="cwv_market_draw")
 public class CWVMarketDrawDao extends ExtendDaoSupper<CWVMarketDraw, CWVMarketDrawExample, CWVMarketDrawKey>{
 
 	private CWVMarketDrawMapper mapper;
@@ -213,7 +213,7 @@ public class CWVMarketDrawDao extends ExtendDaoSupper<CWVMarketDraw, CWVMarketDr
 				conn.setAutoCommit(false);
 			}		
 			StringBuffer sb=new StringBuffer();
-			sb.append("INSERT INTO CWV_MARKET_DRAW(draw_id,property_id,user_id,create_time,chain_random,chain_status_random,chain_trans_hash_random,chain_status,chain_trans_hash,chain_contract,user_address,property_token) values");
+			sb.append("INSERT INTO cwv_market_draw(draw_id,property_id,user_id,create_time,chain_random,chain_status_random,chain_trans_hash_random,chain_status,chain_trans_hash,chain_contract,user_address,property_token) values");
 			
 				int i=0;
 				st = conn.createStatement();

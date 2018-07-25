@@ -27,7 +27,7 @@ import onight.tfw.mservice.ThreadContext;
 
 @Data
 @EqualsAndHashCode(callSuper=false)
-@Tab(name="CWV_GAME_DIC")
+@Tab(name="cwv_game_dic")
 public class CWVGameDicDao extends ExtendDaoSupper<CWVGameDic, CWVGameDicExample, CWVGameDicKey>{
 
 	private CWVGameDicMapper mapper;
@@ -195,7 +195,7 @@ public class CWVGameDicDao extends ExtendDaoSupper<CWVGameDic, CWVGameDicExample
 				conn.setAutoCommit(false);
 			}		
 			StringBuffer sb=new StringBuffer();
-			sb.append("INSERT INTO CWV_GAME_DIC(dic_id,dic_key,dic_value,parent_key,parent_value,seq) values");
+			sb.append("INSERT INTO cwv_game_dic(dic_id,dic_key,dic_value,parent_key,parent_value,seq) values");
 			
 				int i=0;
 				st = conn.createStatement();

@@ -27,7 +27,7 @@ import onight.tfw.mservice.ThreadContext;
 
 @Data
 @EqualsAndHashCode(callSuper=false)
-@Tab(name="CWV_COMMON_COUNTRY")
+@Tab(name="cwv_common_country")
 public class CWVCommonCountryDao extends ExtendDaoSupper<CWVCommonCountry, CWVCommonCountryExample, CWVCommonCountryKey>{
 
 	private CWVCommonCountryMapper mapper;
@@ -198,7 +198,7 @@ public class CWVCommonCountryDao extends ExtendDaoSupper<CWVCommonCountry, CWVCo
 				conn.setAutoCommit(false);
 			}		
 			StringBuffer sb=new StringBuffer();
-			sb.append("INSERT INTO CWV_COMMON_COUNTRY(country_id,domain_code,short_name,full_name,region_code,phone_code,sort) values");
+			sb.append("INSERT INTO cwv_common_country(country_id,domain_code,short_name,full_name,region_code,phone_code,sort) values");
 			
 				int i=0;
 				st = conn.createStatement();

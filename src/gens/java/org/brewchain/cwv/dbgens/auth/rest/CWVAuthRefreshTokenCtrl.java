@@ -74,7 +74,7 @@ public class CWVAuthRefreshTokenCtrl extends BaseRestCtrl {
 				}
 				return JsonSerializer.formatToString(dao.selectByExample(example));
 			} else {
-				return getBySql(CWVAuthRefreshToken.class, CWVAuthRefreshTokenKey.class, "CWV_AUTH_REFRESH_TOKEN", req);
+				return getBySql(CWVAuthRefreshToken.class, CWVAuthRefreshTokenKey.class, "cwv_auth_refresh_token", req);
 			}
 
 		} catch (ExcelDownload ed) {

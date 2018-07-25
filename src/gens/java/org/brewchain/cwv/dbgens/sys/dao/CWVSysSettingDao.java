@@ -27,7 +27,7 @@ import onight.tfw.mservice.ThreadContext;
 
 @Data
 @EqualsAndHashCode(callSuper=false)
-@Tab(name="CWV_SYS_SETTING")
+@Tab(name="cwv_sys_setting")
 public class CWVSysSettingDao extends ExtendDaoSupper<CWVSysSetting, CWVSysSettingExample, CWVSysSettingKey>{
 
 	private CWVSysSettingMapper mapper;
@@ -189,7 +189,7 @@ public class CWVSysSettingDao extends ExtendDaoSupper<CWVSysSetting, CWVSysSetti
 				conn.setAutoCommit(false);
 			}		
 			StringBuffer sb=new StringBuffer();
-			sb.append("INSERT INTO CWV_SYS_SETTING(setting_id,name,value,description) values");
+			sb.append("INSERT INTO cwv_sys_setting(setting_id,name,value,description) values");
 			
 				int i=0;
 				st = conn.createStatement();
