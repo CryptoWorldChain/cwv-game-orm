@@ -134,6 +134,32 @@ message PBCWVGamePropertyCopy
 	string crypto_token = 19;
 }
 
+message PBCWVGamePropertyCopy1
+{
+	int32 property_id = 1;
+	int32 game_map_id = 2;
+	int32 user_id = 3;
+	string property_name = 4;
+	string property_type = 5;
+	string property_sub_type = 6;
+	string property_market_type = 7;
+	string property_status = 8;
+	double last_price = 9;
+	double price_increase = 10;
+	int64 last_price_time = 11;
+	string image_url = 12;
+	double income = 13;
+	string is_display = 14;
+	int64 created_time = 15;
+	string property_template_id = 16;
+	string property_template = 17;
+	string longitude = 18;
+	string latitude = 19;
+	string crypto_token = 20;
+	string chain_status = 21;
+	string chain_trans_hash = 22;
+}
+
 message PBCWVGamePropertyGame
 {
 	int32 game_id = 1;
@@ -154,6 +180,25 @@ message PBCWVGamePropertyGame
 }
 
 message PBCWVGamePropertyGameCopy
+{
+	int32 game_id = 1;
+	int32 property_id = 2;
+	string name = 3;
+	int64 type = 4;
+	string game_type = 5;
+	string game_url = 6;
+	string game_status = 7;
+	string icon = 8;
+	string invoke_game = 9;
+	int32 players_count = 10;
+	int32 developers_count = 11;
+	string instructions = 12;
+	string images = 13;
+	string status = 14;
+	double income = 15;
+}
+
+message PBCWVGamePropertyGameCopyCopy
 {
 	int32 game_id = 1;
 	int32 property_id = 2;
@@ -433,6 +478,16 @@ message PBCWVMarketDraw
 	string chain_contract = 10;
 	string user_address = 11;
 	string property_token = 12;
+}
+
+message PBCWVMarketException
+{
+	int32 id = 1;
+	string type = 2;
+	int32 market_id = 3;
+	string description = 4;
+	string remark = 5;
+	int32 status = 6;
 }
 
 message PBCWVMarketExchange

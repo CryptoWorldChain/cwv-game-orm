@@ -73,6 +73,14 @@
  		<property name="mapper" ref="cWVGamePropertyCopyMapper" />
  		<property name="sqlSessionFactory" ref="sqlSessionFactory" />
  	</bean>
+	<bean id="cWVGamePropertyCopy1Mapper" class="org.mybatis.spring.mapper.MapperFactoryBean">
+		<property name="mapperInterface" value="org.brewchain.cwv.dbgens.game.mapper.CWVGamePropertyCopy1Mapper" />
+		<property name="sqlSessionFactory" ref="sqlSessionFactory" />
+	</bean>
+	 <bean id="cwvgamepropertycopy1Dao" class="org.brewchain.cwv.dbgens.game.dao.CWVGamePropertyCopy1Dao" >
+ 		<property name="mapper" ref="cWVGamePropertyCopy1Mapper" />
+ 		<property name="sqlSessionFactory" ref="sqlSessionFactory" />
+ 	</bean>
 	<bean id="cWVGamePropertyGameMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">
 		<property name="mapperInterface" value="org.brewchain.cwv.dbgens.game.mapper.CWVGamePropertyGameMapper" />
 		<property name="sqlSessionFactory" ref="sqlSessionFactory" />
@@ -87,6 +95,14 @@
 	</bean>
 	 <bean id="cwvgamepropertygamecopyDao" class="org.brewchain.cwv.dbgens.game.dao.CWVGamePropertyGameCopyDao" >
  		<property name="mapper" ref="cWVGamePropertyGameCopyMapper" />
+ 		<property name="sqlSessionFactory" ref="sqlSessionFactory" />
+ 	</bean>
+	<bean id="cWVGamePropertyGameCopyCopyMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">
+		<property name="mapperInterface" value="org.brewchain.cwv.dbgens.game.mapper.CWVGamePropertyGameCopyCopyMapper" />
+		<property name="sqlSessionFactory" ref="sqlSessionFactory" />
+	</bean>
+	 <bean id="cwvgamepropertygamecopycopyDao" class="org.brewchain.cwv.dbgens.game.dao.CWVGamePropertyGameCopyCopyDao" >
+ 		<property name="mapper" ref="cWVGamePropertyGameCopyCopyMapper" />
  		<property name="sqlSessionFactory" ref="sqlSessionFactory" />
  	</bean>
 	<bean id="cWVGameTxManageMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">
@@ -239,6 +255,14 @@
 	</bean>
 	 <bean id="cwvmarketdrawDao" class="org.brewchain.cwv.dbgens.market.dao.CWVMarketDrawDao" >
  		<property name="mapper" ref="cWVMarketDrawMapper" />
+ 		<property name="sqlSessionFactory" ref="sqlSessionFactory" />
+ 	</bean>
+	<bean id="cWVMarketExceptionMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">
+		<property name="mapperInterface" value="org.brewchain.cwv.dbgens.market.mapper.CWVMarketExceptionMapper" />
+		<property name="sqlSessionFactory" ref="sqlSessionFactory" />
+	</bean>
+	 <bean id="cwvmarketexceptionDao" class="org.brewchain.cwv.dbgens.market.dao.CWVMarketExceptionDao" >
+ 		<property name="mapper" ref="cWVMarketExceptionMapper" />
  		<property name="sqlSessionFactory" ref="sqlSessionFactory" />
  	</bean>
 	<bean id="cWVMarketExchangeMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">
