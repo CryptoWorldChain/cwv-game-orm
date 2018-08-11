@@ -172,9 +172,6 @@ public class CWVUserPropertyIncomeDao extends ExtendDaoSupper<CWVUserPropertyInc
 				if(record.getStatus()!=null){
 				criteria.andStatusEqualTo(record.getStatus());
 				}
-				if(record.getMaster()!=null){
-				criteria.andMasterEqualTo(record.getMaster());
-				}
 				if(record.getStartTime()!=null){
 				criteria.andStartTimeEqualTo(record.getStartTime());
 				}
@@ -216,7 +213,7 @@ public class CWVUserPropertyIncomeDao extends ExtendDaoSupper<CWVUserPropertyInc
 				conn.setAutoCommit(false);
 			}		
 			StringBuffer sb=new StringBuffer();
-			sb.append("INSERT INTO cwv_user_property_income(income_id,user_id,type,property_id,chain_status,chain_trans_hash,chain_status_claim,chain_trans_hash_claim,amount,status,master,start_time,end_time) values");
+			sb.append("INSERT INTO cwv_user_property_income(income_id,user_id,type,property_id,chain_status,chain_trans_hash,chain_status_claim,chain_trans_hash_claim,amount,status,start_time,end_time) values");
 			
 				int i=0;
 				st = conn.createStatement();
@@ -315,15 +312,6 @@ public class CWVUserPropertyIncomeDao extends ExtendDaoSupper<CWVUserPropertyInc
 				}else{
 				// java type==Byte
 						sb.append("'"+record.getStatus()+"'");
-				}
-			
-				sb.append(",");
-			
-				if(record.getMaster()==null){
-						sb.append("null");
-				}else{
-				// java type==Integer
-						sb.append("'"+record.getMaster()+"'");
 				}
 			
 				sb.append(",");

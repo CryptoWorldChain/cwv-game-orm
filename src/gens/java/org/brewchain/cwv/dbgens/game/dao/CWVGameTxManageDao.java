@@ -154,9 +154,6 @@ public class CWVGameTxManageDao extends ExtendDaoSupper<CWVGameTxManage, CWVGame
 				if(record.getDescription()!=null){
 				criteria.andDescriptionEqualTo(record.getDescription());
 				}
-				if(record.getChainStatus()!=null){
-				criteria.andChainStatusEqualTo(record.getChainStatus());
-				}
 				if(record.getStatus()!=null){
 				criteria.andStatusEqualTo(record.getStatus());
 				}
@@ -195,7 +192,7 @@ public class CWVGameTxManageDao extends ExtendDaoSupper<CWVGameTxManage, CWVGame
 				conn.setAutoCommit(false);
 			}		
 			StringBuffer sb=new StringBuffer();
-			sb.append("INSERT INTO cwv_game_tx_manage(id,type,tx_hash,description,chain_status,status) values");
+			sb.append("INSERT INTO cwv_game_tx_manage(id,type,tx_hash,description,status) values");
 			
 				int i=0;
 				st = conn.createStatement();
@@ -240,15 +237,6 @@ public class CWVGameTxManageDao extends ExtendDaoSupper<CWVGameTxManage, CWVGame
 				}else{
 				// java type==String
 						sb.append("'"+record.getDescription()+"'");
-				}
-			
-				sb.append(",");
-			
-				if(record.getChainStatus()==null){
-						sb.append("null");
-				}else{
-				// java type==Integer
-						sb.append("'"+record.getChainStatus()+"'");
 				}
 			
 				sb.append(",");

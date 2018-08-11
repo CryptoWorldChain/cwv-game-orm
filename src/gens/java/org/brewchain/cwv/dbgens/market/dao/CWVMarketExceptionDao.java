@@ -160,6 +160,15 @@ public class CWVMarketExceptionDao extends ExtendDaoSupper<CWVMarketException, C
 				if(record.getStatus()!=null){
 				criteria.andStatusEqualTo(record.getStatus());
 				}
+				if(record.getCreateTime()!=null){
+				criteria.andCreateTimeEqualTo(record.getCreateTime());
+				}
+				if(record.getUpdateTime()!=null){
+				criteria.andUpdateTimeEqualTo(record.getUpdateTime());
+				}
+				if(record.getUpdateUser()!=null){
+				criteria.andUpdateUserEqualTo(record.getUpdateUser());
+				}
 
 		}
 		return example;
@@ -195,7 +204,7 @@ public class CWVMarketExceptionDao extends ExtendDaoSupper<CWVMarketException, C
 				conn.setAutoCommit(false);
 			}		
 			StringBuffer sb=new StringBuffer();
-			sb.append("INSERT INTO cwv_market_exception(id,type,market_id,description,remark,status) values");
+			sb.append("INSERT INTO cwv_market_exception(id,type,market_id,description,remark,status,create_time,update_time,update_user) values");
 			
 				int i=0;
 				st = conn.createStatement();
@@ -258,6 +267,35 @@ public class CWVMarketExceptionDao extends ExtendDaoSupper<CWVMarketException, C
 				}else{
 				// java type==Integer
 						sb.append("'"+record.getStatus()+"'");
+				}
+			
+				sb.append(",");
+			
+				if(record.getCreateTime()==null){
+						sb.append("null");
+				}else{
+				// java type==Date
+					    java.text.SimpleDateFormat sdf = new java.text.SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SSS");
+						sb.append("'"+sdf.format(record.getCreateTime())+"'");
+				}
+			
+				sb.append(",");
+			
+				if(record.getUpdateTime()==null){
+						sb.append("null");
+				}else{
+				// java type==Date
+					    java.text.SimpleDateFormat sdf = new java.text.SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SSS");
+						sb.append("'"+sdf.format(record.getUpdateTime())+"'");
+				}
+			
+				sb.append(",");
+			
+				if(record.getUpdateUser()==null){
+						sb.append("null");
+				}else{
+				// java type==Integer
+						sb.append("'"+record.getUpdateUser()+"'");
 				}
 							sb.append(")");
 			
