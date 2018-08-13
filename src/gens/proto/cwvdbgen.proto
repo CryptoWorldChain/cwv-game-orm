@@ -114,7 +114,8 @@ message PBCWVGameTxManage
 	string type = 2;
 	string tx_hash = 3;
 	string description = 4;
-	int32 status = 5;
+	int32 chain_status = 5;
+	int32 status = 6;
 }
 
 message PBCWVCommonConf
@@ -188,8 +189,9 @@ message PBCWVUserPropertyIncome
 	string chain_trans_hash_claim = 8;
 	double amount = 9;
 	string status = 10;
-	int64 start_time = 11;
-	int64 end_time = 12;
+	int32 master = 11;
+	int64 start_time = 12;
+	int64 end_time = 13;
 }
 
 message PBCWVUserRechargeAddress
@@ -304,21 +306,25 @@ message PBCWVMarketBid
 	string chain_status = 11;
 	string chain_trans_hash = 12;
 	string chain_contract = 13;
-	int64 last_update_time = 14;
-	int64 announce_time = 15;
-	int64 create_time = 16;
-	string create_user = 17;
-	int32 country_id = 18;
-	int32 map_id = 19;
-	string property_template_id = 20;
-	string property_template = 21;
-	string nick_name = 22;
-	string property_name = 23;
-	string property_type = 24;
-	string property_status = 25;
-	string income_remark = 26;
-	double last_price = 27;
-	string image_url = 28;
+	string chain_status_end = 14;
+	string chain_trans_hash_end = 15;
+	double chain_max_amount = 16;
+	string chain_max_address = 17;
+	int64 last_update_time = 18;
+	int64 announce_time = 19;
+	int64 create_time = 20;
+	string create_user = 21;
+	int32 country_id = 22;
+	int32 map_id = 23;
+	string property_template_id = 24;
+	string property_template = 25;
+	string nick_name = 26;
+	string property_name = 27;
+	string property_type = 28;
+	string property_status = 29;
+	string income_remark = 30;
+	double last_price = 31;
+	string image_url = 32;
 }
 
 message PBCWVMarketChainRecord
@@ -425,12 +431,14 @@ message PBCWVSysUrlResource
 	int32 url_resource_type = 4;
 	string url_log_out = 5;
 	string resource = 6;
-	string status = 7;
-	string created_time = 8;
-	string created_by = 9;
-	string modified_time = 10;
-	string modified_by = 11;
-	string reserved_field1 = 12;
-	string reserved_field2 = 13;
+	int32 user_day_limit = 7;
+	int32 interval_time = 8;
+	string status = 9;
+	string created_time = 10;
+	string created_by = 11;
+	string modified_time = 12;
+	string modified_by = 13;
+	string reserved_field1 = 14;
+	string reserved_field2 = 15;
 }
 

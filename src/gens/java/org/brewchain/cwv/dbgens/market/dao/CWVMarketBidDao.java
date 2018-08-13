@@ -181,6 +181,18 @@ public class CWVMarketBidDao extends ExtendDaoSupper<CWVMarketBid, CWVMarketBidE
 				if(record.getChainContract()!=null){
 				criteria.andChainContractEqualTo(record.getChainContract());
 				}
+				if(record.getChainStatusEnd()!=null){
+				criteria.andChainStatusEndEqualTo(record.getChainStatusEnd());
+				}
+				if(record.getChainTransHashEnd()!=null){
+				criteria.andChainTransHashEndEqualTo(record.getChainTransHashEnd());
+				}
+				if(record.getChainMaxAmount()!=null){
+				criteria.andChainMaxAmountEqualTo(record.getChainMaxAmount());
+				}
+				if(record.getChainMaxAddress()!=null){
+				criteria.andChainMaxAddressEqualTo(record.getChainMaxAddress());
+				}
 				if(record.getLastUpdateTime()!=null){
 				criteria.andLastUpdateTimeEqualTo(record.getLastUpdateTime());
 				}
@@ -261,7 +273,7 @@ public class CWVMarketBidDao extends ExtendDaoSupper<CWVMarketBid, CWVMarketBidE
 				conn.setAutoCommit(false);
 			}		
 			StringBuffer sb=new StringBuffer();
-			sb.append("INSERT INTO cwv_market_bid(bid_id,game_property_id,owner,auction_start,auction_end,increase_ladder,bid_start,bid_amount,bidders_count,status,chain_status,chain_trans_hash,chain_contract,last_update_time,announce_time,create_time,create_user,country_id,map_id,property_template_id,property_template,nick_name,property_name,property_type,property_status,income_remark,last_price,image_url) values");
+			sb.append("INSERT INTO cwv_market_bid(bid_id,game_property_id,owner,auction_start,auction_end,increase_ladder,bid_start,bid_amount,bidders_count,status,chain_status,chain_trans_hash,chain_contract,chain_status_end,chain_trans_hash_end,chain_max_amount,chain_max_address,last_update_time,announce_time,create_time,create_user,country_id,map_id,property_template_id,property_template,nick_name,property_name,property_type,property_status,income_remark,last_price,image_url) values");
 			
 				int i=0;
 				st = conn.createStatement();
@@ -389,6 +401,42 @@ public class CWVMarketBidDao extends ExtendDaoSupper<CWVMarketBid, CWVMarketBidE
 				}else{
 				// java type==String
 						sb.append("'"+record.getChainContract()+"'");
+				}
+			
+				sb.append(",");
+			
+				if(record.getChainStatusEnd()==null){
+						sb.append("null");
+				}else{
+				// java type==Byte
+						sb.append("'"+record.getChainStatusEnd()+"'");
+				}
+			
+				sb.append(",");
+			
+				if(record.getChainTransHashEnd()==null){
+						sb.append("null");
+				}else{
+				// java type==String
+						sb.append("'"+record.getChainTransHashEnd()+"'");
+				}
+			
+				sb.append(",");
+			
+				if(record.getChainMaxAmount()==null){
+						sb.append("null");
+				}else{
+				// java type==BigDecimal
+						sb.append("'"+record.getChainMaxAmount()+"'");
+				}
+			
+				sb.append(",");
+			
+				if(record.getChainMaxAddress()==null){
+						sb.append("null");
+				}else{
+				// java type==String
+						sb.append("'"+record.getChainMaxAddress()+"'");
 				}
 			
 				sb.append(",");

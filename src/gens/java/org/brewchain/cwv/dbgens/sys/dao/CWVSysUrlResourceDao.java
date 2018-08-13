@@ -160,6 +160,12 @@ public class CWVSysUrlResourceDao extends ExtendDaoSupper<CWVSysUrlResource, CWV
 				if(record.getResource()!=null){
 				criteria.andResourceEqualTo(record.getResource());
 				}
+				if(record.getUserDayLimit()!=null){
+				criteria.andUserDayLimitEqualTo(record.getUserDayLimit());
+				}
+				if(record.getIntervalTime()!=null){
+				criteria.andIntervalTimeEqualTo(record.getIntervalTime());
+				}
 				if(record.getStatus()!=null){
 				criteria.andStatusEqualTo(record.getStatus());
 				}
@@ -216,7 +222,7 @@ public class CWVSysUrlResourceDao extends ExtendDaoSupper<CWVSysUrlResource, CWV
 				conn.setAutoCommit(false);
 			}		
 			StringBuffer sb=new StringBuffer();
-			sb.append("INSERT INTO cwv_sys_url_resource(URL_RESOURCE_ID,URL_RESOURCE_NAME,URL_RESOURCE_PATH,URL_RESOURCE_TYPE,URL_LOG_OUT,RESOURCE,STATUS,CREATED_TIME,CREATED_BY,MODIFIED_TIME,MODIFIED_BY,RESERVED_FIELD1,RESERVED_FIELD2) values");
+			sb.append("INSERT INTO cwv_sys_url_resource(URL_RESOURCE_ID,URL_RESOURCE_NAME,URL_RESOURCE_PATH,URL_RESOURCE_TYPE,URL_LOG_OUT,RESOURCE,user_day_limit,interval_time,STATUS,CREATED_TIME,CREATED_BY,MODIFIED_TIME,MODIFIED_BY,RESERVED_FIELD1,RESERVED_FIELD2) values");
 			
 				int i=0;
 				st = conn.createStatement();
@@ -279,6 +285,24 @@ public class CWVSysUrlResourceDao extends ExtendDaoSupper<CWVSysUrlResource, CWV
 				}else{
 				// java type==String
 						sb.append("'"+record.getResource()+"'");
+				}
+			
+				sb.append(",");
+			
+				if(record.getUserDayLimit()==null){
+						sb.append("null");
+				}else{
+				// java type==Integer
+						sb.append("'"+record.getUserDayLimit()+"'");
+				}
+			
+				sb.append(",");
+			
+				if(record.getIntervalTime()==null){
+						sb.append("null");
+				}else{
+				// java type==Integer
+						sb.append("'"+record.getIntervalTime()+"'");
 				}
 			
 				sb.append(",");
