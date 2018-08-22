@@ -308,23 +308,27 @@ message PBCWVMarketBid
 	string chain_contract = 13;
 	string chain_status_end = 14;
 	string chain_trans_hash_end = 15;
-	double chain_max_amount = 16;
-	string chain_max_address = 17;
-	int64 last_update_time = 18;
-	int64 announce_time = 19;
-	int64 create_time = 20;
-	string create_user = 21;
-	int32 country_id = 22;
-	int32 map_id = 23;
-	string property_template_id = 24;
-	string property_template = 25;
-	string nick_name = 26;
-	string property_name = 27;
-	string property_type = 28;
-	string property_status = 29;
-	string income_remark = 30;
-	double last_price = 31;
-	string image_url = 32;
+	string chain_status_max_amount = 16;
+	string chain_trans_hash_max_amount = 17;
+	double chain_max_amount = 18;
+	string chain_status_max_address = 19;
+	string chain_trans_hash_max_address = 20;
+	string chain_max_address = 21;
+	int64 last_update_time = 22;
+	int64 announce_time = 23;
+	int64 create_time = 24;
+	string create_user = 25;
+	int32 country_id = 26;
+	int32 map_id = 27;
+	string property_template_id = 28;
+	string property_template = 29;
+	string nick_name = 30;
+	string property_name = 31;
+	string property_type = 32;
+	string property_status = 33;
+	string income_remark = 34;
+	double last_price = 35;
+	string image_url = 36;
 }
 
 message PBCWVMarketChainRecord
@@ -360,14 +364,16 @@ message PBCWVMarketDraw
 message PBCWVMarketException
 {
 	int32 id = 1;
-	string type = 2;
-	int32 market_id = 3;
-	string description = 4;
-	string remark = 5;
-	int32 status = 6;
-	int64 create_time = 7;
-	int64 update_time = 8;
-	int32 update_user = 9;
+	int32 log_type = 2;
+	string log_method = 3;
+	string type = 4;
+	int32 market_id = 5;
+	string description = 6;
+	string remark = 7;
+	int32 status = 8;
+	int64 create_time = 9;
+	int64 update_time = 10;
+	int32 update_user = 11;
 }
 
 message PBCWVMarketExchange

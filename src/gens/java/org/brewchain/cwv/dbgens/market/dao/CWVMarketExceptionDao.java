@@ -145,6 +145,12 @@ public class CWVMarketExceptionDao extends ExtendDaoSupper<CWVMarketException, C
 							if(record.getId()!=null){
 				criteria.andIdEqualTo(record.getId());
 				}
+				if(record.getLogType()!=null){
+				criteria.andLogTypeEqualTo(record.getLogType());
+				}
+				if(record.getLogMethod()!=null){
+				criteria.andLogMethodEqualTo(record.getLogMethod());
+				}
 				if(record.getType()!=null){
 				criteria.andTypeEqualTo(record.getType());
 				}
@@ -204,7 +210,7 @@ public class CWVMarketExceptionDao extends ExtendDaoSupper<CWVMarketException, C
 				conn.setAutoCommit(false);
 			}		
 			StringBuffer sb=new StringBuffer();
-			sb.append("INSERT INTO cwv_market_exception(id,type,market_id,description,remark,status,create_time,update_time,update_user) values");
+			sb.append("INSERT INTO cwv_market_exception(id,log_type,log_method,type,market_id,description,remark,status,create_time,update_time,update_user) values");
 			
 				int i=0;
 				st = conn.createStatement();
@@ -222,6 +228,24 @@ public class CWVMarketExceptionDao extends ExtendDaoSupper<CWVMarketException, C
 				}else{
 				// java type==Integer
 						sb.append("'"+record.getId()+"'");
+				}
+			
+				sb.append(",");
+			
+				if(record.getLogType()==null){
+						sb.append("null");
+				}else{
+				// java type==Integer
+						sb.append("'"+record.getLogType()+"'");
+				}
+			
+				sb.append(",");
+			
+				if(record.getLogMethod()==null){
+						sb.append("null");
+				}else{
+				// java type==String
+						sb.append("'"+record.getLogMethod()+"'");
 				}
 			
 				sb.append(",");

@@ -187,8 +187,20 @@ public class CWVMarketBidDao extends ExtendDaoSupper<CWVMarketBid, CWVMarketBidE
 				if(record.getChainTransHashEnd()!=null){
 				criteria.andChainTransHashEndEqualTo(record.getChainTransHashEnd());
 				}
+				if(record.getChainStatusMaxAmount()!=null){
+				criteria.andChainStatusMaxAmountEqualTo(record.getChainStatusMaxAmount());
+				}
+				if(record.getChainTransHashMaxAmount()!=null){
+				criteria.andChainTransHashMaxAmountEqualTo(record.getChainTransHashMaxAmount());
+				}
 				if(record.getChainMaxAmount()!=null){
 				criteria.andChainMaxAmountEqualTo(record.getChainMaxAmount());
+				}
+				if(record.getChainStatusMaxAddress()!=null){
+				criteria.andChainStatusMaxAddressEqualTo(record.getChainStatusMaxAddress());
+				}
+				if(record.getChainTransHashMaxAddress()!=null){
+				criteria.andChainTransHashMaxAddressEqualTo(record.getChainTransHashMaxAddress());
 				}
 				if(record.getChainMaxAddress()!=null){
 				criteria.andChainMaxAddressEqualTo(record.getChainMaxAddress());
@@ -273,7 +285,7 @@ public class CWVMarketBidDao extends ExtendDaoSupper<CWVMarketBid, CWVMarketBidE
 				conn.setAutoCommit(false);
 			}		
 			StringBuffer sb=new StringBuffer();
-			sb.append("INSERT INTO cwv_market_bid(bid_id,game_property_id,owner,auction_start,auction_end,increase_ladder,bid_start,bid_amount,bidders_count,status,chain_status,chain_trans_hash,chain_contract,chain_status_end,chain_trans_hash_end,chain_max_amount,chain_max_address,last_update_time,announce_time,create_time,create_user,country_id,map_id,property_template_id,property_template,nick_name,property_name,property_type,property_status,income_remark,last_price,image_url) values");
+			sb.append("INSERT INTO cwv_market_bid(bid_id,game_property_id,owner,auction_start,auction_end,increase_ladder,bid_start,bid_amount,bidders_count,status,chain_status,chain_trans_hash,chain_contract,chain_status_end,chain_trans_hash_end,chain_status_max_amount,chain_trans_hash_max_amount,chain_max_amount,chain_status_max_address,chain_trans_hash_max_address,chain_max_address,last_update_time,announce_time,create_time,create_user,country_id,map_id,property_template_id,property_template,nick_name,property_name,property_type,property_status,income_remark,last_price,image_url) values");
 			
 				int i=0;
 				st = conn.createStatement();
@@ -423,11 +435,47 @@ public class CWVMarketBidDao extends ExtendDaoSupper<CWVMarketBid, CWVMarketBidE
 			
 				sb.append(",");
 			
+				if(record.getChainStatusMaxAmount()==null){
+						sb.append("null");
+				}else{
+				// java type==Byte
+						sb.append("'"+record.getChainStatusMaxAmount()+"'");
+				}
+			
+				sb.append(",");
+			
+				if(record.getChainTransHashMaxAmount()==null){
+						sb.append("null");
+				}else{
+				// java type==String
+						sb.append("'"+record.getChainTransHashMaxAmount()+"'");
+				}
+			
+				sb.append(",");
+			
 				if(record.getChainMaxAmount()==null){
 						sb.append("null");
 				}else{
 				// java type==BigDecimal
 						sb.append("'"+record.getChainMaxAmount()+"'");
+				}
+			
+				sb.append(",");
+			
+				if(record.getChainStatusMaxAddress()==null){
+						sb.append("null");
+				}else{
+				// java type==Byte
+						sb.append("'"+record.getChainStatusMaxAddress()+"'");
+				}
+			
+				sb.append(",");
+			
+				if(record.getChainTransHashMaxAddress()==null){
+						sb.append("null");
+				}else{
+				// java type==String
+						sb.append("'"+record.getChainTransHashMaxAddress()+"'");
 				}
 			
 				sb.append(",");
