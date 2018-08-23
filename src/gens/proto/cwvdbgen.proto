@@ -157,6 +157,7 @@ message PBCWVAuthRefreshToken
 	int64 expires = 3;
 	string client_id = 4;
 	int32 user_id = 5;
+	int32 status = 6;
 }
 
 message PBCWVAuthUser

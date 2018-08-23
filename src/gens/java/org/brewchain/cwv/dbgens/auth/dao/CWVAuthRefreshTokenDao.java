@@ -157,6 +157,9 @@ public class CWVAuthRefreshTokenDao extends ExtendDaoSupper<CWVAuthRefreshToken,
 				if(record.getUserId()!=null){
 				criteria.andUserIdEqualTo(record.getUserId());
 				}
+				if(record.getStatus()!=null){
+				criteria.andStatusEqualTo(record.getStatus());
+				}
 
 		}
 		return example;
@@ -192,7 +195,7 @@ public class CWVAuthRefreshTokenDao extends ExtendDaoSupper<CWVAuthRefreshToken,
 				conn.setAutoCommit(false);
 			}		
 			StringBuffer sb=new StringBuffer();
-			sb.append("INSERT INTO cwv_auth_refresh_token(id,refresh_token,expires,client_id,user_id) values");
+			sb.append("INSERT INTO cwv_auth_refresh_token(id,refresh_token,expires,client_id,user_id,status) values");
 			
 				int i=0;
 				st = conn.createStatement();
@@ -247,6 +250,15 @@ public class CWVAuthRefreshTokenDao extends ExtendDaoSupper<CWVAuthRefreshToken,
 				}else{
 				// java type==Integer
 						sb.append("'"+record.getUserId()+"'");
+				}
+			
+				sb.append(",");
+			
+				if(record.getStatus()==null){
+						sb.append("null");
+				}else{
+				// java type==Integer
+						sb.append("'"+record.getStatus()+"'");
 				}
 							sb.append(")");
 			
